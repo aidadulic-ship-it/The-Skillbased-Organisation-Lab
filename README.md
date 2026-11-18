@@ -14,7 +14,7 @@ Die Schritte entsprechen der [GitHub-Pages-Anleitung](https://docs.github.com/en
 ## Was die Demo kann
 
 - Elf Bereiche, darunter Decision Mirror, Skill-Based Organization, Lernwege, Tools, Downloads, Profil und Workshop.
-- Die erste Ansicht zeigt ausschließlich die kurze Erklärung mit „Was es ist / was es nicht ist“, einem Beispiel und „Starten“. Nach dem Klick erscheinen Entscheidungsdemo, belegte Signale, weitere Themen und sofort die Seitenleiste. Die Navigation ist nur in der ersten Ansicht verborgen.
+- Die erste Ansicht macht mit „The Skill-Based Organization“ und drei Fragen zu Arbeit, Führung und Organisation neugierig. Nach „Starten“ folgen die ausführliche Erklärung, Entscheidungsdemo, belegte Signale, weitere Themen und sofort die Seitenleiste. Die Navigation ist nur in der ersten Ansicht verborgen.
 - Zwanzig digitale Arbeitsblätter mit Checklisten, Text-/JSON-Export, JSON-Import und Druck über den Browser.
 - Optionale Spracheingabe, wenn der Browser sie anbietet. Vor dem ersten Diktat erscheint eine Erklärung zur möglichen externen Audioverarbeitung.
 - Workshop-Anfragen öffnen das E-Mail-Programm und sind an `aida.dulic@hotmail.com` adressiert.
