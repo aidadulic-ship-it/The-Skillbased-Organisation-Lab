@@ -1,5 +1,6 @@
 (function (root) {
   "use strict";
+  const library=typeof module!=="undefined"&&module.exports?require("./decision-studio-library.js"):root.DecisionStudioLibrary;
 
   const cases = [
     {
@@ -10,8 +11,7 @@
       dilemma: "Ein fiktives Serviceteam soll mit generativer KI schneller werden. Der Anbieter verspricht 30 Prozent Zeitgewinn, doch Fehler, Nacharbeit und zusätzliche Arbeitslast sind im eigenen Betrieb noch nicht gemessen.",
       question: "Welche Investition kannst du verantworten, bevor Qualität und tatsächlich nutzbare Zeit bekannt sind?",
       evidence: "Die ILO misst Exposition von Aufgaben gegenüber GenAI. Daraus folgt weder ein lokaler Produktivitätsgewinn noch ein Stellenabbau.",
-      sourceLabel: "ILO · Generative AI and jobs, 2025",
-      sourceUrl: "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update",
+      sourceKey: "iloAI",
       marker: "Produktivität ≠ Wirkung",
       flow: [
         {label:"Arbeitsaufgabe",value:"Kundenanfragen zuverlässig beantworten"},
@@ -28,8 +28,7 @@
       dilemma: "In einem fiktiven österreichischen Zulieferbetrieb können nur zwei Menschen eine kritische Fehlerdiagnose durchführen. Eine Person geht in neun Monaten; eine identische Nachbesetzung ist seit Monaten nicht gelungen.",
       question: "Suchst du weiter nach einem Titel, oder zerlegst du zuerst die Aufgabe in nachweisbare Fähigkeiten und Alternativen?",
       evidence: "Die OECD beschreibt Skills-first als Veränderung von Auswahl, Lernen, Karriere und Leistungsbeurteilung – nicht nur von Stellenanzeigen.",
-      sourceLabel: "OECD · A Skills-First Labour Market, 2026",
-      sourceUrl: "https://www.oecd.org/en/publications/a-skills-first-labour-market_2e1b85f0-en/full-report/promoting-skills-first-hiring-and-talent-management_81392a48.html",
+      sourceKey: "oecdSkills",
       marker: "Rolle ≠ Fähigkeit",
       flow: [
         {label:"Arbeitsaufgabe",value:"Kritische Fehlerdiagnosen absichern"},
@@ -46,8 +45,7 @@
       dilemma: "Ein fiktives Unternehmen verlangt drei gemeinsame Bürotage. Wissensarbeit kann teilweise mobil erledigt werden, Kundendienst und Produktion kaum. Die Teams melden unklare Erreichbarkeit und ungleiche Entwicklungschancen.",
       question: "Welche Regeln verbessern Zusammenarbeit und Fairness, ohne Leistung oder psychische Gesundheit zu unterstellen?",
       evidence: "Ein randomisierter Hybridversuch fand in einem konkreten Technologieunternehmen weniger Fluktuation. Die Wirkung ist nicht auf jede Tätigkeit übertragbar.",
-      sourceLabel: "Bloom, Han & Liang · Nature, 2024",
-      sourceUrl: "https://www.nature.com/articles/s41586-024-07500-2",
+      sourceKey: "bloom",
       marker: "Ort ≠ Leistung",
       flow: [
         {label:"Arbeitsaufgabe",value:"Zusammenarbeit und Kundenübergaben sichern"},
@@ -64,8 +62,7 @@
       dilemma: "Demo/fiktiv: Ein Unternehmen plant Zuschläge für sichtbare KI-Projekte. Andere notwendige Beiträge werden bisher nicht nach vergleichbaren Kriterien bewertet.",
       question: "Welche Vergütungsregel ist nachvollziehbar, fair und vor Einführung rechtlich geprüft?",
       evidence: "Die EU-Entgelttransparenzrichtlinie setzt einen Rechtsrahmen. Sie belegt keinen wirtschaftlichen Nutzen eines bestimmten New-Pay-Modells.",
-      sourceLabel: "EUR-Lex · Richtlinie (EU) 2023/970",
-      sourceUrl: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32023L0970",
+      sourceKey: "payDirective",
       marker: "Skill-Prämie ≠ Fairness",
       flow: [
         {label:"Arbeitsaufgabe",value:"Vergütungskriterien für vergleichbare Arbeit prüfen"},
@@ -75,6 +72,7 @@
       facts: [["Neue Zuschläge", "geplant"], ["Vergleichsgruppen", "offen"], ["Rechtsprüfung", "offen"]]
     }
   ];
+  cases.forEach(function(item){item.sourceLabel=library.sources[item.sourceKey].label;item.sourceUrl=library.sources[item.sourceKey].url;});
 
   const paths = {
     ai: [

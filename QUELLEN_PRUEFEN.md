@@ -6,8 +6,8 @@ Stand: 18. November 2026. Die vorhandenen 26 Quellenadressen wurden einzeln geö
 
 | Quelle | Befund | Nächster Schritt |
 | --- | --- | --- |
-| [Bloom, Han & Liang: Hybrid Working Randomized Trial](https://www.nature.com/articles/s41586-024-07500-2) | Der Abruf wurde durch die Anmeldung des Verlags umgeleitet. Titel und Resultate konnten in dieser Prüfung nicht direkt gegengelesen werden. | Originalarbeit manuell öffnen; jede Aussage im Hybrid-Modul mit Seite oder Abschnitt belegen. |
-| [Stanford HAI: AI Index Report 2025](https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf) | Der PDF-Abruf scheiterte an der Dateigröße. | Bericht manuell öffnen und verwendete Aussagen mit Seitenzahl abgleichen. |
+| [Bloom, Han & Liang: Hybrid Working Randomized Trial](https://www.nature.com/articles/s41586-024-07500-2) | Der direkte Abruf wurde zur Verlagsanmeldung umgeleitet. Die öffentliche Suchansicht zeigt Abstract und Abschnittsnamen. | **Nachlesen:** „Abstract“, „Effects on employee retention“ und „Effects on performance“. Prüfen, ob die Aussagen zu Fluktuation, Leistung und Übertragbarkeit im Hybrid-Modul auf die untersuchte Gruppe begrenzt bleiben. |
+| [Stanford HAI: AI Index Report 2025](https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf) | Der PDF-Abruf scheiterte an der Dateigröße. Die öffentliche Inhaltsübersicht nennt Kapitel 3. | **Nachlesen:** „Chapter 3: Responsible AI“, darin „Hughes Hallucination Evaluation Model (HHEM) Leaderboard“. Prüfen, ob die Aussagen zum Prüfen von KI-Antworten dort tatsächlich belegt sind. |
 
 ## Fachliche Freigabe vor Verkauf
 

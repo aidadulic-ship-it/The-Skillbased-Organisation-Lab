@@ -136,10 +136,10 @@
         {type:"Wert",text:"Kundenrichtigkeit und menschliche Verantwortung haben Vorrang vor bloßer Ticketzahl."}
       ],
       euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"nutzbare Stunden",formula:"nutzbare Stunden × Stundenwert – Pilotkosten – Fehler-/Nacharbeitskosten",scenarios:[
-        {name:"Vorsichtig",units:140,unitValue:35,cost:9000,riskCost:3000},
-        {name:"Mittel",units:240,unitValue:35,cost:9000,riskCost:1500},
-        {name:"Günstig",units:340,unitValue:35,cost:9000,riskCost:500}
-      ],limit:"Der Stundenwert ist eine fiktive interne Kapazitätsbewertung, kein automatisch realisierter Umsatz."},
+        {name:"Vorsichtig",units:140,unitValue:30,cost:11000,riskCost:3500,rationale:"Wenig nutzbare Zeit, niedriger Kapazitätswert, hoher Einführungsaufwand und viele Korrekturen."},
+        {name:"Mittel",units:240,unitValue:35,cost:9000,riskCost:1500,rationale:"Mittlere Zeitwirkung und mittlerer Kapazitätswert bei begrenztem Pilotaufwand und Nacharbeit."},
+        {name:"Günstig",units:340,unitValue:40,cost:8000,riskCost:500,rationale:"Mehr nutzbare Zeit, höherer Kapazitätswert, geringerer Aufwand und wenige Korrekturen."}
+      ],counterfactual:"Vergleich: Ein ähnliches Team bearbeitet denselben Aufgabentyp ohne KI-Pilot. Qualität und nutzbare Zeit werden über 90 Tage gleich gemessen.",limit:"Der Stundenwert ist eine fiktive interne Kapazitätsbewertung, kein automatisch realisierter Umsatz."},
       counterargument:"Ein schneller Rollout kann den Pilot überholen, wenn Wettbewerber früher lernen. Doch Geschwindigkeit ohne Fehlergrenze verschiebt Kosten auf Kundschaft und Beschäftigte.",
       groups:["Kundschaft","Serviceteam","Qualitätssicherung","IT und Datenschutz","Finance"],
       gates:{day30:{go:"Nur weiter, wenn Antwortqualität mindestens die eigene Baseline erreicht, Freigaben funktionieren und Nacharbeit dokumentiert wird.",stop:"Sofort stoppen bei kritischer Falschauskunft, Datenschutzvorfall oder ungeklärter Verantwortlichkeit."},day90:{go:"Nur skalieren, wenn nutzbare Stunden und Gesamtkosten anhand realer Daten belegt sind und Qualität sowie Arbeitslast nicht schlechter werden.",stop:"Nicht skalieren, wenn der mittlere Nettoeffekt negativ bleibt oder Qualität/Belastung schlechter werden."}}
@@ -157,10 +157,10 @@
         {type:"Wert",text:"Zugang zur Erprobung und Auswahl nach Arbeitsprobe müssen fair sein."}
       ],
       euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"vermiedene Ausfallstunden",formula:"vermiedene Ausfallstunden × Ausfallwert – Lern-/Pilotkosten – Qualitätsrisiko",scenarios:[
-        {name:"Vorsichtig",units:20,unitValue:500,cost:16000,riskCost:5000},
-        {name:"Mittel",units:40,unitValue:500,cost:16000,riskCost:3000},
-        {name:"Günstig",units:60,unitValue:500,cost:16000,riskCost:1000}
-      ],limit:"Vermiedene Ausfälle sind eine fiktive Annahme. Ein echter Wert braucht Auftrags-, Qualitäts- und Ausfalldaten."},
+        {name:"Vorsichtig",units:20,unitValue:450,cost:18000,riskCost:6000,rationale:"Wenige vermiedene Ausfälle, niedriger Ausfallwert, viel Anleitung und hohes Qualitätsrisiko."},
+        {name:"Mittel",units:40,unitValue:500,cost:16000,riskCost:3000,rationale:"Mittlere Entlastung und mittlerer Ausfallwert bei planbarer Lernzeit und kontrollierten Fehlern."},
+        {name:"Günstig",units:60,unitValue:550,cost:14000,riskCost:1000,rationale:"Mehr Vertretung, höherer Ausfallwert, kürzere Lernphase und wenige Qualitätskorrekturen."}
+      ],counterfactual:"Vergleich ohne interne Qualifizierung: Externe Suche läuft weiter. Ausfallstunden, Suchkosten und Diagnosequalität werden für denselben Zeitraum erfasst.",limit:"Vermiedene Ausfälle sind eine fiktive Annahme. Ein echter Wert braucht Auftrags-, Qualitäts- und Ausfalldaten."},
       counterargument:"Interne Qualifizierung kann die einzige Expertin zusätzlich belasten. Eine externe Besetzung kann schneller sein, wenn passende Erfahrung tatsächlich verfügbar ist.",
       groups:["Erfahrene Fachkräfte","Interessierte Mitarbeitende","Produktion","Kundschaft","HR und Finance"],
       gates:{day30:{go:"Nur weiter, wenn Lernzeit im Plan steht, zwei Personen faire Probeeinsätze erhalten und erste überwachte Diagnosen dokumentiert sind.",stop:"Stoppen, wenn Anleitung ohne Entlastung erfolgt oder die Diagnosequalität sinkt."},day90:{go:"Ausweiten, wenn zwei datierte Arbeitsproben je Person die Qualitätsgrenze erfüllen und die Gesamtkosten gegen externe Suche verglichen sind.",stop:"Nicht als Vertretung freigeben, wenn Arbeitsproben fehlen oder Sicherheits- und Qualitätsgrenzen verletzt werden."}}
@@ -178,10 +178,10 @@
         {type:"Wert",text:"Leistung zählt nach Ergebnis und Qualität, nicht nach Sichtbarkeit im Büro."}
       ],
       euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"vermiedene Reibungsstunden",formula:"vermiedene Reibungsstunden × Stundenwert – Umstellungskosten – zusätzlicher Koordinationsaufwand",scenarios:[
-        {name:"Vorsichtig",units:100,unitValue:40,cost:6000,riskCost:3000},
-        {name:"Mittel",units:180,unitValue:40,cost:6000,riskCost:2000},
-        {name:"Günstig",units:260,unitValue:40,cost:6000,riskCost:1000}
-      ],limit:"Stundenwerte sind fiktive Kapazitätswerte. Fairness und Gesundheit werden zusätzlich geprüft, nicht in Euro aufgelöst."},
+        {name:"Vorsichtig",units:100,unitValue:35,cost:7000,riskCost:3500,rationale:"Wenig ersparte Abstimmung, niedriger Zeitwert, hoher Umstellungsaufwand und viele Zusatzschleifen."},
+        {name:"Mittel",units:180,unitValue:40,cost:6000,riskCost:2000,rationale:"Mittlere Entlastung bei üblichem Umstellungsaufwand und moderater Zusatzkoordination."},
+        {name:"Günstig",units:260,unitValue:45,cost:5000,riskCost:800,rationale:"Klare Übergaben sparen mehr Zeit; Einrichtung und Zusatzkoordination bleiben geringer."}
+      ],counterfactual:"Vergleich: Vor der Änderung werden Übergabezeiten, Qualitätsfehler und Entwicklungschancen nach Arbeitsort erfasst. Dieselben Maße gelten nach 90 Tagen.",limit:"Stundenwerte sind fiktive Kapazitätswerte. Fairness und Gesundheit werden zusätzlich geprüft, nicht in Euro aufgelöst."},
       counterargument:"Feste gemeinsame Tage können Onboarding und spontane Abstimmung erleichtern. Eine flexible Regel muss diese Kontakte bewusst sichern.",
       groups:["Mobile Mitarbeitende","Ortsgebundene Mitarbeitende","Neue Kolleginnen und Kollegen","Führungskräfte","Kundschaft"],
       gates:{day30:{go:"Weiter, wenn Übergaben dokumentiert sind, Feedback alle Gruppen erreicht und Qualitäts- sowie Belastungsdaten erhoben werden.",stop:"Stoppen oder ändern, wenn sicherheitskritische Übergaben ausfallen oder eine Gruppe systematisch Informationen verpasst."},day90:{go:"Ausweiten, wenn Übergabequalität mindestens die Baseline erreicht und Zugang zu Projekten sowie Feedback nach Ortsgruppen geprüft ist.",stop:"Nicht verstetigen bei sinkender Qualität, steigender Belastung oder nachgewiesen ungleichen Entwicklungschancen."}}
@@ -199,10 +199,10 @@
         {type:"Wert",text:"Gleiche oder gleichwertige Arbeit braucht nachvollziehbare, geschlechtsneutrale Kriterien."}
       ],
       euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"hypothetisch vermiedene Abgänge",formula:"hypothetisch vermiedene Abgänge × Ersatzkosten – Design-/Prüfkosten – zusätzliche Vergütung",scenarios:[
-        {name:"Vorsichtig",units:0,unitValue:12000,cost:8000,riskCost:7000},
-        {name:"Mittel",units:1,unitValue:12000,cost:8000,riskCost:6000},
-        {name:"Günstig",units:2,unitValue:12000,cost:8000,riskCost:5000}
-      ],limit:"Vermiedene Abgänge sind fiktiv und nicht kausal dem Vergütungsmodell zuzurechnen. Recht und Fairness gelten unabhängig vom Euro-Ergebnis."},
+        {name:"Vorsichtig",units:0,unitValue:10000,cost:10000,riskCost:8000,rationale:"Kein belegbar vermiedener Abgang, niedriger Ersatzwert, hoher Prüfaufwand und hohe Zusatzvergütung."},
+        {name:"Mittel",units:1,unitValue:12000,cost:8000,riskCost:6000,rationale:"Ein hypothetisch vermiedener Abgang, mittlerer Ersatzwert und begrenzte Design- sowie Vergütungskosten."},
+        {name:"Günstig",units:2,unitValue:14000,cost:7000,riskCost:5000,rationale:"Zwei hypothetisch vermiedene Abgänge, höherer Ersatzwert und geringere Umsetzungskosten."}
+      ],counterfactual:"Vergleich ohne Regeländerung: Abgänge, Bewerbungen und Fairnessbeschwerden werden im selben Zeitraum beobachtet. Daraus folgt allein noch keine Kausalität.",limit:"Vermiedene Abgänge sind fiktiv und nicht kausal dem Vergütungsmodell zuzurechnen. Recht und Fairness gelten unabhängig vom Euro-Ergebnis."},
       counterargument:"Eine offene Kriterienprüfung kann dringend gesuchte Talente zu spät erreichen. Eine befristete Maßnahme braucht trotzdem klare Vergleichs- und Revisionsregeln.",
       groups:["Beschäftigte mit neuen Skills","Beschäftigte mit weniger sichtbarer Arbeit","HR","Führungskräfte","Mitarbeitendenvertretung","Finance"],
       gates:{day30:{go:"Nur weiter, wenn Kriterien, Vergleichsgruppen und Beteiligung dokumentiert sind und lokale Rechtsfragen fachlich geprüft werden.",stop:"Keine Auszahlung nach neuen Regeln bei ungeklärter Benachteiligung oder fehlender Rechtsprüfung."},day90:{go:"Nur verstetigen, wenn Kriterien konsistent angewandt, Abweichungen erklärt und Kosten sowie Bindungssignale getrennt bewertet sind.",stop:"Regel revidieren, wenn gleichwertige Arbeit ohne nachvollziehbaren Grund ungleich behandelt wird."}}

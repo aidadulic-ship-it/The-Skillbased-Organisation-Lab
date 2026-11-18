@@ -682,6 +682,12 @@ a{color:inherit}
   .profile-main,.profile-method{padding:25px;min-height:0}
   .profile-method li{grid-template-columns:85px 1fr}
 }
+@media(max-width:768px){
+  .view a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}
+  .view .voice-button,.view .inquiry-direct{min-height:44px}
+  .view button.button.small{min-height:44px}
+  .view label:has(input[type="checkbox"]){min-height:44px;align-items:center}
+}
 @media(max-width:520px){.headcta{display:none}}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -1381,3 +1387,98 @@ body.rail-open #main{margin-left:178px}
 #main{height:calc(100dvh - 76px);margin-left:0;overflow:hidden;position:relative}
 .icon-rail{position:fixed;left:0;top:76px;bottom:0;width:178px;background:#070e22;border-right:2px solid var(--outline);z-index:40;display:flex;flex-direction:column;padding:13px 9px;gap:3px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#00adb5 #070e22;box-shadow:none}
 @media(max-width:700px){#main{height:calc(100dvh - 66px);margin-left:0}.icon-rail{top:66px;bottom:0;right:auto;width:min(270px,calc(100vw - 24px));height:auto;flex-direction:column;justify-content:flex-start;overflow-y:auto;overflow-x:hidden;padding:13px 9px;gap:3px}}
+
+/* The decision question is the first interaction, with no network request. */
+.hero-decision-form{margin:0 0 26px;max-width:690px}
+.hero-decision-form>label{display:block;color:#070e22;font:800 clamp(17px,1.5vw,21px)/1.25 "Bricolage Grotesque",sans-serif;margin:0 0 10px}
+.hero-decision-input-row{display:flex;gap:8px}
+.hero-decision-input-row input{flex:1;min-width:0;min-height:54px;padding:12px 14px;border:2px solid #070e22;border-radius:5px;background:#fff;color:#070e22;font:600 15px/1.3 "Hanken Grotesk",sans-serif}
+.hero-decision-input-row input::placeholder{color:#4f606a}
+.hero-decision-input-row button,.hero-result-actions button{min-height:54px;padding:10px 16px;border:2px solid #070e22;border-radius:5px;background:#ffff00;color:#070e22;box-shadow:4px 4px 0 #00adb5;font:800 14px/1.2 "Bricolage Grotesque",sans-serif}
+.hero-decision-input-row button:hover,.hero-result-actions button:hover{background:#ecf900}
+.hero-example-chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.hero-example-chips button,.hero-sample-link{min-height:44px;padding:8px 12px;border:2px solid #00adb5;border-radius:4px;background:#eefbf8;color:#064e58;font:800 12px/1.2 "Hanken Grotesk",sans-serif}
+.hero-example-chips button:hover,.hero-sample-link:hover{background:#ffff00;border-color:#070e22;color:#070e22}
+.hero-sample-link{display:inline-flex;align-items:center;margin-top:9px;text-decoration:underline;text-underline-offset:3px}
+.hero-decision-help{font:600 12px/1.45 "Hanken Grotesk",sans-serif;color:#37585f;margin:9px 0 0}
+.hero-decision-result{align-self:start;border:2px solid #00adb5;border-radius:8px;background:#070e22;color:#f7f9ff;box-shadow:8px 8px 0 #00adb5;padding:clamp(18px,2.2vw,29px);min-width:0;margin-bottom:26px}
+.hero-decision-result[hidden],.welcome-board[hidden],.board-scene [hidden],.hero-example-path[hidden]{display:none!important}
+.hero-result-head{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#00d2d7;font:850 10px/1.35 "Hanken Grotesk",sans-serif;letter-spacing:.09em}
+.hero-result-head button{min-height:44px;border:0;background:transparent;color:#ffff00;text-decoration:underline;font:800 11px/1.25 "Hanken Grotesk",sans-serif}
+.hero-decision-result h2{font:800 clamp(21px,2vw,31px)/1.08 "Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:-.035em;margin:16px 0 21px;color:#f7f9ff}
+.hero-result-local{color:#cbd8e6;font:600 11px/1.4 "Hanken Grotesk",sans-serif;margin:-9px 0 16px}
+.hero-four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.hero-four-card{min-width:0;padding:13px;border:1px solid #657397;background:#111b35}
+.hero-four-card h3{color:#00d2d7;font:850 10px/1.25 "Hanken Grotesk",sans-serif;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px}
+.hero-four-card p{color:#e2ebf4;font:500 12px/1.42 "Hanken Grotesk",sans-serif;margin:0;overflow-wrap:anywhere}
+.hero-questions{border-top:1px solid #657397;margin-top:20px;padding-top:14px}
+.hero-questions h3,.hero-euro-check h3{font:800 18px/1.2 "Bricolage Grotesque",sans-serif;text-transform:uppercase;color:#ffff00;margin:0 0 10px}
+.hero-questions ol{margin:0;padding-left:20px;color:#e2ebf4;font:600 12px/1.45 "Hanken Grotesk",sans-serif;display:grid;gap:7px}
+.hero-euro-check{border-top:1px solid #657397;margin-top:19px;padding-top:16px}
+.hero-euro-check>p{font:500 12px/1.45 "Hanken Grotesk",sans-serif;color:#cbd8e6;margin:0 0 12px}
+.hero-ranges{display:grid;gap:10px}
+.hero-ranges label{display:grid;grid-template-columns:1fr auto;gap:3px 10px;color:#f7f9ff;font:750 12px/1.4 "Hanken Grotesk",sans-serif}
+.hero-ranges output{color:#ffff00;font-weight:850}
+.hero-ranges input{grid-column:1/-1;width:100%;height:44px;accent-color:#00adb5;cursor:pointer}
+.hero-formula{border-left:3px solid #ffff00;padding-left:10px;margin:14px 0;color:#f7f9ff;font:700 12px/1.45 "Hanken Grotesk",sans-serif;overflow-wrap:anywhere}
+.hero-euro-scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.hero-euro-card{border:1px solid #657397;padding:9px;min-width:0}
+.hero-euro-card span,.hero-euro-card strong,.hero-euro-card small{display:block}
+.hero-euro-card span{color:#00d2d7;font:850 10px/1.3 "Hanken Grotesk",sans-serif;text-transform:uppercase}
+.hero-euro-card strong{color:#ffff00;font:800 19px/1.15 "Bricolage Grotesque",sans-serif;margin:5px 0}
+.hero-euro-card small,.hero-euro-card p{color:#dce8f2;font:500 10px/1.35 "Hanken Grotesk",sans-serif;overflow-wrap:anywhere;margin:0}
+.hero-euro-card p{margin-top:5px}
+.hero-result-actions{margin-top:16px}
+.hero-result-actions button{width:100%;text-align:center}
+.hero-example-path{color:#ffff00;font:750 12px/1.4 "Hanken Grotesk",sans-serif}
+.case-scenario .case-scenario-reason{margin-top:9px;color:#f7f9ff}
+.case-euro-note{display:inline-block;background:#ffff00;color:#070e22;padding:6px 9px;font:850 11px/1.3 "Hanken Grotesk",sans-serif}
+
+/* Board challenge and founders. */
+.board-scene{padding:clamp(70px,7vw,110px) 0;background:#0b1730;color:#f7f9ff;border-top:2px solid #f06cb4;border-bottom:2px solid #f06cb4}
+.board-scene-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,78px);align-items:start}
+.board-scene h2{font:850 clamp(42px,5vw,75px)/.98 "Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:-.055em;margin:18px 0 22px}
+.board-scene-layout>div:first-child>p{color:#dce5f4;font-size:17px;max-width:38ch}
+.board-scene .board-local-note{font-size:12px!important;color:#b9cce5!important}
+.board-scene-panel{border:2px solid #f06cb4;background:#070e22;box-shadow:8px 8px 0 #f06cb4;padding:clamp(19px,3vw,34px)}
+.board-round-label{color:#f06cb4;font:850 11px/1.3 "Hanken Grotesk",sans-serif;letter-spacing:.12em}
+.board-round h3{color:#f7f9ff;font:800 clamp(23px,2.5vw,34px)/1.15 "Bricolage Grotesque",sans-serif;margin:16px 0 22px}
+.board-choice{display:block;width:100%;min-height:54px;padding:12px 15px;margin:9px 0;text-align:left;border:2px solid #657397;background:#152541;color:#f7f9ff;font:800 14px/1.25 "Hanken Grotesk",sans-serif}
+.board-choice:hover{border-color:#f06cb4;color:#f06cb4}
+.board-choice:disabled{opacity:.65;cursor:default}
+.board-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:22px 0}
+.board-metric{border-top:2px solid #f06cb4;padding-top:8px;min-width:0}
+.board-metric span,.board-metric strong{display:block}
+.board-metric span{color:#d5e2ef;font:750 11px/1.2 "Hanken Grotesk",sans-serif}
+.board-metric strong{color:#f06cb4;font:850 27px/1.15 "Bricolage Grotesque",sans-serif;margin-top:5px}
+#board-response,#board-conclusion{color:#f7f9ff;font:650 15px/1.45 "Hanken Grotesk",sans-serif;border-left:3px solid #f06cb4;padding-left:12px}
+#board-next,#board-restart{min-height:48px;padding:9px 15px;background:#f06cb4;border:2px solid #f06cb4;color:#070e22;font:850 13px/1.2 "Bricolage Grotesque",sans-serif;margin-top:16px}
+.founder-stance{background:#111b35;color:#f7f9ff;padding:clamp(65px,6vw,95px) 0;border-bottom:2px solid #00adb5}
+.founder-stance-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,80px)}
+.founder-stance h2{font:850 clamp(39px,4vw,62px)/1 "Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:-.05em;margin:14px 0}
+.founder-stance-grid>div:last-child>p{font:600 18px/1.55 "Hanken Grotesk",sans-serif;color:#e4ebf5;margin:0 0 20px}
+#founder-video-slot{border-left:4px solid #00adb5;padding:8px 17px;color:#cdd9e9;font-size:14px}
+#founder-video-slot p{margin:0}
+.founder-video-link{color:#00d2d7;font-weight:800}
+.hero-decision-form :focus-visible,.hero-decision-result :focus-visible,.board-scene :focus-visible,.founder-stance :focus-visible{outline:3px solid #f06cb4;outline-offset:3px}
+@media(max-width:1050px){.board-scene-layout,.founder-stance-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.hero-decision-input-row{flex-direction:column}.hero-decision-input-row button{width:100%}.hero-four{grid-template-columns:1fr}.hero-euro-scenarios{grid-template-columns:1fr}.hero-result-head{align-items:flex-start}.board-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.board-scene-layout{gap:30px}.board-scene-panel{box-shadow:5px 5px 0 #f06cb4}}
+@media(max-width:390px){.hero-decision-result{padding:16px}.hero-decision-result h2{font-size:21px}.hero-result-head{flex-wrap:wrap}.hero-result-actions button{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.hero-decision-result *,.board-scene *{animation:none!important;transition:none!important}}
+.decision-print-sheet{display:none}
+@media print{body.printing-decision{overflow:visible!important;background:#fff!important;color:#111!important}body.printing-decision>:not(.decision-print-sheet){display:none!important}body.printing-decision .decision-print-sheet{display:grid!important;grid-template-columns:minmax(0,1fr);gap:2mm;width:100%;padding:0;color:#111;background:#fff;font:10pt/1.25 Arial,sans-serif}.decision-print-sheet *{color:#111!important;background:#fff!important}.decision-print-sheet>.print-kicker,.decision-print-sheet>h1,.decision-print-sheet>p{grid-column:1/-1}.decision-print-sheet h1{font:700 19pt/1.08 Arial,sans-serif;margin:2mm 0 3mm}.decision-print-sheet>.print-kicker{font:700 8pt/1.1 Arial,sans-serif;text-transform:uppercase;margin:0}.decision-print-sheet>p{margin:0 0 2mm}.decision-print-block{min-width:0;border-top:1px solid #111;padding:2mm 0;break-inside:avoid}.decision-print-block h2{font:700 10pt/1.15 Arial,sans-serif;text-transform:uppercase;margin:0 0 2mm}.decision-print-block p{margin:0 0 1mm;overflow-wrap:anywhere}@page{size:A4;margin:10mm}}
+
+/* Small-view corrections found in the 360/390 px browser audit. */
+@media(max-width:700px){
+  .thesis{display:block;min-width:0}
+  .thesis-main,.thesis-side{width:100%;min-width:0;padding-left:0;padding-right:0}
+  .route-heading,.route-stage,.route-stage>*{min-width:0}
+  .route-heading h1,.route-stage h2{overflow-wrap:anywhere}
+  .section-heading{grid-template-columns:minmax(0,1fr);gap:18px}
+  .section-heading>*{min-width:0}
+  .section-heading h2{font-size:clamp(30px,8.5vw,42px);overflow-wrap:anywhere}
+  .workbench-nav{flex-wrap:wrap;overflow:visible}
+  .workbench-nav button{flex:1 1 calc(50% - 8px);min-width:0;min-height:44px;overflow-wrap:anywhere}
+  .offer-grid,.inquiry-grid,.inquiry-grid>*{min-width:0}
+  .offer h2,.inquiry-grid h2{font-size:clamp(30px,8.5vw,43px);overflow-wrap:anywhere}
+}

@@ -1,8 +1,9 @@
 (function(root,factory){
-  const lessons=factory();
+  const library=typeof module==="object"&&module.exports?require("./decision-studio-library.js"):root.DecisionStudioLibrary;
+  const lessons=factory(library.sources);
   if(typeof module==="object"&&module.exports)module.exports=lessons;
   root.DecisionStudioLessons=lessons;
-})(typeof globalThis!=="undefined"?globalThis:this,function(){
+})(typeof globalThis!=="undefined"?globalThis:this,function(sources){
   const lessons=[
     {
       id: "judgement",
@@ -19,8 +20,7 @@
       consolidate: ["Woran erkennst du eine Annahme?", "Welcher Befund würde deinen Plan ändern?", "Wer trägt eine Folge, die im Business Case fehlt?"],
       recallAnswers: ["Eine Annahme braucht einen eigenen Test und ist noch kein beobachteter Fakt.", "Lege vorab einen Messpunkt und eine Schwelle fest, bei der du den Plan revidierst.", "Prüfe Beschäftigte, Kundschaft, Lieferanten und Teams außerhalb des unmittelbaren Budgets."],
       transfer: "Schreibe für eine anstehende Entscheidung je einen Satz zu Fakt, Annahme und Widerlegung.",
-      sourceLabel: "OECD Foresight Toolkit",
-      sourceUrl: "https://www.oecd.org/en/publications/foresight-toolkit-for-resilient-public-policy_bcdd9304-en.html"
+      sourceKey: "oecdForesight"
     },
     {
       id: "health",
@@ -37,8 +37,7 @@
       consolidate: ["Welche Belastung erzeugt das System?", "Wie kann eine Führungskraft Widerspruch sicher aufnehmen?", "Welche Maßnahme prüfst du nach 30 Tagen?"],
       recallAnswers: ["Prüfe Arbeitsmenge, Planbarkeit, Kontrolle, Unterstützung und Fairness.", "Dank für den Hinweis, sachliche Klärung und verlässliche Rückmeldung.", "Eine konkrete Änderung an Priorität oder Prozess plus Belastungs- und Qualitätsmaß."],
       transfer: "Wähle eine wiederkehrende Überlastungsquelle und formuliere eine organisatorische Änderung mit Verantwortlichen.",
-      sourceLabel: "WHO Guidelines on Mental Health at Work",
-      sourceUrl: "https://www.who.int/publications/i/item/9789240053052"
+      sourceKey: "who"
     },
     {
       id: "leadership",
@@ -55,8 +54,7 @@
       consolidate: ["Wer darf welche Entscheidung treffen?", "Was ist der Eskalationsweg?", "Wie erfährt das Team, was aus einem Einwand wurde?"],
       recallAnswers: ["Entscheidungsrechte müssen zur Aufgabe und zum Risiko passen.", "Ein benannter Kanal mit Reaktionszeit und verantwortlicher Person.", "Durch sichtbare Rückmeldung zu Fakten, Maßnahme und offenem Punkt."],
       transfer: "Formuliere für dein Team eine 60-Sekunden-Antwort auf eine kritische Fehlermeldung.",
-      sourceLabel: "Amy Edmondson: Psychological Safety and Learning Behavior",
-      sourceUrl: "https://www.hbs.edu/ris/Publication%20Files/02-062_0b5726a8-443d-4629-9e75-736679b870fc.pdf"
+      sourceKey: "edmondson"
     },
     {
       id: "learning",
@@ -73,8 +71,7 @@
       consolidate: ["Welches Können ist beobachtbar?", "Wie wird es geübt?", "Woran lässt sich Anwendung nachweisen?"],
       recallAnswers: ["Beschreibe eine Handlung in einem bestimmten Arbeitskontext.", "Mit einer Aufgabe, Feedback und erneuter Anwendung.", "Durch eine datierte Arbeitsprobe mit Qualitätskriterien."],
       transfer: "Beschreibe einen Skill als Handlung, Kontext und prüfbaren Beleg.",
-      sourceLabel: "OECD: A Skills-First Labour Market",
-      sourceUrl: "https://www.oecd.org/en/publications/a-skills-first-labour-market_2e1b85f0-en.html"
+      sourceKey: "oecdSkills"
     },
     {
       id: "systems",
@@ -91,8 +88,7 @@
       consolidate: ["Welche Aufgaben brauchen welchen Ort?", "Was gilt als Leistung?", "Welche Gruppe könnte übersehen werden?"],
       recallAnswers: ["Prüfe Konzentration, Zusammenarbeit, Material, Kundenkontakt und Vertraulichkeit.", "Vereinbarte Qualität und Wirkung, nicht reine Sichtbarkeit.", "Etwa ortsgebundene Beschäftigte oder Personen mit Barrierefreiheitsbedarf."],
       transfer: "Nimm eine Rolle und notiere drei Aufgaben, ein Qualitätsmaß und die dafür nötige Arbeitsumgebung.",
-      sourceLabel: "Eurofound: Hybrid Working",
-      sourceUrl: "https://www.eurofound.europa.eu/en/publications/all/the-shift-to-hybrid-working-management-challenges"
+      sourceKey: "bloom"
     },
     {
       id: "futures",
@@ -109,9 +105,12 @@
       consolidate: ["Welche externe Abhängigkeit ist kritisch?", "Welche Fähigkeit mindert die Folgen?", "Welcher Schritt hilft in mehr als einem Szenario?"],
       recallAnswers: ["Die Abhängigkeit mit großem Einfluss und wenigen Ersatzwegen.", "Etwa Umplanung, alternative Beschaffung oder technisches Umstellen.", "Ein Schritt, der auch bei anderer Nachfrage oder längerer Lieferzeit nützt."],
       transfer: "Skizziere zwei plausible Störungen und eine Maßnahme, die in beiden nützlich ist.",
-      sourceLabel: "IEA Global Critical Minerals Outlook 2025",
-      sourceUrl: "https://www.iea.org/reports/global-critical-minerals-outlook-2025/executive-summary"
+      sourceKey: "iea"
     }
   ];
+  lessons.forEach(lesson=>{
+    lesson.sourceLabel=sources[lesson.sourceKey].label;
+    lesson.sourceUrl=sources[lesson.sourceKey].url;
+  });
   return {lessons, getLesson(id){return lessons.find(lesson=>lesson.id===id)||null;}};
 });

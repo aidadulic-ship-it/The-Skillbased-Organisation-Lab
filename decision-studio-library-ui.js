@@ -138,10 +138,11 @@
       item.euro.scenarios.forEach(s=>{
         const net=s.units*s.unitValue-s.cost-s.riskCost;
         const row=el("div","case-scenario");
-        row.append(el("span","",s.name),el("strong","",euro(net)),el("p","",`${s.units} ${item.euro.unitLabel} × ${euro(s.unitValue)} − ${euro(s.cost)} − ${euro(s.riskCost)} = ${euro(net)}`));
+        row.append(el("span","",s.name),el("strong","",euro(net)),el("p","",`${s.units} ${item.euro.unitLabel} × ${euro(s.unitValue)} − ${euro(s.cost)} − ${euro(s.riskCost)} = ${euro(net)}`),el("p","case-scenario-reason",s.rationale));
         scenarios.append(row);
       });
-      body.append(el("h4","case-block-title","Euro-Szenarien · "+item.euro.period),el("p","library-small","Formel: "+item.euro.formula),scenarios,el("p","library-small",item.euro.limit));
+      body.append(el("h4","case-block-title","Euro-Szenarien · "+item.euro.period),el("p","case-euro-note","Euro-Check, kein ROI · alle Werte Demo/fiktiv"),el("p","library-small","Formel: "+item.euro.formula),scenarios,el("p","library-small",item.euro.limit));
+      addLabel(body,"Gegenfaktum · was ohne Maßnahme passiert",item.euro.counterfactual);
       addLabel(body,"Stärkstes Gegenargument",item.counterargument);
       const groups=el("p","case-groups",item.groups.join(" · "));
       body.append(el("h4","case-block-title","Betroffene Gruppen"),groups);

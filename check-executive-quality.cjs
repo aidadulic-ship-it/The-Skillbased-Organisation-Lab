@@ -2,6 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const lib=require('./decision-studio-library.js');
 const model=require('./decision-studio-model.js');
+const lessons=require('./decision-studio-lessons.js');
 const html=fs.readFileSync('index.html','utf8');
 const read=name=>fs.readFileSync(name,'utf8');
 const filled=value=>typeof value==='string'&&value.trim().length>0;
@@ -18,13 +19,24 @@ for(const item of lib.cases){
   assert.ok(filled(item.euro.formula));
   for(const s of item.euro.scenarios){
     for(const key of ['units','unitValue','cost','riskCost'])assert.ok(Number.isFinite(s[key]),item.id+' invalid '+key);
+    assert.ok(filled(s.rationale),item.id+' missing scenario reasoning');
   }
+  for(const key of ['units','unitValue','cost','riskCost'])assert.equal(new Set(item.euro.scenarios.map(s=>s[key])).size,3,item.id+' '+key+' must vary');
+  assert.ok(filled(item.euro.counterfactual),item.id+' needs a counterfactual');
   assert.ok(item.groups.length>=3,item.id+' needs affected groups');
   for(const day of ['day30','day90'])for(const key of ['go','stop'])assert.ok(filled(item.gates[day][key]));
   assert.ok(lib.sources[item.source]?.url.startsWith('https://'));
 }
 assert.equal(model.cases.length,4,'Decision Mirror must offer four cases');
 assert.ok(model.getCase('pay'));
+for(const lesson of lessons.lessons){
+  assert.ok(lib.sources[lesson.sourceKey],lesson.id+' source not in library');
+  assert.equal(lesson.sourceUrl,lib.sources[lesson.sourceKey].url,lesson.id+' source URL differs');
+}
+for(const item of model.cases){
+  assert.ok(lib.sources[item.sourceKey],item.id+' source not in library');
+  assert.equal(item.sourceUrl,lib.sources[item.sourceKey].url,item.id+' source URL differs');
+}
 assert.equal(lib.courses.length,12,'twelve curated courses');
 assert.equal(new Set(lib.courses.map(x=>x.challenge)).size,12,'every course needs a unique active task');
 for(const domain of lib.domains)assert.equal(lib.courses.filter(x=>x.domain===domain.id).length,2,domain.id+' needs two courses');
@@ -77,4 +89,24 @@ assert.ok(!/href="(?:#|)"/.test(html),'empty internal link');
 for(const group of [lib.courses,lib.cases,lib.perspectives,lib.skills,lib.templates,lib.councils]){
   for(const card of group)assert.ok(filled(card.title),'empty card title');
 }
+const executive=require('./decision-studio-executive.js');
+const short=executive.analyzeQuestion('KI?');
+assert.equal(short.ok,false,'short question needs clarification');
+assert.ok(filled(short.clarification));
+const analysis=executive.analyzeQuestion('Sollen wir KI-Entwürfe im Kundenservice einführen?');
+assert.equal(analysis.ok,true);
+for(const key of ['fact','assumption','value','counterargument'])assert.ok(filled(analysis[key]),'hero missing '+key);
+assert.equal(analysis.questions.length,3);
+const openQuestion=executive.analyzeQuestion('Sollen wir die Schichtplanung im Werk ändern?');
+assert.equal(openQuestion.caseId,null,'an unrelated question must not inherit the AI case');
+assert.ok(!/KI|Kundenservice/i.test(openQuestion.counterargument),'generic counterargument must be neutral');
+const euroCheck=executive.calculateEuro({baseline:20000,effect:20,cost:3000});
+assert.equal(euroCheck.scenarios[1].net,1000,'middle Euro formula must be baseline × effect − cost');
+assert.ok(euroCheck.scenarios[0].net<euroCheck.scenarios[1].net&&euroCheck.scenarios[1].net<euroCheck.scenarios[2].net);
+const board=executive.advanceBoard(executive.initialBoard(),0);
+assert.equal(board.round,1);
+assert.ok(board.metrics.cost!==50&&board.metrics.quality!==50&&board.metrics.trust!==50&&board.metrics.risk!==50,'all four board dimensions change');
+for(const id of ['hero-decision-form','hero-decision-result','hero-euro-check','decision-print','board-scene','example-case','founder-stance'])assert.ok(idSet.has(id),'missing interactive area '+id);
+assert.match(css,/@media print\{body\.printing-decision/,'A4 decision print stylesheet missing');
+assert.match(css,/@media\s*\(prefers-reduced-motion:\s*reduce\)/,'reduced motion support missing');
 console.log('Executive content, links, names, CSS and contact contract passed.');

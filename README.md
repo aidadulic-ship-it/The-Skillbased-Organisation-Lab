@@ -5,7 +5,7 @@ Dieses Verzeichnis enthält die **öffentliche, statische Demo**. `index.html` i
 ## Auf GitHub Pages veröffentlichen
 
 1. Ein neues Repository anlegen oder ein bestehendes Repository auswählen.
-2. **Den Inhalt dieses Verzeichnisses** in das Stammverzeichnis des Repositorys hochladen. `index.html`, `decision-studio.css`, die sechs JavaScript-Dateien, `.nojekyll` und der Ordner `fonts` müssen auf derselben Ebene bleiben. Die ZIP-Datei selbst nicht als einzige Datei hochladen.
+2. **Den Inhalt dieses Verzeichnisses** in das Stammverzeichnis des Repositorys hochladen. `index.html`, `decision-studio.css`, die sieben JavaScript-Dateien, `.nojekyll` und der Ordner `fonts` müssen auf derselben Ebene bleiben. Die ZIP-Datei selbst nicht als einzige Datei hochladen.
 3. Im Repository **Settings → Pages → Build and deployment → Source: Deploy from a branch** wählen. Den Branch (beispielsweise `main`) und den Ordner **`/(root)`** auswählen und speichern.
 4. Die von GitHub angezeigte Pages-Adresse öffnen. Bei einem Projekt-Repository ist sie gewöhnlich `https://BENUTZERNAME.github.io/REPOSITORY/`.
 
@@ -18,8 +18,17 @@ Die Schritte entsprechen der [GitHub-Pages-Anleitung](https://docs.github.com/en
 - Zwanzig digitale Arbeitsblätter mit Checklisten, Text-/JSON-Export, JSON-Import und Druck über den Browser.
 - Optionale Spracheingabe, wenn der Browser sie anbietet. Vor dem ersten Diktat erscheint eine Erklärung zur möglichen externen Audioverarbeitung.
 - Vier vertiefte, fiktive Entscheidungsfälle mit Optionen, Annahmen, drei Euro-Szenarien und Stop-/Go-Regeln.
+- Eine freie Einstiegsfrage mit regelbasiertem Fakten-, Annahmen- und Wertecheck. Drei Beispielchips und ein durchgespielter Fall zeigen den Weg. Die Eingabe wird nur im Browserfenster verarbeitet; es gibt keinen KI-Aufruf.
+- Einen veränderbaren Euro-Check mit drei Szenarien und sichtbarer Formel. Er ist ausdrücklich kein ROI-Nachweis.
+- Eine druckbare A4-Entscheidungsvorlage und ein fiktives Drei-Runden-Planspiel „Der Vorstand widerspricht“.
 - Zwölf kuratierte Kurse und zwölf Skill-Prompts mit konkreten Aufgaben und Qualitätsgrenzen.
-- Workshop-Anfragen öffnen nach Konfiguration das E-Mail-Programm. Dazu in `decision-studio-redesign.js` die Konstante `CONTACT_EMAIL` mit einer echten Adresse befüllen. Solange sie leer konfiguriert ist, zeigt die Seite einen Hinweis.
+- Workshop-Anfragen öffnen nach Konfiguration das E-Mail-Programm. Solange keine echte Adresse hinterlegt ist, zeigt die Seite einen Hinweis.
+
+## E-Mail eintragen
+
+In `decision-studio-redesign.js` die eine Konstante `CONTACT_EMAIL` mit der Workshop-Adresse befüllen. Danach die Workshop-Anfrage lokal testen. Die Seite verschickt selbst keine E-Mail und speichert die Eingaben nicht auf einem Server.
+
+Im Block „Warum es das Lab gibt“ bleiben `[TEXT AIDA]` und `[VIDEO-LINK]` bis zur Lieferung der Originalinhalte als erklärte Platzhalter stehen. Sie werden in `decision-studio-executive.js` ersetzt. Ohne Videolink erscheint kein leerer Link.
 
 ## Grenzen
 

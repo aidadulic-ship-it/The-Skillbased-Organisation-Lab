@@ -1,5 +1,12 @@
 # Änderungen · 18. November 2026
 
+- Die vier Euro-Fälle variieren jetzt Menge, Einheitswert, Pilotkosten und Risiko-/Nacharbeitskosten je Szenario. Begründungen und ein Gegenfaktum sind sichtbar. Alle Beträge sind Demo/fiktiv; die Kennzeichnung lautet „Euro-Check, kein ROI“.
+- Kurse, Decision Mirror und Fälle beziehen ihre Quellen aus derselben Bibliothek. Die offenen Nachlesestellen für Nature und den Stanford AI Index sind in `QUELLEN_PRUEFEN.md` bezeichnet.
+- Die Einstiegsfrage zerlegt eine Entscheidung in Fakt/Datenlücke, Annahme, Wert und Gegenargument. Sie stellt drei Prüffragen, auch bei Themen außerhalb der vier Fälle. Ein kurzer Text erhält eine konkrete Rückfrage.
+- Der Euro-Regler berechnet drei fiktive Varianten live. Die druckbare A4-Vorlage enthält Optionen, Annahmen, Formel, Gegenfaktum, Gruppen, Stop-/Go-Regeln und Quelle beziehungsweise eine sichtbare Quellenlücke.
+- „Der Vorstand widerspricht“ bietet drei Entscheidungsrunden mit sichtbaren Folgen für Kosten, Qualität, Vertrauen und Risiko. Der geführte Beispiel-Fall öffnet denselben Ablauf.
+- Der Gründerinnenblock beschreibt die späteren Originalinhalte, solange Text und Video fehlen. Es gibt dort keinen leeren Link.
+- Die Ansichten wurden bei 360, 390 und 768 px auf Überläufe und Tippflächen geprüft. Reduzierte Bewegung und A4-Druck wurden im Browser geprüft.
 - Vier fiktive Flaggschiff-Fälle zu KI-Einführung, Skills statt Stellen, hybrider Führung und New Pay. Jeder Fall enthält zwei Optionen, ein Annahmenregister, drei nachvollziehbare Euro-Szenarien, ein Gegenargument, betroffene Gruppen und Stop-/Go-Regeln für Tag 30 und 90.
 - Der Kurskatalog enthält zwölf ausgewählte 3C-Kurse. Jeder hat eine eigene praktische Aufgabe. Die zwölf Skill-Prompts enthalten je eine Qualitätsgrenze, Antwortstruktur und Stop-Regel.
 - Anbieter-Visionäre sind aus den Expertenperspektiven, Councils und Lernwegen entfernt. Die vier Lernwege führen zu den vier Flaggschiff-Fällen.
@@ -13,3 +20,4 @@
 1. Die echte Workshop-Kontaktadresse in `CONTACT_EMAIL` eintragen.
 2. Die zwei eingeschränkt abrufbaren Quellen in `QUELLEN_PRUEFEN.md` manuell gegenlesen.
 3. Die fachliche Freigabe der vier fiktiven Business Cases, rechtlichen Aussagen und Quelleninterpretationen organisieren.
+4. Originaltext von Aida und Videolink für den Gründerinnenblock liefern.
