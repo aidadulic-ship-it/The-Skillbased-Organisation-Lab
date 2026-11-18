@@ -1,4 +1,5 @@
 (function(){
+  const CONTACT_EMAIL="[KONTAKT-E-MAIL]";
   const lib=window.DecisionStudioLibrary;
   const model=window.DecisionStudioModel;
   if(!lib||!model)return;
@@ -111,6 +112,18 @@
 
   const inquiry=byId("pilot-inquiry-form");
   const inquiryStatus=byId("inquiry-status");
+  const contactReady=()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(CONTACT_EMAIL);
+  const openWorkshopMail=(subject,body)=>{
+    if(!contactReady()){
+      inquiryStatus.textContent="Die Kontaktadresse ist noch nicht eingetragen. Bitte ergänze sie vor der Veröffentlichung in der Kontakt-Konstante.";
+      return;
+    }
+    inquiryStatus.textContent="Der E-Mail-Entwurf für die Workshop-Anfrage wird geöffnet.";
+    window.location.href="mailto:"+CONTACT_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  };
+  byId("direct-workshop-contact").addEventListener("click",()=>{
+    openWorkshopMail("Workshop-Anfrage · Skill-Based Lab","Guten Tag,\n\nich möchte einen Workshop anfragen.\n\nViele Grüße");
+  });
   inquiry.addEventListener("submit",event=>{
     event.preventDefault();
     if(!inquiry.reportValidity())return;
@@ -118,10 +131,10 @@
     const company=byId("inquiry-company").value.trim();
     const email=byId("inquiry-email").value.trim();
     const question=byId("inquiry-question").value.trim();
-    const subject="Anfrage Skill-Based Lab Pilot-Workshop · "+company;
+    const subject="Workshop-Anfrage · Skill-Based Lab · "+company;
     const body=[
-      "Hallo Aida,","",
-      "ich möchte einen Pilot-Workshop für unser Unternehmen anfragen.",
+      "Guten Tag,","",
+      "ich möchte einen Workshop für unser Unternehmen anfragen.",
       "Name: "+name,
       "Unternehmen: "+company,
       "Antwortadresse: "+email,"",
@@ -131,8 +144,6 @@
       "Viele Grüße",
       name
     ].join("\n");
-    const url="mailto:aida.dulic@hotmail.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
-    inquiryStatus.textContent="Der E-Mail-Entwurf wird geöffnet. Falls kein E-Mail-Programm startet, nutze den direkten Link links und kopiere deine Angaben aus dem Formular.";
-    window.location.href=url;
+    openWorkshopMail(subject,body);
   });
 })();

@@ -58,7 +58,7 @@
       domains.append(button);
     });
     const domain=lib.domains.find(item=>item.id===activeDomain);
-    intro.textContent=domain.line+" · 6 Recherche-Lektionen · 3 Entscheidungsfälle";
+    intro.textContent=domain.line+" · 2 vertiefte 3C-Lektionen";
     courseList.replaceChildren();
     lib.courses.filter(course=>course.domain===activeDomain).forEach(course=>{
       const card=el("details","atlas-card");
@@ -92,24 +92,66 @@
   const caseList=byId("case-list");
   const caseFilters=byId("case-filters");
   const caseNotes=new Map();
-  let activeCaseDomain=lib.domains[0].id;
+  let activeCase="all";
+  const caseChoices=[{id:"all",label:"Alle vier"},{id:"ai-approval",label:"KI-Einführung"},{id:"hidden-skill",label:"Skills statt Stellen"},{id:"remote-career",label:"Hybrid fair führen"},{id:"pay-gap",label:"New Pay"}];
+  const euro=value=>new Intl.NumberFormat("de-AT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(value);
   function renderCases(){
     caseFilters.replaceChildren();
-    lib.domains.forEach(domain=>{
-      const button=el("button","library-filter",domain.name);
+    caseChoices.forEach(choice=>{
+      const button=el("button","library-filter",choice.label);
       button.type="button";
-      button.setAttribute("aria-pressed",String(domain.id===activeCaseDomain));
-      button.addEventListener("click",()=>{activeCaseDomain=domain.id;renderCases();});
+      button.setAttribute("aria-pressed",String(choice.id===activeCase));
+      button.addEventListener("click",()=>{activeCase=choice.id;renderCases();});
       caseFilters.append(button);
     });
     caseList.replaceChildren();
-    lib.cases.filter(item=>item.domain===activeCaseDomain).forEach((item,index)=>{
+    lib.cases.filter(item=>activeCase==="all"||item.id===activeCase).forEach(item=>{
       const card=el("details","atlas-card case-card");
       const summary=el("summary","");
-      summary.append(el("span","atlas-number",String(index+1).padStart(2,"0")),el("strong","",item.title),el("span","atlas-open","Fall öffnen ↗"));
+      summary.append(el("span","atlas-number",String(lib.cases.indexOf(item)+1).padStart(2,"0")),el("strong","",item.title),el("span","atlas-open","Fall öffnen ↗"));
       const body=el("div","atlas-body");
-      addLabel(body,"Fiktive Lage",item.situation);
-      addLabel(body,"Entscheidung",item.decision);
+      body.append(el("p","case-demo-label","DEMO/FIKTIV · 90 TAGE · KEINE PROGNOSE"));
+      addLabel(body,"Ausgangslage",item.situation);
+      const options=el("div","case-option-grid");
+      item.options.forEach(option=>{
+        const box=el("button","case-option");
+        box.type="button";
+        box.setAttribute("aria-pressed","false");
+        box.append(el("strong","",option.title),el("span","",option.effect),el("span","case-risk","Risiko: "+option.risk));
+        box.addEventListener("click",()=>{
+          options.querySelectorAll("button").forEach(button=>button.setAttribute("aria-pressed",String(button===box)));
+          answer.value="Ich wähle "+option.title+". Begründung: "+option.effect+" Wichtigstes Risiko: "+option.risk;
+          caseNotes.set(item.id,answer.value);
+          answer.focus();
+        });
+        options.append(box);
+      });
+      body.append(el("h4","case-block-title","Zwei Optionen"),options);
+      const register=el("div","case-register");
+      item.assumptionRegister.forEach(row=>{
+        const entry=el("div","case-register-row");
+        entry.append(el("strong","",row.type),el("p","",row.text));
+        register.append(entry);
+      });
+      body.append(el("h4","case-block-title","Annahmenregister · alle Angaben Demo/fiktiv"),register);
+      const scenarios=el("div","case-scenarios");
+      item.euro.scenarios.forEach(s=>{
+        const net=s.units*s.unitValue-s.cost-s.riskCost;
+        const row=el("div","case-scenario");
+        row.append(el("span","",s.name),el("strong","",euro(net)),el("p","",`${s.units} ${item.euro.unitLabel} × ${euro(s.unitValue)} − ${euro(s.cost)} − ${euro(s.riskCost)} = ${euro(net)}`));
+        scenarios.append(row);
+      });
+      body.append(el("h4","case-block-title","Euro-Szenarien · "+item.euro.period),el("p","library-small","Formel: "+item.euro.formula),scenarios,el("p","library-small",item.euro.limit));
+      addLabel(body,"Stärkstes Gegenargument",item.counterargument);
+      const groups=el("p","case-groups",item.groups.join(" · "));
+      body.append(el("h4","case-block-title","Betroffene Gruppen"),groups);
+      const gates=el("div","case-gates");
+      [["Tag 30",item.gates.day30],["Tag 90",item.gates.day90]].forEach(([day,gate])=>{
+        const row=el("div","case-gate");
+        row.append(el("h5","",day),el("p","","GO: "+gate.go),el("p","","STOP: "+gate.stop));
+        gates.append(row);
+      });
+      body.append(el("h4","case-block-title","Stop / Go"),gates);
       const label=el("label","library-kicker","Dein Beschluss vor der Gegenfrage");
       const answer=el("textarea","library-thought");
       answer.rows=3;
@@ -119,7 +161,7 @@
       label.append(answer);
       const mirror=el("details","case-mirror");
       mirror.append(el("summary","","Gegenperspektive aufdecken"));
-      addLabel(mirror,"Decision Mirror",item.mirror);
+      addLabel(mirror,"Decision Mirror",item.counterargument);
       const next=el("p","library-small","Revision: Welcher Befund würde deinen ersten Beschluss verändern? Ergänze ihn oben, bevor du den Fall abschließt.");
       body.append(label,mirror,next,sourceLink(item.source,"Fachlicher Prüfrahmen: "+lib.sources[item.source].label+" ↗"));
       card.append(summary,body);
@@ -133,11 +175,9 @@
   let activePerspectiveGroup="research";
   const perspectiveGroups=[
     {id:"research",name:"Forschung & Leitlinien"},
-    {id:"practice",name:"Praxis & Methoden"},
-    {id:"tech",name:"Tech-Visionen"}
+    {id:"practice",name:"Praxis & Methoden"}
   ];
   const perspectiveGroup=item=>{
-    if(item.field.startsWith("Tech-Perspektive"))return "tech";
     if(["Forschung","Forschungsprofil","Experiment","Leitlinie","Forschungsbericht","Amtliche Statistik","Arbeitgeberbefragung"].includes(lib.sources[item.source].kind))return "research";
     return "practice";
   };

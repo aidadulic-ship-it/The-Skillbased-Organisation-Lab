@@ -55,6 +55,24 @@
         {label:"Euro-Frage",value:"Welche Kosten entstehen durch Reibung und Fluktuation?"}
       ],
       facts: [["Büroregel", "3 Tage"], ["Tätigkeiten", "unterschiedlich"], ["Leistungsbaseline", "offen"]]
+    },
+    {
+      id: "pay",
+      index: "04",
+      category: "New Pay & Fairness",
+      title: "Neue Skills. Faire Vergütung?",
+      dilemma: "Demo/fiktiv: Ein Unternehmen plant Zuschläge für sichtbare KI-Projekte. Andere notwendige Beiträge werden bisher nicht nach vergleichbaren Kriterien bewertet.",
+      question: "Welche Vergütungsregel ist nachvollziehbar, fair und vor Einführung rechtlich geprüft?",
+      evidence: "Die EU-Entgelttransparenzrichtlinie setzt einen Rechtsrahmen. Sie belegt keinen wirtschaftlichen Nutzen eines bestimmten New-Pay-Modells.",
+      sourceLabel: "EUR-Lex · Richtlinie (EU) 2023/970",
+      sourceUrl: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32023L0970",
+      marker: "Skill-Prämie ≠ Fairness",
+      flow: [
+        {label:"Arbeitsaufgabe",value:"Vergütungskriterien für vergleichbare Arbeit prüfen"},
+        {label:"Kritischer Skill",value:"Beitrag und Verantwortung nachvollziehbar bewerten"},
+        {label:"Euro-Frage",value:"Welche Zusatzkosten und welche Wirkungen sind nur angenommen?"}
+      ],
+      facts: [["Neue Zuschläge", "geplant"], ["Vergleichsgruppen", "offen"], ["Rechtsprüfung", "offen"]]
     }
   ];
 
@@ -73,6 +91,11 @@
       { title: "Drei Bürotage für alle festlegen", description: "Eine einheitliche Regel erleichtert Planung; Tätigkeiten und Fairness unterscheiden sich.", challenge: "Produktion und Kundendienst sehen weiterhin ungleiche Chancen, während Wissensarbeit Präsenz ohne Nutzen meldet. HR fragt: Welche Aufgabe braucht gemeinsamen Ort, und wie begründest du die Regel für alle Gruppen?" },
       { title: "Teamregeln nach Aufgaben vereinbaren", description: "Koordination, Erreichbarkeit, Lernzeit und Präsenz werden je Tätigkeit geklärt und überprüft.", challenge: "Ein Projektteam hält seine Vereinbarung ein, doch neue Kolleginnen verlieren informelles Lernen. Die Führungskraft fragt: Welche Lernkontakte planst du bewusst, ohne alle Tage zentral vorzuschreiben?" },
       { title: "Maximale Ortsfreiheit einführen", description: "Menschen wählen den Ort weitgehend selbst; Übergaben und Zugang zu Entwicklung müssen gesichert werden.", challenge: "Kundenübergaben verzögern sich und ortsgebundene Kolleginnen empfinden die Regel als unfair. Die Geschäftsführung fragt: Welche gemeinsame Verfügbarkeit ist notwendig, und wie prüfst du Leistung unabhängig vom Arbeitsort?" }
+    ],
+    pay: [
+      { title: "Skill-Zuschläge sofort einführen", description: "Schnelles Signal für knappe Fähigkeiten; Vergleichbarkeit und Benachteiligung bleiben offen.", challenge: "Eine Beschäftigtengruppe fragt nach den Kriterien. Welche vergleichbare Arbeit wurde übersehen, und wer prüft den Rechtsrahmen?" },
+      { title: "Kriterien gemeinsam prüfen", description: "Aufgaben, Verantwortung und Fairness werden vor einer Änderung transparent bewertet.", challenge: "Ein Schlüsselteam fordert sofort eine Zusage. Welche befristete Regel kannst du erklären, ohne die Gleichbehandlung zu umgehen?" },
+      { title: "Vergütungsänderung vertagen", description: "Bestehende Regeln bleiben vorerst; mögliche Schieflagen und Bindungsrisiken bleiben bestehen.", challenge: "Zwei Personen kündigen einen Wechsel an. Welchen überprüfbaren Zeitplan und welche Zwischenlösung bietest du an?" }
     ]
   };
 

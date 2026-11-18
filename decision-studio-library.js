@@ -29,12 +29,7 @@
     newPay:{label:"New Pay Collective · Was ist New Pay?",url:"https://www.new-pay.org/was-ist-new-pay",kind:"Expertenposition"},
     webb:{label:"Future Today Strategy Group · Convergence / Amy Webb",url:"https://ftsg.com/convergence/",kind:"Expertenmethode"},
     matt:{label:"Matt Pocock · teach Skill: Quellen vor Lektionen",url:"https://github.com/mattpocock/skills/blob/main/docs/productivity/teach.md",kind:"Methodenreferenz"},
-    stanfordAI:{label:"Stanford HAI · AI Index Report 2025",url:"https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf",kind:"Forschungsbericht"},
-    amazon:{label:"AWS · Amazon Day 1 Culture / Jeff Bezos",url:"https://aws.amazon.com/executive-insights/content/how-amazon-defines-and-operationalizes-a-day-1-culture/",kind:"Unternehmensposition"},
-    gates:{label:"Bill Gates · What I do for work, fulfillment, and fun",url:"https://www.gatesnotes.com/meet-bill/meet-bill-home-topic/reader",kind:"Persönliche Position"},
-    meta:{label:"Mark Zuckerberg · Personal Superintelligence (Meta, 2025)",url:"https://www.meta.com/superintelligence/",kind:"Unternehmensvision"},
-    altman:{label:"Sam Altman · Ten Years (OpenAI)",url:"https://openai.com/index/ten-years/",kind:"Persönliche Vision"},
-    tesla:{label:"Tesla · Master Plan Part IV",url:"https://www.tesla.com/en_nz/master-plan-part-4",kind:"Unternehmensvision"}
+    stanfordAI:{label:"Stanford HAI · AI Index Report 2025",url:"https://hai.stanford.edu/assets/files/hai_ai_index_report_2025.pdf",kind:"Forschungsbericht"}
   };
   const domains=[
     {id:"judgement",name:"Urteilskraft & Selbst",line:"Erkennen, was wir wissen, glauben und übersehen."},
@@ -47,57 +42,48 @@
   // Jede Zeile: ID, Titel, Lage, drei Kernmuster, aktive Gegenfrage, Arbeitsprobe, Quelle.
   const rows={
     judgement:[
-      ["signal","Signal oder Prognose?","Ein Trendbericht nennt Wachstum, doch die eigene Nachfrage ist unklar.","Signal und lokale Wirkung trennen","Mindestens zwei Szenarien bilden","Frühindikator statt Gewissheit festlegen","Welcher lokale Befund widerlegt die globale Erzählung?","Ein zweiseitiges Szenario mit Auslöser und Reaktion","oecdForesight"],
       ["assumptions","Annahmen sichtbar machen","Ein Business Case wirkt präzise, obwohl Eingaben geschätzt sind.","Beobachtung markieren","Annahmen getrennt ausweisen","Werte und Interessen offenlegen","Welche Zahl beruht nur auf Wunschdenken?","Ein Annahmenregister mit Evidenzgrad und Prüfdatum","oecdForesight"],
-      ["counter","Gegenargumente suchen","Das Führungsteam ist sich zu schnell einig.","Stärkste Gegenposition formulieren","Betroffene außerhalb des Raums hören","Revision vor dem Beschluss definieren","Was würde ein skeptischer Kunde kritisieren?","Ein Red-Team-Memo mit Revisionskriterium","edmondson"],
-      ["systems-thinking","Nebenwirkungen erkennen","Eine Flächenersparnis verändert Austausch und Einarbeitung.","Folgen über Abteilungen verfolgen","Zeitversetzte Effekte benennen","Kostenverschiebung sichtbar machen","Welche Ersparnis taucht als Aufwand woanders auf?","Eine Wirkungskette mit drei betroffenen Gruppen","oecdForesight"],
-      ["values","Werte als Entscheidungsregel","Zwei rentable Optionen verteilen Risiken ungleich.","Wertkonflikt konkretisieren","Mindestgrenzen festlegen","Entscheidung dokumentieren","Welcher Wert gilt noch, wenn er Geld kostet?","Ein Wertkonflikt-Protokoll mit Entscheidungskriterium","newPay"],
       ["critical-ai","KI-Ergebnisse kritisch prüfen","Ein KI-Text klingt sicher, enthält aber ungeprüfte Tatsachen.","Behauptungen rückverfolgen","Quellen unabhängig öffnen","Unsicherheit sichtbar lassen","Welche drei Aussagen brauchen Primärbelege?","Ein Quellenprotokoll mit Befund und offener Frage","stanfordAI"]
     ],
     health:[
       ["workload","Arbeitslast gestalten","Ein Team meldet Erschöpfung trotz Wellness-Angebot.","Arbeitsmenge messen","Prioritäten reduzieren","Veränderung mit Beschäftigten prüfen","Was im System erzeugt den Druck?","Ein Belastungs-Aktionsblatt mit 30-Tage-Messpunkt","who"],
       ["safety","Psychologische Sicherheit","Fehler werden erst gemeldet, wenn Kunden betroffen sind.","Sprechen ohne Bestrafung ermöglichen","Fehler sachlich prüfen","Rückmeldung verpflichtend machen","Wann war Widerspruch zuletzt folgenlos möglich?","Ein Teamritual für Einwand, Prüfung und Rückmeldung","edmondson"],
-      ["positive","Positive Psychologie ohne Schönfärben","Ein Stärkenprogramm soll Personalmangel kompensieren.","Stärken und Sinn sind Ressourcen","Beziehungen und Erfolge beachten","Strukturelle Überlastung getrennt beheben","Wird Optimismus hier zur Pflicht?","Ein Ressourcen- und Belastungsbild mit zwei Maßnahmen","seligman"],
-      ["burnout","Burnout-Risiken am Arbeitsplatz","Dauernde Erreichbarkeit gilt als Engagement.","Chronische Anforderungen prüfen","Kontrolle und Fairness betrachten","Erholung als Arbeitsbedingung planen","Welche Norm belohnt Überlastung?","Ein Vorschlag für eine geänderte Arbeitsregel","who"],
-      ["crisis","Führen bei Angst und Krisen","Ein geopolitischer Schock verunsichert Mitarbeitende.","Gesicherte Lage kommunizieren","Unterstützungswege nennen","Ungewissheit und nächste Updates benennen","Was wissen wir nicht, und wann informieren wir wieder?","Eine Krisenkommunikation in drei Absätzen","who"],
-      ["return","Rückkehr und Anpassung","Eine Person kehrt nach längerer Erkrankung zurück.","Aufgaben und Zeit anpassen","Vertraulichkeit wahren","Wirkung gemeinsam überprüfen","Welche Unterstützung hilft, ohne Gesundheitsdaten offenzulegen?","Ein anonymes Anpassungsprotokoll für die Arbeitsgestaltung","who"]
     ],
     leadership:[
       ["decision-rights","Entscheidungsrechte klären","Ein hybrides Team wartet auf Freigaben für Routinefälle.","Aufgabe und Risiko unterscheiden","Mandate explizit machen","Eskalation zeitlich festlegen","Welche Entscheidung blockiert nur wegen unklarer Zuständigkeit?","Eine Entscheidungslandkarte für ein Team","edmondson"],
       ["hybrid","Hybrid fair führen","Informelle Bürogespräche bestimmen Karrieren.","Entscheidungen schriftlich zugänglich machen","Entwicklungschancen prüfen","Leistung an Ergebnissen messen","Wer bekommt Informationen später als andere?","Ein Team Agreement mit Fairnessprüfung","bloom"],
-      ["feedback","Feedback und Lernen","Jahresgespräche kommen zu spät für neue Aufgaben.","Beobachtbare Arbeit besprechen","Feedback zeitnah geben","Nächste Probe festlegen","Welche Wirkung ist sichtbar, welche nur vermutet?","Ein Gesprächsleitfaden mit Arbeitsbeleg","cathy"],
-      ["ai-leader","Mensch-KI-Teams führen","Ein KI-Werkzeug schreibt Kundenaussagen vor.","KI-Beitrag begrenzen","Menschliche Freigabe zuordnen","Fehler und Nacharbeit messen","Wer trägt Verantwortung, wenn KI überzeugend irrt?","Eine Freigabe- und Fehlerkette für einen Prozess","iloAI"],
-      ["conflict","Widerspruch und Konflikt","Fachbereiche sehen dieselbe Investition unterschiedlich.","Gemeinsames Ziel benennen","Interessen von Belegen trennen","Gegenprobe verabreden","Welcher Einwand verändert tatsächlich den Beschluss?","Ein Konfliktprotokoll mit offenen Annahmen","edmondson"],
-      ["leading-change","Veränderung ohne Scheinbeteiligung","Ein neues Arbeitsmodell ist intern schon beschlossen.","Gestaltungsspielraum offenlegen","Betroffene früh beteiligen","Stop-Regeln mit ihnen definieren","Was dürfen Beschäftigte wirklich mitentscheiden?","Eine Beteiligungsmatrix für einen 90-Tage-Pilot","who"]
     ],
     learning:[
       ["action-map","Vom Geschäftsziel zur Übung","Ein neuer Kurs soll ein Qualitätsproblem lösen.","Zielverhalten zuerst definieren","Hindernisse im Arbeitsfluss prüfen","Nur notwendiges Wissen lehren","Welche Handlung muss morgen anders aussehen?","Eine Action Map mit Ziel, Handlung und Übung","cathy"],
       ["evidence","Skills belegen","Ein Zertifikat sagt wenig über Anwendung aus.","Skill als Handlung beschreiben","Kontext und Qualitätsmaß nennen","Datierte Arbeitsprobe sammeln","Welcher Beleg zeigt Können besser als Teilnahme?","Eine Skill-Karte mit prüfbarer Arbeitsprobe","oecdSkills"],
-      ["retrieval","Wissen abrufen und anwenden","Lernvideos werden konsumiert, aber kaum genutzt.","Erklärung knapp halten","Abruf ohne Vorlage üben","In reale Aufgabe übertragen","Kannst du es nach einem Tag ohne Unterlagen erklären?","Ein 3C-Mikromodul mit Abruf und Transfer","mayer"],
-      ["mobility","Interne Mobilität","Eine Stelle bleibt offen, während Fähigkeiten intern vorhanden sind.","Aufgaben statt Titel vergleichen","Lernlücken präzise benennen","Erprobung fair ermöglichen","Wessen Können ist durch den Titel unsichtbar?","Ein internes Mobilitätsangebot für eine Aufgabe","oecdSkills"],
-      ["older","Lernen über Erwerbsphasen","Erfahrene Beschäftigte werden von KI-Lernen ausgeschlossen.","Vorwissen nutzen","Anwendungsziel selbst wählen lassen","Barrieren und Zeit prüfen","Welche Erfahrung ist für neue Aufgaben besonders wertvoll?","Ein Lernpfad für zwei Erfahrungsprofile","oecdLearning"],
-      ["ai-learning","Lernen mit KI und Urteilskraft","Die KI löst jede Übung sofort für die Lernenden.","KI als Gegenüber nutzen","Eigene Antwort zuerst bilden","Quellen und Fehler prüfen","Was kann die Person nach der KI-Hilfe selbst?","Eine Aufgabe mit Eigenleistung, KI-Kritik und Revision","oecdAI"]
     ],
     systems:[
       ["tasks","Jobs in Aufgaben zerlegen","Ein Stellenprofil beschreibt Titel statt Wertschöpfung.","Arbeit in Aufgaben zerlegen","Skill und Nachweis zuordnen","Automatisierung je Aufgabe prüfen","Welche Aufgabe bleibt wichtig, wenn der Titel verschwindet?","Eine Task- und Skill-Map mit Qualitätsmaß","mercer"],
-      ["place","Arbeitsort nach Aufgaben","Shared Desk wird aus Flächenkosten abgeleitet.","Konzentration und Zusammenarbeit unterscheiden","Material und Vertraulichkeit prüfen","Barrierefreiheit beachten","Für wen kostet ein Bürotagesystem mehr als es spart?","Eine Arbeitsort-Matrix für fünf Aufgaben","bloom"],
-      ["time","Arbeitszeit neu gestalten","Kernzeit und Meetings verdrängen Fokus und Erholung.","Koordinationsfenster definieren","Erreichbarkeit begrenzen","Belastung und Qualität messen","Welche Zeitregel ist Tradition statt Arbeitsnotwendigkeit?","Ein 30-Tage-Zeitexperiment mit Qualitätsmaß","iloTime"],
       ["pay","New Pay und Fairness","Neue Skills werden bezahlt, bestehende Beiträge übersehen.","Kriterien nachvollziehbar machen","Betroffene beteiligen","Wirkung und Fairness prüfen","Welche Arbeit wird unsichtbar vergütet?","Eine Vergütungs-Kriterienkarte mit Fairnessprüfung","newPay"],
-      ["review","Performance neu beurteilen","Präsenz und Lautstärke dominieren die Beurteilung.","Ergebnisse und Verhalten trennen","Beleg über Zeitraum sammeln","Lernfortschritt kontextualisieren","Wer hat weniger Gelegenheit, Wirkung zu zeigen?","Ein Review-Formular mit Belegen und Gegencheck","oecdSkills"],
-      ["org-design","Organisation als System","Eine Umstrukturierung ändert Kästchen, aber nicht Arbeit.","Entscheidungsfluss kartieren","Schnittstellen messen","Skills dorthin bewegen, wo Arbeit entsteht","Welche Übergabe erzeugt die meiste Reibung?","Eine Schnittstellenkarte mit Pilotentscheidung","mercer"]
     ],
     futures:[
-      ["ai-exposure","KI und Aufgabenwandel","Ein Vorstand fragt, welche Jobs KI ersetzt.","Exposition ist keine Entlassungsprognose","Aufgaben einzeln prüfen","Qualität und menschliche Kontrolle einbauen","Welche Tätigkeiten verändern sich, welche bleiben?","Ein KI-Task-Audit für einen Prozess","iloAI"],
       ["chips","Chips und Abhängigkeiten","Ein kritisches Bauteil verzögert sich.","Lieferkette bis zu Engpässen verfolgen","Alternative Spezifikationen prüfen","Skillbedarf für Umstellung planen","Welche Fähigkeit macht uns bei Lieferausfall handlungsfähig?","Ein Lieferketten-Szenario mit zwei Alternativen","iea"],
-      ["energy","Energie und Resilienz","Energiepreise ändern die Wirtschaftlichkeit eines Produkts.","Kostenbandbreite statt Punktwert","Abhängige Prozesse identifizieren","Robuste Investition suchen","Welche Entscheidung hält zwei Preisszenarien aus?","Ein Sensitivitätsblatt mit Schwellenwert","iea"],
-      ["demography","Demografie und Arbeit","Wissen geht mit einer Pensionierungswelle verloren.","Altersstruktur lokal prüfen","Kritisches Erfahrungswissen sichern","Übergabe als Arbeitsprozess gestalten","Welche Aufgabe hängt an einer einzigen Person?","Ein Wissenstransferplan mit Arbeitsprobe","statAT"],
-      ["europe","Europa als Handlungsraum","Ein KMU will KI und Vergütung neu regeln.","EU-Vorgaben getrennt prüfen","Nationale Umsetzung feststellen","Verantwortliche für Aktualisierung benennen","Welche Aussage ist EU-Regel, welche österreichische Umsetzung?","Ein EU-AT-Rechts- und Handlungsregister","aiAct"],
       ["foresight","Robuste Strategie statt Zukunftswette","Geopolitik und Nachfrage können gegensätzlich wirken.","Mindestens zwei Zukünfte testen","Frühe Signale beobachten","Reversible Schritte bevorzugen","Was tun wir, wenn unsere Lieblingsprognose falsch ist?","Eine Szenarioentscheidung mit Stop-/Go-Punkt","oecdForesight"]
     ]
   };
-  const courses=Object.entries(rows).flatMap(([domain,items])=>items.map((r,index)=>({
+  const selectedCourseIds=new Set(["assumptions","critical-ai","workload","safety","decision-rights","hybrid","action-map","evidence","tasks","pay","chips","foresight"]);
+  const courseChallenges={
+    assumptions:"Nimm eine Zahl aus einem eigenen Business Case. Markiere ihre Herkunft, eine offene Annahme und den Befund, der die Zahl widerlegen würde.",
+    "critical-ai":"Wähle drei prüfbare Aussagen aus einer KI-Antwort. Öffne je eine Originalquelle und notiere, was ungeklärt bleibt.",
+    workload:"Zeichne eine überlastete Arbeitswoche nach. Streiche oder verschiebe eine Aufgabe und lege ein Belastungs- und Qualitätsmaß für Tag 30 fest.",
+    safety:"Schreibe die ersten drei Sätze einer Führungskraft nach einer Fehlermeldung. Benenne die Prüfung und den Zeitpunkt der Rückmeldung.",
+    "decision-rights":"Ordne fünf wiederkehrende Teamentscheidungen einer verantwortlichen Rolle zu. Definiere für einen Grenzfall einen Eskalationsweg.",
+    hybrid:"Vergleiche zwei Aufgaben mit unterschiedlicher Ortsbindung. Formuliere eine faire Regel für Information, Feedback und Entwicklungschancen.",
+    "action-map":"Starte mit einem Qualitätsproblem. Beschreibe die beobachtbare Handlung und prüfe, ob Training oder eine Prozessänderung nötig ist.",
+    evidence:"Beschreibe einen Skill als Handlung im Kontext. Entwirf eine datierte Arbeitsprobe mit zwei klaren Qualitätskriterien.",
+    tasks:"Zerlege eine reale Stelle in fünf Aufgaben. Markiere bei jeder Aufgabe Skill, Ergebnis, Verantwortliche und möglichen KI-Beitrag.",
+    pay:"Lege drei Vergütungskriterien offen. Prüfe, welche notwendige Arbeit dadurch unsichtbar bliebe und wer an der Revision beteiligt sein muss.",
+    chips:"Simuliere einen 90-Tage-Lieferstopp für ein kritisches Bauteil. Notiere zwei Ersatzwege und die Skills, die jeder Weg benötigt.",
+    foresight:"Schreibe zwei gegensätzliche Zukunftslagen für dieselbe Investition. Bestimme einen Frühindikator und eine in beiden Lagen sinnvolle Maßnahme."
+  };
+  const courses=Object.entries(rows).flatMap(([domain,items])=>items.filter(r=>selectedCourseIds.has(r[0])).map((r,index)=>({
     id:r[0],domain,number:index+1,title:r[1],situation:r[2],patterns:r.slice(3,6),
-    question:r[6],challenge:"Erkläre zuerst in eigenen Worten, welche Annahme du prüfen würdest. Öffne dann die Primärquelle und formuliere eine Gegenposition.",
+    question:r[6],challenge:courseChallenges[r[0]],
     transfer:r[7],source:r[8]
   })));
   // Perspektiven paraphrasieren die verlinkte Originalquelle. Folgerungen sind Lab-Fragen, keine Zitate.
@@ -114,50 +100,120 @@
     ["OECD Skills-First Team","Skills & Arbeitsmarkt","Skills-first reicht über Recruiting hinaus in Lernen, Anerkennung und Arbeitsmarkt-Mobilität.","Welche internen Fähigkeiten bleiben wegen Titeln unsichtbar?","Ein Skill-Register ist noch keine neue Arbeitsorganisation.","oecdSkills"],
     ["WHO Expertengruppe","Mental Health","Die Leitlinie empfiehlt Maßnahmen an Arbeitsbedingungen sowie Training für Führungskräfte.","Welche Belastungsquelle können wir organisatorisch ändern?","Eine Leitlinie braucht Anpassung an Tätigkeiten und lokalen Rechtsrahmen.","who"],
     ["ILO Forschungsteam","KI und Beschäftigung","GenAI-Exposition betrifft etwa ein Viertel der Beschäftigung weltweit; meist geht es um Veränderung von Aufgaben.","Welche Aufgaben im eigenen Prozess sind wirklich betroffen?","Exposition ist keine Prognose für Stellenabbau.","iloAI"],
-    ["Matt Pocock","KI-Lernen & Skills","Sein teach-Ansatz sammelt vertrauenswürdige Quellen vor der Lektion und prüft Lernen über aktive Aufgaben.","Welcher Nachweis zeigt, dass ein KI-Skill in echter Arbeit hilft?","Seine Skills sind eine Methodenreferenz, keine Wirksamkeitsstudie für HR.","matt"],
-    ["Jeff Bezos / Amazon","Tech-Perspektive · Strategie","Amazons Day-1-Ansatz verbindet Kundennähe, langfristiges Denken und mutige Versuche.","Welches Kundenproblem rechtfertigt unseren Skill-Invest?","Ein Unternehmensprinzip ist kein kausaler Beweis für unseren ROI.","amazon"],
-    ["Bill Gates","Tech-Perspektive · KI","Gates beschreibt KI-Assistenten als mögliche Hilfe, um Arbeit effizienter zu erledigen.","Welche Arbeit gewinnt dadurch Qualität, und wer profitiert?","Es ist eine persönliche Einschätzung, keine Unternehmensprognose.","gates"],
-    ["Mark Zuckerberg / Meta","Tech-Perspektive · KI","Meta formuliert persönliche KI als Werkzeug zur Erweiterung individueller Handlungsmöglichkeiten.","Welche Kontrolle behält die Person über Daten und Entscheidungen?","Eine Anbieter-Vision ist keine neutrale Wirkungsanalyse.","meta"],
-    ["Sam Altman / OpenAI","Tech-Perspektive · KI","Altman erwartet sehr weitreichende KI-Fähigkeiten und neue Möglichkeiten bis 2035.","Welche Fähigkeit und Sicherheitsgrenze brauchen wir heute?","Eine Vision ist ein Szenario, kein Terminversprechen.","altman"],
-    ["Elon Musk / Tesla","Tech-Perspektive · Robotik","Teslas Master Plan IV beschreibt KI und humanoide Robotik als Teil einer Zukunft mit größerer Verfügbarkeit von Arbeit.","Welche Tätigkeiten wären technisch, wirtschaftlich und sozial überhaupt geeignet?","Eine Unternehmensvision ist kein Nachweis realer Einsatzreife im KMU.","tesla"]
+    ["Matt Pocock","KI-Lernen & Skills","Sein teach-Ansatz sammelt vertrauenswürdige Quellen vor der Lektion und prüft Lernen über aktive Aufgaben.","Welcher Nachweis zeigt, dass ein KI-Skill in echter Arbeit hilft?","Seine Skills sind eine Methodenreferenz, keine Wirksamkeitsstudie für HR.","matt"]
   ];
   const perspectives=perspectiveRows.map((r,i)=>({id:"perspective-"+(i+1),title:r[0],field:r[1],position:r[2],question:r[3],limit:r[4],source:r[5]}));
-  // Drei Fälle je Schule: fiktive Lagen; die Quelle begründet nur den fachlichen Prüfrahmen.
+  // Vier fiktive Flaggschiff-Fälle; die Quellen begründen nur den fachlichen Prüfrahmen.
   const caseRows={
     judgement:[
-      ["forecast","Der schöne Forecast","Der Vertrieb meldet 25 % Wachstum, die Lieferzeit steigt.","Investition sofort, Pilot oder zweites Szenario?","Welcher Frühindikator würde deine Entscheidung ändern?","oecdForesight"],
-      ["consensus","Alle nicken","Im Steering Committee widerspricht niemand der KI-Einführung.","Welche Rolle erhält den Auftrag zur Gegenprüfung?","Wessen Kosten fehlen in der Einigkeit?","edmondson"],
-      ["metric","Die falsche Kennzahl","Mehr erledigte Tickets gehen mit mehr Reklamationen einher.","Welche Kennzahl wird zur Qualitätsgrenze?","Ist das Ziel Produktivität oder nur Durchsatz?","wef"]
     ],
     health:[
-      ["overtime","Das erschöpfte Erfolgsteam","Ein Team liefert Rekorde, sammelt aber Überstunden.","Welche Arbeit wird gestrichen oder neu verteilt?","Wer trägt den Preis der kurzfristigen Leistung?","who"],
-      ["speakup","Die verschwiegene Panne","Eine Mitarbeiterin kennt einen Fehler, meldet ihn aber nicht.","Wie reagiert Führung in den ersten 24 Stunden?","Welche frühere Reaktion machte Schweigen rational?","edmondson"],
-      ["optimism","Pflicht zum Optimismus","Ein Stärkenprogramm startet trotz unveränderter Unterbesetzung.","Was ist Ressource, was Arbeitsrisiko?","Was müsste organisatorisch zuerst anders werden?","seligman"]
     ],
     leadership:[
       ["remote-career","Karriere im Büro","Beförderungen folgen informellen Kontakten an Präsenztagen.","Wie machst du Leistung und Chancen sichtbar?","Welche Gruppe wird durch diese Regel benachteiligt?","bloom"],
       ["ai-approval","Die KI entscheidet vor","Ein Tool schlägt Absagen an Kunden ohne Freigabe vor.","Wo liegt die menschliche Freigabe?","Wer erkennt systematische Fehler?","iloAI"],
-      ["crisis-voice","Der Krisen-Call","Ein Lieferstopp löst Gerüchte über Stellenabbau aus.","Welche gesicherten Fakten teilst du heute?","Wann und durch wen kommt das nächste Update?","who"]
     ],
     learning:[
-      ["course-not-skill","100 Prozent abgeschlossen","Alle haben den Kurs beendet, Fehler bleiben gleich.","Welche Arbeitsprobe ersetzt die Abschlussquote?","War mangelndes Wissen überhaupt die Ursache?","cathy"],
       ["hidden-skill","Interne Expertin übersehen","Ein Projekt sucht extern, intern kann jemand die Aufgabe bereits.","Wie öffnest du einen fairen Probeeinsatz?","Welche formale Hürde ist notwendig?","oecdSkills"],
-      ["ai-answer","KI löst den Test","Lernende kopieren KI-Antworten und bestehen die Quizze.","Wie prüfst du Eigenleistung und Transfer?","Was kann die Person ohne das Tool?","oecdAI"]
     ],
     systems:[
-      ["desk","Der billige Shared Desk","Die Fläche sinkt, Einarbeitung und Konzentration leiden.","Welche Kosten und Qualitätsmaße fehlen?","Für wen ist der Ort Teil der Arbeitsfähigkeit?","bloom"],
       ["pay-gap","Skill-Prämie mit Schieflage","Nur sichtbare KI-Projekte erhalten Zuschläge.","Welche Kriterien sind fair und nachvollziehbar?","Welche notwendige Arbeit bleibt unsichtbar?","newPay"],
-      ["review-bias","Der laute Performer","Im Review gewinnt die präsente Person trotz schwächerer Ergebnisse.","Welche Belege und Gegenchecks nutzt du?","Welche Daten zeigen Qualität statt Sichtbarkeit?","oecdSkills"]
     ],
     futures:[
-      ["chip","Chip-Lieferstopp","Ein Zulieferer verlängert Lieferzeiten um Monate.","Welche Alternative braucht welche neue Fähigkeit?","Wie robust ist der Plan bei weiterer Verzögerung?","iea"],
-      ["aging","Wissen geht in Pension","Drei Schlüsselpersonen verlassen in zwei Jahren den Betrieb.","Welche Aufgaben brauchen dokumentierte Übergabe?","Welche Annahme über Nachbesetzung ist unbelegt?","statAT"],
-      ["eu-ai","KI im EU-Betrieb","Ein Team nutzt KI ohne vereinbarte Kompetenz- oder Freigaberegel.","Wie prüfst du Kontext, Nutzer und Risiken?","Welche EU-Anforderung ist betroffen, was ist lokale Praxis?","aiAct"]
     ]
   };
-  const cases=Object.entries(caseRows).flatMap(([domain,items])=>items.map(r=>({
+  const flagshipDetails={
+    "ai-approval":{
+      title:"KI-Einführung: Tempo ohne Blindflug",
+      situation:"Demo/fiktiv: Ein Serviceteam soll Antwortentwürfe mit KI erstellen. Qualität, Nacharbeit und nutzbare Zeit sind im eigenen Betrieb noch nicht gemessen.",
+      options:[
+        {title:"A · Breiter Rollout",effect:"Schneller Einsatz in allen Teams.",risk:"Fehler, Lernzeit und Datenschutzfolgen sind vorab ungeklärt."},
+        {title:"B · Begrenzter Pilot",effect:"Ein Aufgabentyp, Vergleichsgruppe und menschliche Freigabe.",risk:"Der Nutzen kommt später und braucht Messaufwand."}
+      ],
+      assumptionRegister:[
+        {type:"Beobachtung",text:"Im fiktiven Team werden Antwortentwürfe heute manuell geprüft; eine lokale Qualitätsbaseline fehlt."},
+        {type:"Annahme",text:"KI könnte nutzbare Bearbeitungszeit freisetzen. Fehler und Nacharbeit können den Vorteil aufheben."},
+        {type:"Wert",text:"Kundenrichtigkeit und menschliche Verantwortung haben Vorrang vor bloßer Ticketzahl."}
+      ],
+      euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"nutzbare Stunden",formula:"nutzbare Stunden × Stundenwert – Pilotkosten – Fehler-/Nacharbeitskosten",scenarios:[
+        {name:"Vorsichtig",units:140,unitValue:35,cost:9000,riskCost:3000},
+        {name:"Mittel",units:240,unitValue:35,cost:9000,riskCost:1500},
+        {name:"Günstig",units:340,unitValue:35,cost:9000,riskCost:500}
+      ],limit:"Der Stundenwert ist eine fiktive interne Kapazitätsbewertung, kein automatisch realisierter Umsatz."},
+      counterargument:"Ein schneller Rollout kann den Pilot überholen, wenn Wettbewerber früher lernen. Doch Geschwindigkeit ohne Fehlergrenze verschiebt Kosten auf Kundschaft und Beschäftigte.",
+      groups:["Kundschaft","Serviceteam","Qualitätssicherung","IT und Datenschutz","Finance"],
+      gates:{day30:{go:"Nur weiter, wenn Antwortqualität mindestens die eigene Baseline erreicht, Freigaben funktionieren und Nacharbeit dokumentiert wird.",stop:"Sofort stoppen bei kritischer Falschauskunft, Datenschutzvorfall oder ungeklärter Verantwortlichkeit."},day90:{go:"Nur skalieren, wenn nutzbare Stunden und Gesamtkosten anhand realer Daten belegt sind und Qualität sowie Arbeitslast nicht schlechter werden.",stop:"Nicht skalieren, wenn der mittlere Nettoeffekt negativ bleibt oder Qualität/Belastung schlechter werden."}}
+    },
+    "hidden-skill":{
+      title:"Skills statt Stellen: kritische Arbeit sichern",
+      situation:"Demo/fiktiv: In einem Zulieferbetrieb hängt eine Fehlerdiagnose an zwei Personen. Eine verlässt das Unternehmen in neun Monaten; die identische Stelle ist schwer zu besetzen.",
+      options:[
+        {title:"A · Extern nachbesetzen",effect:"Spezialisierte Erfahrung gezielt suchen.",risk:"Suchdauer und erneute Einzelabhängigkeit bleiben offen."},
+        {title:"B · Arbeit zerlegen und intern qualifizieren",effect:"Diagnoseaufgaben, Lernzeit und Arbeitsproben für zwei weitere Personen planen.",risk:"Anleitung entzieht der Produktion zunächst Kapazität."}
+      ],
+      assumptionRegister:[
+        {type:"Beobachtung",text:"Im fiktiven Betrieb können zwei Personen die kritische Diagnose; eine Übergabe steht an."},
+        {type:"Annahme",text:"Eine interne Qualifizierung könnte Ausfallstunden vermeiden, wenn Lernzeit tatsächlich geschützt ist."},
+        {type:"Wert",text:"Zugang zur Erprobung und Auswahl nach Arbeitsprobe müssen fair sein."}
+      ],
+      euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"vermiedene Ausfallstunden",formula:"vermiedene Ausfallstunden × Ausfallwert – Lern-/Pilotkosten – Qualitätsrisiko",scenarios:[
+        {name:"Vorsichtig",units:20,unitValue:500,cost:16000,riskCost:5000},
+        {name:"Mittel",units:40,unitValue:500,cost:16000,riskCost:3000},
+        {name:"Günstig",units:60,unitValue:500,cost:16000,riskCost:1000}
+      ],limit:"Vermiedene Ausfälle sind eine fiktive Annahme. Ein echter Wert braucht Auftrags-, Qualitäts- und Ausfalldaten."},
+      counterargument:"Interne Qualifizierung kann die einzige Expertin zusätzlich belasten. Eine externe Besetzung kann schneller sein, wenn passende Erfahrung tatsächlich verfügbar ist.",
+      groups:["Erfahrene Fachkräfte","Interessierte Mitarbeitende","Produktion","Kundschaft","HR und Finance"],
+      gates:{day30:{go:"Nur weiter, wenn Lernzeit im Plan steht, zwei Personen faire Probeeinsätze erhalten und erste überwachte Diagnosen dokumentiert sind.",stop:"Stoppen, wenn Anleitung ohne Entlastung erfolgt oder die Diagnosequalität sinkt."},day90:{go:"Ausweiten, wenn zwei datierte Arbeitsproben je Person die Qualitätsgrenze erfüllen und die Gesamtkosten gegen externe Suche verglichen sind.",stop:"Nicht als Vertretung freigeben, wenn Arbeitsproben fehlen oder Sicherheits- und Qualitätsgrenzen verletzt werden."}}
+    },
+    "remote-career":{
+      title:"Hybrid fair führen: Sichtbarkeit ohne Präsenzbias",
+      situation:"Demo/fiktiv: Ein Team arbeitet teils mobil, teils ortsgebunden. Informelle Bürogespräche beeinflussen Aufgabenverteilung und Entwicklungschancen; Übergaben kosten Zeit.",
+      options:[
+        {title:"A · Einheitliche Präsenztage",effect:"Gemeinsame Zeit wird leicht planbar.",risk:"Ortsgebundene Arbeit und individuelle Aufgaben bleiben ungleich berücksichtigt."},
+        {title:"B · Aufgabenbasierte Teamregeln",effect:"Präsenzanlässe, Dokumentation, Feedback und Lernkontakte werden je Aufgabe vereinbart.",risk:"Koordination und Führung müssen konsequent umgesetzt werden."}
+      ],
+      assumptionRegister:[
+        {type:"Beobachtung",text:"Im fiktiven Team sind Entscheidungen aus Bürogesprächen für mobile Personen nicht immer sichtbar."},
+        {type:"Annahme",text:"Klare Übergaben könnten Reibungsstunden senken und Entwicklungschancen fairer verteilen."},
+        {type:"Wert",text:"Leistung zählt nach Ergebnis und Qualität, nicht nach Sichtbarkeit im Büro."}
+      ],
+      euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"vermiedene Reibungsstunden",formula:"vermiedene Reibungsstunden × Stundenwert – Umstellungskosten – zusätzlicher Koordinationsaufwand",scenarios:[
+        {name:"Vorsichtig",units:100,unitValue:40,cost:6000,riskCost:3000},
+        {name:"Mittel",units:180,unitValue:40,cost:6000,riskCost:2000},
+        {name:"Günstig",units:260,unitValue:40,cost:6000,riskCost:1000}
+      ],limit:"Stundenwerte sind fiktive Kapazitätswerte. Fairness und Gesundheit werden zusätzlich geprüft, nicht in Euro aufgelöst."},
+      counterargument:"Feste gemeinsame Tage können Onboarding und spontane Abstimmung erleichtern. Eine flexible Regel muss diese Kontakte bewusst sichern.",
+      groups:["Mobile Mitarbeitende","Ortsgebundene Mitarbeitende","Neue Kolleginnen und Kollegen","Führungskräfte","Kundschaft"],
+      gates:{day30:{go:"Weiter, wenn Übergaben dokumentiert sind, Feedback alle Gruppen erreicht und Qualitäts- sowie Belastungsdaten erhoben werden.",stop:"Stoppen oder ändern, wenn sicherheitskritische Übergaben ausfallen oder eine Gruppe systematisch Informationen verpasst."},day90:{go:"Ausweiten, wenn Übergabequalität mindestens die Baseline erreicht und Zugang zu Projekten sowie Feedback nach Ortsgruppen geprüft ist.",stop:"Nicht verstetigen bei sinkender Qualität, steigender Belastung oder nachgewiesen ungleichen Entwicklungschancen."}}
+    },
+    "pay-gap":{
+      title:"New Pay: neue Skills, faire Regeln",
+      situation:"Demo/fiktiv: Für sichtbare KI-Projekte sind Zuschläge geplant. Notwendige Service-, Pflege- und Koordinationsarbeit bleibt im bisherigen Kriterienkatalog unsichtbar.",
+      options:[
+        {title:"A · Sofortige Skill-Prämie",effect:"Knappheitssignal für gesuchte Fähigkeiten.",risk:"Vergleichbare Beiträge und mögliche Benachteiligung bleiben ungeprüft."},
+        {title:"B · Kriterien und Wirkung gemeinsam prüfen",effect:"Aufgaben, Verantwortung, Markt und Fairness werden transparent bewertet.",risk:"Die Entscheidung dauert länger und verlangt Beteiligung sowie Rechtsprüfung."}
+      ],
+      assumptionRegister:[
+        {type:"Beobachtung",text:"Im fiktiven Betrieb erhalten nur sichtbare KI-Projekte einen Entwurf für Zuschläge."},
+        {type:"Annahme",text:"Ein transparenterer Kriterienrahmen könnte Abgänge vermeiden. Ein kausaler Effekt ist nicht belegt."},
+        {type:"Wert",text:"Gleiche oder gleichwertige Arbeit braucht nachvollziehbare, geschlechtsneutrale Kriterien."}
+      ],
+      euro:{period:"90 Tage · ausschließlich Demo/fiktiv",unitLabel:"hypothetisch vermiedene Abgänge",formula:"hypothetisch vermiedene Abgänge × Ersatzkosten – Design-/Prüfkosten – zusätzliche Vergütung",scenarios:[
+        {name:"Vorsichtig",units:0,unitValue:12000,cost:8000,riskCost:7000},
+        {name:"Mittel",units:1,unitValue:12000,cost:8000,riskCost:6000},
+        {name:"Günstig",units:2,unitValue:12000,cost:8000,riskCost:5000}
+      ],limit:"Vermiedene Abgänge sind fiktiv und nicht kausal dem Vergütungsmodell zuzurechnen. Recht und Fairness gelten unabhängig vom Euro-Ergebnis."},
+      counterargument:"Eine offene Kriterienprüfung kann dringend gesuchte Talente zu spät erreichen. Eine befristete Maßnahme braucht trotzdem klare Vergleichs- und Revisionsregeln.",
+      groups:["Beschäftigte mit neuen Skills","Beschäftigte mit weniger sichtbarer Arbeit","HR","Führungskräfte","Mitarbeitendenvertretung","Finance"],
+      gates:{day30:{go:"Nur weiter, wenn Kriterien, Vergleichsgruppen und Beteiligung dokumentiert sind und lokale Rechtsfragen fachlich geprüft werden.",stop:"Keine Auszahlung nach neuen Regeln bei ungeklärter Benachteiligung oder fehlender Rechtsprüfung."},day90:{go:"Nur verstetigen, wenn Kriterien konsistent angewandt, Abweichungen erklärt und Kosten sowie Bindungssignale getrennt bewertet sind.",stop:"Regel revidieren, wenn gleichwertige Arbeit ohne nachvollziehbaren Grund ungleich behandelt wird."}}
+    }
+  };
+  const originalCases=Object.entries(caseRows).flatMap(([domain,items])=>items.map(r=>({
     id:r[0],domain,title:r[1],situation:r[2],decision:r[3],mirror:r[4],source:r[5]
   })));
+  const cases=["ai-approval","hidden-skill","remote-career","pay-gap"].map(id=>({
+    ...originalCases.find(item=>item.id===id),...flagshipDetails[id],level:"flagship"
+  }));
   // Eigene Skill-Entwürfe nach dem Muster: Auftrag, Kontext, Prüfschritte, Output, Stop-Regel.
   // Keine Übernahme oder offizielle Zugehörigkeit zu Matt Pococks Skill-Sammlung.
   const skillRows=[
@@ -174,10 +230,27 @@
     ["scenario","Supply Shock Simulator","Operations und Einkauf","iea","kritische Komponenten, Lieferanten, Ersatzwege und interne Fähigkeiten","Spiele eine Lieferverzögerung und einen Nachfragesprung getrennt durch. Bestimme Engpässe, Alternativmaterial, Qualifizierung und Kundenfolgen. Suche eine Maßnahme, die in beiden Szenarien nützt.","Eine Szenariokarte mit Auslösern und Optionen","Szenariozahlen stets als Annahmen markieren."],
     ["executive-coach","Critical Thinking Coach","Einzelperson","wef","eigene These, Quelle und Entscheidungskontext","Stelle zuerst drei präzise Rückfragen. Bitte um die stärkste Gegenhypothese und einen beobachtbaren Test. Unterscheide Korrelation, Kausalität und Anbieterbehauptung. Lass die Person am Ende ihre Position in eigenen Worten revidieren.","Ein persönliches Lernmemo mit offener Unsicherheit","Bei fehlenden Belegen keine sichere Antwort vortäuschen."]
   ];
-  const skills=skillRows.map(r=>({
-    id:r[0],title:r[1],audience:r[2],source:r[3],
-    body:`AUFTRAG: Du unterstützt ${r[2]} beim Thema „${r[1]}“. Arbeite als kritischer Sparringspartner, nicht als automatische Entscheidungsinstanz.\n\nBENÖTIGTER KONTEXT: Frage zuerst nach ${r[4]}. Wenn Angaben fehlen, benenne die Lücke und frage nach; erfinde keine Werte.\n\nARBEITSABLAUF: ${r[5]}\n\nERGEBNIS: Erstelle ${r[6]}. Trenne belegte Fakten, Annahmen, eigene Empfehlung und offenen Prüfbedarf. Nenne Originalquellen direkt bei den jeweiligen Aussagen.\n\nQUALITÄTSGRENZE: ${r[7]}`
-  }));
+  const promptStandards={
+    "red-team":{qualityBoundary:"Jeder Einwand nennt betroffene Gruppe, belegte Kostenbasis und einen prüfbaren Revisionspunkt.",exampleStructure:"These | Beobachtung mit Quelle | Annahme | stärkste Gegenhypothese | Test | Revisionsschwelle.",stopRule:"Stoppe die Empfehlung, sobald eine entscheidende Zahl ohne Herkunft oder Zeitraum steht."},
+    "skill-map":{qualityBoundary:"Jeder Skill ist als beobachtbare Handlung mit Aufgabe, Kontext und Qualitätsmaß beschrieben.",exampleStructure:"Aufgabe | Ergebnis | Skill-Handlung | notwendige Qualifikation | Arbeitsprobe | fairer Lernweg.",stopRule:"Stoppe jede Eignungsaussage, wenn nur Titel, Selbstauskunft oder Kursbesuch vorliegen."},
+    "ai-task":{qualityBoundary:"Für jeden KI-Schritt stehen Baseline, Fehlertyp, menschliche Freigabe und Datenklasse im Ergebnis.",exampleStructure:"Prozessschritt | heutiger Wert | KI-Beitrag | Fehlerkosten | Freigabe | Pilotmessung | Stop-Signal.",stopRule:"Stoppe den Einsatz bei ungeklärter Datenfreigabe oder kritischem Fehler ohne verantwortliche Person."},
+    "ai-literacy":{qualityBoundary:"Kompetenz wird an einem echten Nutzungsschritt und einer dokumentierten Fehlerprüfung gezeigt.",exampleStructure:"System und Rolle | typischer Fehler | Übung | Arbeitsprobe | Feedback | offene Kompetenzlücke.",stopRule:"Stoppe die Freigabe, wenn eine Teilnahmebestätigung als alleiniger Nachweis dienen soll."},
+    "health-design":{qualityBoundary:"Die Maßnahme verändert mindestens eine Arbeitsbedingung und prüft Belastung sowie Qualität getrennt.",exampleStructure:"Belastungsquelle | betroffene Aufgabe | organisatorische Änderung | Verantwortliche | 30-Tage-Maß.",stopRule:"Stoppe individuelle Zuschreibungen oder Diagnosen aus Teamdaten; verweise bei akuter Gefahr an menschliche Hilfe."},
+    "psych-safety":{qualityBoundary:"Die Antwort würdigt den Hinweis, prüft Fakten und nennt einen verbindlichen Rückmeldetermin.",exampleStructure:"Hinweis | erste Antwort | Sachprüfung | Verantwortung | Rückmeldung | Lernschritt.",stopRule:"Stoppe, wenn eine Person vor der Sachprüfung öffentlich verantwortlich gemacht wird."},
+    "hybrid":{qualityBoundary:"Jede Ortsregel ist an Aufgabe, Zugänglichkeit, Datenschutz und gleiche Entwicklungschancen gebunden.",exampleStructure:"Aufgabe | Ortsbedarf | Kommunikationsregel | Lernkontakt | Fairnesscheck | Reviewdatum.",stopRule:"Stoppe eine pauschale Präsenzpflicht, solange Ortsbindung und betroffene Gruppen ungeprüft sind."},
+    "learning":{qualityBoundary:"Der Lernplan nennt ein Geschäftsproblem, beobachtbares Verhalten und eine spätere Arbeitsprobe.",exampleStructure:"Ziel | Leistungsproblem | Ursache | Übung oder Prozessänderung | Feedback | Transferbeleg.",stopRule:"Stoppe den Kursentwurf, wenn die Ursache im Werkzeug, Anreiz oder Prozess liegt."},
+    "new-pay":{qualityBoundary:"Kriterien sind für vergleichbare Arbeit transparent, geschlechtsneutral und lokal rechtlich prüfbar.",exampleStructure:"Vergütungsziel | Kriterien | Vergleichsgruppen | unsichtbare Arbeit | Beteiligung | Rechtsfrage.",stopRule:"Stoppe jede individuelle Gehaltsempfehlung ohne belastbare Daten und lokale Rechtsprüfung."},
+    "business-case":{qualityBoundary:"Jede Euro-Zeile zeigt Formel, Einheit, Zeitraum, Quelle und Unsicherheitsbandbreite.",exampleStructure:"Baseline | Option A/B | drei Szenarien | Formel | nicht monetarisierte Folgen | Tag 30/90.",stopRule:"Stoppe den ROI, wenn gesparte Minuten ohne nachweisbare Nutzung als Umsatz gerechnet werden."},
+    "scenario":{qualityBoundary:"Mindestens zwei gegensätzliche Lieferlagen haben je Auslöser, betroffene Aufgabe und robuste Maßnahme.",exampleStructure:"Signal | Lage A/B | Engpass | Skillbedarf | Frühindikator | Entscheidung | Stop-Punkt.",stopRule:"Stoppe eine Ein-Zahl-Prognose, sobald Lieferzeit oder Nachfrage unbestätigt sind."},
+    "executive-coach":{qualityBoundary:"Die Antwort trennt Beobachtung, Schlussfolgerung und Gegenhypothese und endet mit einem Test.",exampleStructure:"Meine These | drei Rückfragen | stärkster Einwand | überprüfbarer Test | revidierte Position.",stopRule:"Stoppe eine sichere Empfehlung, wenn die Primärquelle fehlt oder Kausalität nur behauptet wird."}
+  };
+  const skills=skillRows.map(r=>{
+    const standard=promptStandards[r[0]];
+    return {
+      id:r[0],title:r[1],audience:r[2],source:r[3],...standard,
+      body:`AUFTRAG: Du unterstützt ${r[2]} beim Thema „${r[1]}“. Arbeite als kritischer Sparringspartner, nicht als automatische Entscheidungsinstanz.\n\nBENÖTIGTER KONTEXT: Frage zuerst nach ${r[4]}. Wenn Angaben fehlen, benenne die Lücke und frage nach; erfinde keine Werte.\n\nARBEITSABLAUF: ${r[5]}\n\nERGEBNIS: Erstelle ${r[6]}. Trenne belegte Fakten, Annahmen, eigene Empfehlung und offenen Prüfbedarf. Nenne Originalquellen direkt bei den jeweiligen Aussagen.\n\nQUALITÄTSGRENZE: ${standard.qualityBoundary}\n\nBEISPIELANTWORT-STRUKTUR: ${standard.exampleStructure}\n\nSTOP-REGEL: ${standard.stopRule}`
+    };
+  });
   const templateRows=[
     ["decision-brief","Executive Decision Brief","Entscheidungen nachvollziehbar statt nur überzeugend machen.",["Geschäftsfrage","Option A und B","Baseline und Quelle","Annahmen und Unsicherheiten","Euro-Bandbreite mit Formel","Menschen, Qualität und Fairness","Gegenargument","Stop-/Go-Regel nach 30 und 90 Tagen"],"oecdForesight"],
     ["skill-card","Skill-Nachweis-Karte","Fähigkeiten als überprüfbare Arbeit beschreiben.",["Aufgabe und Arbeitskontext","Beobachtbare Handlung","Qualitätskriterium","Übungsweg","Datierte Arbeitsprobe","Feedback","Nächste Anwendung"],"oecdSkills"],
@@ -287,7 +360,7 @@
   // Redaktionelle Gegenüberstellung, kein fiktives Gespräch zwischen diesen Personen.
   const councils=[
     {id:"council-ai",title:"KI einführen: Tempo oder Kontrolle?",question:"Soll ein KI-System für den Kundenservice sofort breit eingeführt werden?",tension:"Schneller Nutzen steht gegen Fehlerkosten, Lernbedarf und Verantwortung.",lenses:[
-      {name:"Sam Altman / OpenAI",source:"altman",view:"Weitreichende KI-Fähigkeiten sind eine strategische Möglichkeit; die Quelle ist eine Vision."},
+      {name:"OECD KI-Forschung",source:"oecdAI",view:"KI verändert Lern- und Aufgabenanforderungen. Der konkrete Nutzen im Betrieb muss lokal geprüft werden."},
       {name:"ILO Forschung",source:"iloAI",view:"KI-Exposition verändert Aufgaben; daraus folgt keine konkrete Ersparnis oder Entlassungsquote."},
       {name:"EU AI Act",source:"aiAct",view:"KI-Kompetenz muss zum System, Einsatzkontext und zu betroffenen Personen passen."}
     ],decision:"Welcher begrenzte Pilot zeigt Qualität, Kosten und Folgen, bevor du skalierst?"},
@@ -316,7 +389,7 @@
     {
       id:"ai",label:"KI verantwortbar einführen",
       question:"Die KI spart Minuten. Erhöht sie den Wert deiner Arbeit?",
-      course:"critical-ai",case:"ai-approval",perspectives:["perspective-12","perspective-17","perspective-5"],template:"ai-audit",
+      course:"critical-ai",case:"ai-approval",perspectives:["perspective-12","perspective-5","perspective-10"],template:"ai-audit",
       output:"Ein begrenzter KI-Pilot mit Baseline, Qualitätsgrenze und menschlicher Freigabe.",
       mirrorCase:"ai"
     },
@@ -333,6 +406,13 @@
       course:"hybrid",case:"remote-career",perspectives:["perspective-8","perspective-5","perspective-11"],template:"hybrid-agreement",
       output:"Ein Team Agreement mit gleichen Entwicklungschancen und 30-Tage-Prüfung.",
       mirrorCase:"hybrid"
+    },
+    {
+      id:"pay",label:"New Pay fair entscheiden",
+      question:"Welche Fähigkeiten honorieren wir, und welche Arbeit bleibt unsichtbar?",
+      course:"pay",case:"pay-gap",perspectives:["perspective-9","perspective-10","perspective-2"],template:"pay-criteria",
+      output:"Ein Vergütungskriterienblatt mit Beteiligung, Rechtsprüfung und Stop-/Go-Regel.",
+      mirrorCase:"pay"
     }
   ];
   return {sources,domains,courses,cases,perspectives,skills,templates,councils,sboStages,journeys};
