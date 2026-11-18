@@ -1,0 +1,1226 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Skill-Based Lab: Das Decision Studio für Skills, KI, Führung und die Zukunft der Arbeit. Drei Fälle, ein Decision Mirror, ein klarer nächster Schritt.">
+  <meta name="theme-color" content="#070e22">
+  <title>Skill-Based Lab — Entscheide, was Arbeit morgen kann</title>
+  <style>
+    :root{--canvas:#f8faff;--cobalt:#3157e8;--night:#111b25;--deep:#192a37;--forest:#284356;--paper:#f3f1eb;--white:#fffdf7;--line:#cbd0d0;--muted:#56636b;--lime:#e6fa76;--orange:#f48b70;--aqua:#9adbd7;--red:#a64c36}
+    *{box-sizing:border-box}
+    html{scroll-behavior:auto}
+    body{margin:0;background:var(--paper);color:var(--night);font:16px/1.55 "Segoe UI",Inter,Arial,sans-serif;overflow:hidden}
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit}
+    :focus-visible{outline:3px solid var(--orange);outline-offset:4px}
+    .skip{position:absolute;left:-9999px;top:0;background:white;color:black;padding:10px;z-index:100}
+    .skip:focus{left:8px}
+    .container{width:min(1280px,calc(100% - 64px));margin:auto}
+    .dark{background:var(--night);color:var(--white)}
+    .eyebrow{font-size:11px;line-height:1.3;text-transform:uppercase;letter-spacing:.19em;font-weight:850}
+    .eyebrow.acid{color:var(--lime)}
+    .eyebrow.orange{color:var(--orange)}
+    .eyebrow.green{color:#28775a}
+    .head{height:78px;display:flex;align-items:center;gap:30px;border-bottom:1px solid rgba(255,255,255,.14)}
+    .head a{text-decoration:none}
+    .headnav{display:flex;gap:25px;margin-left:auto}
+    .headnav a{font-size:12px;color:#d9e5db;font-weight:700}
+    .headnav a:hover{color:var(--lime)}
+    .brand{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:800;letter-spacing:-.045em;white-space:nowrap}
+    .brandmark{width:29px;height:29px;border:1px solid var(--lime);display:grid;place-items:center;position:relative;transform:rotate(-8deg)}
+    .brandmark:after{content:"";width:8px;height:8px;background:var(--lime);position:absolute;right:-4px;top:-4px}
+    .headcta{background:var(--lime);color:var(--night)!important;padding:10px 14px;font-size:12px;font-weight:800;white-space:nowrap}
+    .headcta:hover{background:#edffb2!important}
+    #main{height:calc(100dvh - 78px);margin-left:82px;overflow:hidden;position:relative}
+    .view{height:100%;overflow-y:auto;overscroll-behavior:contain;overflow-anchor:none;scroll-behavior:auto;scrollbar-gutter:stable}
+    .view[hidden]{display:none!important}
+    .icon-rail{position:fixed;left:0;top:78px;bottom:0;width:82px;background:#111b25;border-right:1px solid #344450;z-index:25;display:flex;flex-direction:column;padding:15px 7px;gap:4px}
+    .icon-rail button{min-height:67px;width:100%;border:1px solid transparent;background:transparent;color:#aebfb0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 3px;font-size:10px;font-weight:750;letter-spacing:.01em}
+    .icon-rail button svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .icon-rail button:hover{color:#fff;background:#1b3327}
+    .icon-rail button[aria-current="page"]{background:var(--lime);color:var(--night)}
+    .icon-rail .rail-divider{height:1px;background:#355143;margin:9px 8px}
+    .hero{min-height:740px;padding:88px 0 110px;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent,black 40%,black)}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:55px;position:relative;align-items:center}
+    .hero h1{font:400 clamp(56px,6.5vw,104px)/.96 Georgia,"Times New Roman",serif;letter-spacing:-.07em;max-width:740px;margin:20px 0 28px}
+    .hero h1 span{color:var(--lime)}
+    .hero-lead{font-size:20px;line-height:1.45;max-width:640px;color:#d1e1d3;margin:0 0 28px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .button{border:1px solid transparent;background:transparent;display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:50px;padding:12px 19px;text-decoration:none;font-size:13px;font-weight:800}
+    .button.acid{background:var(--lime);color:var(--night)}
+    .button.acid:hover{background:#ecffb3}
+    .button.outline{border-color:#75877a;color:#fff}
+    .button.outline:hover{border-color:var(--lime);color:var(--lime)}
+    .button.ink{background:var(--night);color:#fff}
+    .button.ink:hover{background:var(--forest)}
+    .button.paper{border-color:var(--line);color:var(--night);background:var(--white)}
+    .button.paper:hover{border-color:#3a6f55}
+    .button.small{min-height:39px;padding:8px 12px;font-size:12px}
+    .hero-meta{font-size:11px;color:#9fb8a8;letter-spacing:.05em;margin-top:20px}
+    .hero-art{height:560px;position:relative}
+    .orbit{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);border:1px solid rgba(220,250,130,.25);border-radius:50%}
+    .orbit.o1{width:190px;height:190px}.orbit.o2{width:350px;height:350px}.orbit.o3{width:520px;height:520px}
+    .orbit.o1:before,.orbit.o2:before,.orbit.o3:before{content:"";position:absolute;border-radius:50%;background:var(--lime);width:9px;height:9px;top:7%;left:49%;box-shadow:0 0 0 7px rgba(220,250,130,.12)}
+    .orbit.o2:before{background:var(--orange);top:47%;left:0;box-shadow:0 0 0 7px rgba(238,134,92,.11)}
+    .orbit.o3:before{background:var(--aqua);top:80%;left:14%;box-shadow:0 0 0 7px rgba(146,216,188,.1)}
+    .core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:148px;width:148px;background:var(--lime);color:var(--night);display:flex;align-items:center;justify-content:center;text-align:center;font:400 25px/1.05 Georgia,serif;letter-spacing:-.04em;clip-path:polygon(10% 0,90% 0,100% 10%,100% 90%,90% 100%,10% 100%,0 90%,0 10%)}
+    .orbit-label{position:absolute;background:#1b332a;border:1px solid #466452;color:#fff;padding:10px 13px;font-size:11px;min-width:126px}
+    .orbit-label strong{display:block;color:var(--lime);font-size:13px}
+    .orbit-label.a{top:7%;right:1%}.orbit-label.b{top:48%;left:-4%}.orbit-label.c{bottom:6%;right:4%}
+    .hero-side{position:absolute;right:0;bottom:12px;font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#8da999}
+    .hero{min-height:0;padding:90px 0 88px}
+    .hero:before{opacity:.36}
+    .hero-grid{grid-template-columns:1fr .95fr;gap:clamp(30px,5vw,90px)}
+    .hero h1{font-size:clamp(54px,6vw,90px);max-width:780px}
+    .hero h1 span{color:var(--lime)}
+    .hero-art{height:auto;min-height:490px;display:flex;flex-direction:column;justify-content:space-between;background:#f3f1eb;color:var(--night);border:1px solid #c9d0cb;box-shadow:18px 18px 0 rgba(230,250,118,.13);padding:28px;position:relative}
+    .hero-art:after{content:"";position:absolute;top:0;right:0;width:72px;height:72px;background:var(--lime);clip-path:polygon(100% 0,100% 100%,0 0)}
+    .board-top,.board-bottom{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:10px;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+    .board-top span:last-child{color:#53636d}
+    .board-question{padding:42px 0 20px}
+    .board-question small{font-size:11px;color:#8b4f3f;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+    .board-question h2{font:400 clamp(35px,3.2vw,54px)/1.05 Georgia,serif;letter-spacing:-.055em;margin:13px 0 0}
+    .board-figures{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #b9c3c5;border-bottom:1px solid #b9c3c5;margin:15px 0 26px}
+    .board-figures div{padding:16px 10px 16px 0;border-right:1px solid #b9c3c5}
+    .board-figures div+div{padding-left:13px}
+    .board-figures div:last-child{border:0}
+    .board-figures strong{display:block;font:400 31px/1 Georgia,serif;letter-spacing:-.05em}
+    .board-figures span{display:block;font-size:10px;line-height:1.3;margin-top:7px;color:#52616b}
+    .board-bottom a{font-size:11px;color:var(--night);text-decoration:none;border-bottom:2px solid var(--night);padding-bottom:3px}
+    .board-bottom a:hover{color:#a54c35}
+    .signal{background:#1a2a36}
+    .section{background:var(--paper)}
+    .local{background:#e6ece9}
+    .sources{background:#e9eeeb}
+    .grill-stage{background:#e6fa76;color:var(--night);padding:68px 0 90px;min-height:100%}
+    .grill-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:end;border-bottom:1px solid #859b51;padding-bottom:28px;margin-bottom:30px}
+    .grill-head h2{font:400 clamp(58px,7vw,112px)/.9 Georgia,serif;letter-spacing:-.075em;margin:7px 0 0}
+    .grill-head p{font-size:18px;max-width:600px;line-height:1.4;margin:0}
+    .grill-grid{display:grid;grid-template-columns:300px 1fr;gap:24px}
+    .grill-dossier{background:#172330;color:#fff;padding:26px;align-self:start}
+    .grill-dossier .eyebrow{color:var(--lime)}
+    .grill-dossier h3{font:400 31px/1.1 Georgia,serif;margin:22px 0}
+    .grill-dossier p{font-size:13px;color:#d2dddc}
+    .grill-facts{border-top:1px solid #5d7074;margin-top:24px}
+    .grill-facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #5d7074;padding:10px 0;font-size:12px}
+    .grill-facts strong{color:var(--lime);white-space:nowrap}
+    .grill-dossier small{display:block;margin-top:18px;color:#b8c9c9;line-height:1.45}
+    .grill-dossier small a{color:var(--lime)}
+    .grill-panel{background:#fffdf7;padding:clamp(22px,3vw,42px);min-height:780px;box-shadow:10px 10px 0 rgba(17,27,37,.12)}
+    .grill-progress{font-size:11px;font-weight:850;letter-spacing:.15em;text-transform:uppercase;color:#68756a}
+    .grill-panel h3{font:400 clamp(30px,3.5vw,49px)/1.06 Georgia,serif;letter-spacing:-.055em;margin:18px 0 13px}
+    .grill-panel p{color:#53616a;margin:0 0 20px}
+    .decision-list{display:grid;gap:10px;margin:24px 0}
+    .decision-card{display:block;width:100%;text-align:left;border:1px solid #b4bdbb;background:#f7f8f1;color:var(--night);padding:16px 18px}
+    .decision-card:hover,.decision-card[aria-pressed="true"]{border:2px solid var(--night);padding:15px 17px;background:#eff6d8}
+    .decision-card strong{display:block;font-size:15px}
+    .decision-card span{display:block;font-size:12px;color:#5d6b70;margin-top:4px}
+    .grill-label{display:block;font-size:12px;font-weight:850;letter-spacing:.03em;margin:20px 0 7px}
+    .grill-text{display:block;width:100%;min-height:92px;resize:vertical;border:1px solid #a6b2b2;background:white;color:var(--night);padding:12px;font-size:14px;line-height:1.45}
+    .grill-text:focus{outline:3px solid #f48b70;outline-offset:2px}
+    .grill-action{margin-top:20px}
+    .grill-error{color:#9d351e!important;font-weight:700;min-height:20px;margin:8px 0 0!important;font-size:13px}
+    .grill-quote{border-left:5px solid var(--orange);padding:17px 20px;background:#f1f1e9;font:400 22px/1.25 Georgia,serif;margin:23px 0}
+    .grill-reveal{display:inline-block;background:var(--orange);color:var(--night);font-size:11px;font-weight:850;letter-spacing:.13em;text-transform:uppercase;padding:7px 10px;margin-top:20px}
+    .grill-fieldset{border:0;border-top:1px solid #c6cfca;padding:22px 0 8px;margin:0}
+    .grill-fieldset legend{font-weight:800;padding:0 0 0 0;font-size:15px}
+    .grill-fieldset small{display:block;color:#6a756f;margin:6px 0 12px}
+    .grill-fieldset label{display:flex;align-items:flex-start;gap:10px;border:1px solid #c7d0cb;padding:11px;margin:7px 0;cursor:pointer;font-size:13px;line-height:1.35}
+    .grill-fieldset label:has(input:checked){border-color:#1b4354;background:#edf3e8}
+    .grill-fieldset input{margin-top:2px;accent-color:#142a38}
+    #grill-questions{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+    .grill-calculator{background:#172330;color:#fff;padding:21px 24px;margin:22px 0 28px;display:grid;grid-template-columns:1.2fr .8fr;gap:15px 30px;align-items:center}
+    .grill-calculator .eyebrow{color:var(--lime);grid-column:1/-1}
+    .grill-calculator p{color:#cbd7d7;margin:0;font-size:12px}
+    .grill-calculator label{font-size:13px;font-weight:750}
+    .grill-calculator input{display:block;width:100%;margin:10px 0;accent-color:var(--lime)}
+    .grill-calculator output{font:400 39px/1 Georgia,serif;color:var(--lime);text-align:right}
+    .grill-calculator small{grid-column:1/-1;color:#bdcbce;font-size:11px}
+    .grill-result{border-top:3px solid var(--night);padding-top:22px}
+    .grill-result h4{font:400 37px/1.05 Georgia,serif;margin:7px 0 15px}
+    .grill-result ul{padding-left:20px;color:#3c4a52}
+    .grill-result li{margin:7px 0}
+    .grill-result pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#ecf1e9;padding:18px;font:13px/1.5 "Segoe UI",Arial,sans-serif}
+    .grill-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .signal{border-top:1px solid #506459;background:#15271f}
+    .signal-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .signal-item{padding:25px 30px 28px 0;border-right:1px solid #334c3d}
+    .signal-item:not(:first-child){padding-left:30px}
+    .signal-item:last-child{border:0}
+    .signal-value{font:400 41px/1 Georgia,serif;color:var(--lime);letter-spacing:-.05em}
+    .signal-item p{font-size:12px;color:#d1dfd2;margin:6px 0 8px;max-width:320px}
+    .signal-item a{font-size:11px;color:#aacdb4;text-decoration:underline;text-underline-offset:3px}
+    .section{padding:105px 0}
+    .section-heading{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;margin-bottom:45px}
+    .section-heading h2,.big-title{font:400 clamp(43px,5.1vw,73px)/1.02 Georgia,serif;letter-spacing:-.065em;margin:10px 0}
+    .section-heading p{font-size:17px;color:var(--muted);max-width:580px;margin:8px 0}
+    .thesis{display:grid;grid-template-columns:1.2fr .8fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .thesis-main{padding:34px 60px 40px 0;border-right:1px solid var(--line)}
+    .thesis-main p{font:400 clamp(28px,3.2vw,45px)/1.2 Georgia,serif;letter-spacing:-.045em;margin:0}
+    .thesis-main em{font-style:normal;color:#267957}
+    .thesis-side{padding:34px 0 35px 45px;display:grid;align-content:center}
+    .thesis-side p{font-size:14px;color:var(--muted)}
+    .rail{display:grid;grid-template-columns:repeat(3,1fr);margin-top:54px;border-top:1px solid var(--line)}
+    .rail-item{padding:22px 30px 10px 0;border-right:1px solid var(--line)}
+    .rail-item:not(:first-child){padding-left:30px}
+    .rail-item:last-child{border:0}
+    .rail-item span{font:400 37px Georgia,serif;color:var(--orange)}
+    .rail-item h3{font-size:16px;margin:16px 0 7px}
+    .rail-item p{font-size:13px;color:var(--muted);margin:0;max-width:300px}
+    .game-section{padding:110px 0;background:#102019;color:#f2f6eb;position:relative;overflow:hidden}
+    .game-section:before{content:"";position:absolute;inset:0;opacity:.2;background:radial-gradient(circle at 90% 10%,#5f9f6f 0,transparent 25%),radial-gradient(circle at 10% 90%,#477b67 0,transparent 25%)}
+    .game-section>.container{position:relative}
+    .game-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:34px}
+    .game-head h2{font:400 clamp(45px,5.4vw,75px)/1 Georgia,serif;letter-spacing:-.065em;max-width:720px;margin:8px 0}
+    .game-head p{color:#bcd1c1;max-width:320px;font-size:13px}
+    .game-shell{border:1px solid #47604c;background:#182b21;display:grid;grid-template-columns:1fr 280px;min-height:540px;box-shadow:0 25px 80px rgba(0,0,0,.18)}
+    .game-main{padding:32px 38px 36px}
+    .progress{display:flex;gap:4px;margin-bottom:36px}
+    .progress span{height:4px;flex:1;background:#4a6550}
+    .progress span.on{background:var(--lime)}
+    .step-label{color:var(--lime);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:850}
+    .game-main h3{font:400 clamp(33px,3.4vw,51px)/1.08 Georgia,serif;letter-spacing:-.05em;margin:10px 0}
+    .game-main>p{color:#c5d8c8;max-width:680px;font-size:14px}
+    .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+    .choice{padding:17px 15px 16px;border:1px solid #607766;background:#20382a;color:#fff;text-align:left;min-height:155px}
+    .choice:hover:not(:disabled){background:#31533b;border-color:var(--lime)}
+    .choice:disabled{opacity:.45;cursor:not-allowed}
+    .choice small{display:block;color:var(--lime);font-size:10px;letter-spacing:.1em;font-weight:800;margin-bottom:12px}
+    .choice strong{display:block;line-height:1.22;font-size:15px;margin-bottom:10px}
+    .choice span{font-size:11px;color:#d3dfd2}
+    .game-aside{border-left:1px solid #47604c;padding:29px 23px;background:#13251d}
+    .game-aside .eyebrow{color:#a3bca8}
+    .budget{font:400 40px Georgia,serif;letter-spacing:-.04em;margin:12px 0 28px;color:var(--lime)}
+    .budget small{display:block;font:700 11px/1.4 "Segoe UI",sans-serif;letter-spacing:.05em;color:#a9bea9;margin-top:6px}
+    .metric{margin:14px 0}
+    .metric-top{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#e0ebe0}
+    .metric-top strong{color:#fff}
+    .meter{height:5px;background:#334c39;margin-top:6px}
+    .meter i{display:block;background:var(--aqua);height:100%}
+    .meter.load i{background:var(--orange)}
+    .game-bottom{margin-top:22px;display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+    .game-bottom p{color:#a9c0ad;font-size:11px;max-width:360px}
+    .shock{border-left:4px solid var(--orange);background:#283928;padding:20px;margin-top:25px;max-width:720px}
+    .shock strong{color:var(--orange);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+    .shock p{font-size:13px;color:#e2ebdd}
+    .game-finish{border-top:1px solid #55705b;margin-top:24px;padding-top:24px}
+    .game-finish p{font-size:13px;color:#d9e8dc}
+    .finance-in-game{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+    .finance-in-game label{font-size:11px;color:#d3e2d3;display:block}
+    .finance-in-game input{display:block;width:100%;margin-top:5px;background:#eaf1e6;color:var(--night);border:1px solid #92aa91;padding:9px}
+    .finance-result{font:400 30px Georgia,serif;color:var(--lime);margin:13px 0}
+    .method{background:#e4e9df}
+    .method-list{border-top:1px solid #b9c5b6}
+    .method-row{display:grid;grid-template-columns:120px 1fr 1fr;gap:24px;padding:27px 0;border-bottom:1px solid #b9c5b6;align-items:start}
+    .method-num{font:400 42px Georgia,serif;color:#1b7752}
+    .method-row h3{font:400 27px Georgia,serif;letter-spacing:-.035em;margin:2px 0}
+    .method-row p{color:var(--muted);font-size:14px;margin:3px 0}
+    .module-section{background:var(--paper)}
+    .module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .module{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 30px;background:transparent}
+    .module summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:55px 1fr 25px;gap:10px;align-items:start}
+    .module summary::-webkit-details-marker{display:none}
+    .module-index{font:400 26px Georgia,serif;color:#bc7050}
+    .module h3{font:400 28px/1.1 Georgia,serif;letter-spacing:-.04em;margin:0 0 8px}
+    .module summary p{font-size:13px;color:var(--muted);margin:0}
+    .module .plus{font-size:22px;font-weight:300}
+    .module[open]{background:#fffdf6}
+    .module[open] .plus{transform:rotate(45deg)}
+    .module-body{padding:19px 0 0 65px}
+    .module-body p{font-size:14px;color:#405145}
+    .module-body a{color:#256b50;font-size:12px;font-weight:700}
+    .prompt-section{background:#dfede2;padding:105px 0}
+    .prompt-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:32px}
+    .prompt-head h2{font:400 clamp(43px,5vw,70px)/1.05 Georgia,serif;letter-spacing:-.06em;margin:10px 0;max-width:700px}
+    .prompt-head p{max-width:330px;color:#425d4a;font-size:14px}
+    .workbench{display:grid;grid-template-columns:300px 1fr;min-height:385px;border:1px solid #a8c6ae;background:#f8fbf3}
+    .workbench-nav{border-right:1px solid #a8c6ae;background:#e7f2e7}
+    .workbench-nav button{display:block;width:100%;border:0;border-bottom:1px solid #b5ceb8;background:transparent;text-align:left;padding:18px 20px;color:#1e4834;font-size:13px;font-weight:800}
+    .workbench-nav button[aria-pressed="true"]{background:var(--night);color:var(--lime)}
+    .workbench-content{padding:30px 35px}
+    .workbench-content h3{font:400 35px Georgia,serif;letter-spacing:-.045em;margin:6px 0 12px}
+    .workbench-content p{font-size:14px;color:#4f6755}
+    .workbench-content pre{white-space:pre-wrap;font:13px/1.55 "Segoe UI",sans-serif;background:#e8efe5;border-left:3px solid #4c9871;padding:17px;margin:19px 0;color:#243a2c;max-height:200px;overflow:auto}
+    .workbench-footer{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+    .workbench-footer small{font-size:11px;color:var(--muted)}
+    .check{background:#f8f5ec}
+    .check-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px}
+    .check h2{font:400 clamp(40px,4.7vw,63px)/1.05 Georgia,serif;letter-spacing:-.06em;margin:10px 0}
+    .check p{color:var(--muted);font-size:14px}
+    .quiz{border-top:1px solid var(--line)}
+    .quiz-question{border-bottom:1px solid var(--line);padding:20px 0}
+    .quiz-question h3{font-size:16px;margin:0 0 13px}
+    .quiz-options{display:grid;gap:8px}
+    .quiz-options label{display:flex;gap:9px;align-items:start;font-size:13px;cursor:pointer}
+    .quiz-feedback{font-size:12px;margin-top:12px;color:#275e43;font-weight:650}
+    .local{background:#d9e3d6}
+    .local-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}
+    .local h2{font:400 54px/1.04 Georgia,serif;letter-spacing:-.055em;margin:10px 0}
+    .local-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+    .local-tabs button{background:transparent;border:1px solid #82a08a;padding:10px 14px;font-weight:800;font-size:12px;color:#254b35}
+    .local-tabs button[aria-pressed="true"]{background:var(--night);color:var(--lime);border-color:var(--night)}
+    .local-card{background:#f6f8ef;border:1px solid #aec7ad;padding:24px}
+    .local-card h3{font:400 31px Georgia,serif;margin:0 0 8px}
+    .local-card p{color:#41594a;font-size:14px}
+    .local-card a{color:#196349;font-size:12px;font-weight:750}
+    .offer{background:var(--night);color:#fff;padding:110px 0}
+    .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+    .offer h2{font:400 clamp(44px,5vw,68px)/1.05 Georgia,serif;letter-spacing:-.06em;margin:10px 0 25px}
+    .offer p{color:#c3d5c6}
+    .offer-list{border-top:1px solid #4b6752}
+    .offer-item{display:grid;grid-template-columns:100px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid #4b6752}
+    .offer-item span{color:var(--lime);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.1em}
+    .offer-item strong{font-weight:650}
+    .hosts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+    .host{border:1px solid #597663;padding:16px}
+    .host strong{display:block;color:#fff}
+    .host small{color:#b8ccb9}
+    .sources{padding:90px 0;background:#e9ede5}
+    .source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .source{border-top:2px solid #728d79;padding-top:13px}
+    .source span{font-size:10px;font-weight:850;color:#398065;letter-spacing:.13em;text-transform:uppercase}
+    .source h3{font-size:15px;line-height:1.3;margin:9px 0 7px}
+    .source p{font-size:12px;color:var(--muted);margin:0 0 10px}
+    .source a{font-size:11px;color:#1b6a4a;font-weight:800}
+    .expert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid #aebdaf;margin-top:46px}
+    .expert{padding:19px 18px 10px 0;border-right:1px solid #aebdaf}
+    .expert:not(:first-child){padding-left:18px}
+    .expert:nth-child(4n){border-right:0}
+    .expert small{display:block;color:#3f8062;font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.12em}
+    .expert a{font:400 21px Georgia,serif;display:block;margin:7px 0;text-decoration:none}
+    .expert a:hover{text-decoration:underline}
+    .expert p{font-size:11px;color:var(--muted);margin:0}
+    .closing{background:var(--lime);padding:95px 0}
+    .closing-grid{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
+    .closing h2{font:400 clamp(48px,5.5vw,78px)/1 Georgia,serif;letter-spacing:-.07em;max-width:870px;margin:9px 0}
+    .closing p{max-width:670px;color:#31523b}
+    .footer{background:#0a120f;color:#b6c7b7;padding:25px 0;font-size:11px}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:1050px){.hero-grid{grid-template-columns:1fr}.hero-art{height:440px;max-width:650px;margin:auto;width:100%}.game-shell{grid-template-columns:1fr}.game-aside{border-left:0;border-top:1px solid #47604c;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.budget{margin:5px 0}.game-aside .eyebrow{grid-column:1/-1}.metric{margin:6px 0}.section-heading,.local-grid,.offer-grid,.check-grid{grid-template-columns:1fr;gap:20px}.source-grid,.expert-grid{grid-template-columns:repeat(2,1fr)}.expert:nth-child(2n){border-right:0}.headnav{display:none}}
+    @media(max-width:700px){.container{width:min(100% - 34px,1280px)}.head{height:66px;gap:10px}.brand{font-size:17px}.headcta{margin-left:auto;font-size:11px;padding:8px 10px}#main{margin-left:0;height:calc(100dvh - 66px - 66px)}.icon-rail{top:auto;bottom:0;right:0;width:100%;height:66px;flex-direction:row;overflow-x:auto;overscroll-behavior-x:contain;padding:4px;gap:2px}.icon-rail button{min-height:55px;min-width:56px;flex:1;font-size:9px}.icon-rail button svg{width:18px;height:18px}.icon-rail .rail-divider{display:none}.hero{min-height:0;padding:60px 0 65px}.hero h1{font-size:57px}.hero-lead{font-size:17px}.hero-art{height:330px}.orbit.o3{width:300px;height:300px}.orbit.o2{width:220px;height:220px}.orbit.o1{width:130px;height:130px}.core{height:90px;width:90px;font-size:17px}.orbit-label{font-size:9px;padding:7px;min-width:95px}.orbit-label strong{font-size:10px}.signal-grid,.rail,.module-grid,.source-grid,.hosts,.expert-grid{grid-template-columns:1fr}.expert,.expert:not(:first-child){border-right:0;border-bottom:1px solid #aebdaf;padding:15px 0}.signal-item,.signal-item:not(:first-child){border-right:0;border-bottom:1px solid #334c3d;padding:20px 0}.signal-item:last-child{border:0}.section,.prompt-section,.game-section,.offer{padding:70px 0}.section-heading h2,.big-title{font-size:44px}.thesis{grid-template-columns:1fr}.thesis-main{padding:25px 0;border-right:0;border-bottom:1px solid var(--line)}.thesis-side{padding:25px 0}.rail-item,.rail-item:not(:first-child){padding:22px 0;border-right:0;border-bottom:1px solid var(--line)}.game-head{display:block}.game-shell{display:block}.game-main{padding:25px 20px}.choices{grid-template-columns:1fr}.choice{min-height:0}.game-aside{grid-template-columns:1fr 1fr;padding:20px}.game-aside .eyebrow,.budget{grid-column:1/-1}.finance-in-game{grid-template-columns:1fr}.method-row{grid-template-columns:55px 1fr}.method-row p{grid-column:2}.module{padding:22px 17px}.module-body{padding-left:0}.prompt-head{display:block}.workbench{grid-template-columns:1fr}.workbench-nav{border-right:0;display:flex;overflow-x:auto}.workbench-nav button{flex:0 0 175px;padding:13px}.workbench-content{padding:22px}.closing-grid{grid-template-columns:1fr}.local h2,.offer h2{font-size:43px}}
+    @media(max-width:950px){.grill-grid{grid-template-columns:1fr}.grill-dossier{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.grill-dossier .eyebrow,.grill-dossier h3,.grill-dossier small{grid-column:1/-1}.grill-dossier h3{margin:12px 0}.grill-facts{margin-top:0}}
+    @media(max-width:700px){.hero-art{height:auto;min-height:420px;padding:22px}.hero{padding:57px 0 65px}.hero h1{font-size:clamp(48px,12vw,70px)}.board-question{padding:35px 0 12px}.board-question h2{font-size:37px}.board-figures strong{font-size:24px}.board-figures span{font-size:9px}.grill-stage{padding:45px 0 70px}.grill-head{grid-template-columns:1fr;gap:14px}.grill-head h2{font-size:70px}.grill-head p{font-size:16px}.grill-dossier{display:block}.grill-facts{margin-top:20px}.grill-panel{min-height:0;box-shadow:none}#grill-questions{grid-template-columns:1fr}.grill-panel h3{font-size:35px}.grill-calculator{grid-template-columns:1fr}.grill-calculator output{text-align:left}}
+    /* Executive visual system: quiet, editorial, restrained. */
+    :root{--night:#191d20;--deep:#262b2e;--forest:#343b3e;--paper:#f5f2ed;--white:#fdfbf7;--line:#d5d0c7;--muted:#626965;--lime:#e0c69a;--orange:#bf735e;--aqua:#a9b8b0;--red:#9a493d;--display:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif}
+    body{background:var(--paper);color:var(--night);font-family:"Segoe UI",Arial,sans-serif}
+    :focus-visible{outline-color:var(--orange)}
+    .eyebrow{letter-spacing:.15em;font-weight:750}
+    .eyebrow.green{color:#865c49}
+    .eyebrow.acid{color:var(--lime)}
+    .head{border-color:#414344}
+    .brand{font-size:18px;letter-spacing:-.035em}
+    .brandmark{transform:none;border-color:var(--lime);font-family:var(--display);font-size:20px}
+    .brandmark:after{display:none}
+    .headcta{background:var(--lime);color:var(--night)!important}
+    .headcta:hover{background:#f0ddba!important}
+    .icon-rail{background:var(--night);border-color:#3b4144}
+    .icon-rail button{color:#b9b9b2;font-weight:650}
+    .icon-rail button:hover{background:#303538;color:var(--white)}
+    .icon-rail button[aria-current="page"]{background:#303538;color:var(--lime);border-color:#56514b;border-left:3px solid var(--lime)}
+    .icon-rail button svg{stroke-width:1.5}
+    .more-menu{position:fixed;left:82px;top:78px;width:min(310px,calc(100vw - 82px));z-index:30;background:var(--white);border:1px solid #bcb5aa;box-shadow:0 12px 35px rgba(0,0,0,.16);padding:10px}
+    .more-menu[hidden]{display:none!important}
+    .more-menu button{display:flex;justify-content:space-between;gap:20px;align-items:center;width:100%;min-height:50px;padding:12px 14px;text-align:left;background:transparent;color:var(--night);border:0;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+    .more-menu button:last-child{border-bottom:0}
+    .more-menu button:hover,.more-menu button[aria-current="page"]{background:#eee8df}
+    .more-menu button span{color:#8c604d}
+    .hero{padding:clamp(65px,8vw,105px) 0 92px}
+    .hero:before{display:none}
+    .hero-grid{grid-template-columns:1.06fr .94fr;gap:clamp(45px,5vw,85px)}
+    .hero h1{font-family:var(--display);font-size:clamp(50px,5.5vw,82px);font-weight:400;line-height:1.03;letter-spacing:-.055em;max-width:680px;margin:28px 0 30px}
+    .hero-lead{font-size:18px;line-height:1.55;color:#d9d9d2;max-width:560px}
+    .hero-meta{font-size:11px;color:#bbbdb5}
+    .button{min-height:48px;border-radius:0;font-weight:750;letter-spacing:.015em}
+    .button.acid{background:var(--lime);color:var(--night)}
+    .button.acid:hover{background:#f0ddba}
+    .button.outline{border-color:#777b77;color:var(--white)}
+    .button.outline:hover{border-color:var(--lime);color:var(--lime)}
+    .hero-art{min-height:475px;background:#eee9df;color:var(--night);border:1px solid #a9a49b;box-shadow:none;padding:clamp(24px,2.5vw,36px)}
+    .hero-art:after{display:none}
+    .board-top,.board-bottom{letter-spacing:.12em;color:#4e514f}
+    .board-top{border-bottom:1px solid #beb8ad;padding-bottom:14px}
+    .board-question{padding:34px 0 22px}
+    .board-question small{color:#9a5d49;font-weight:750}
+    .board-question h2{font-family:var(--display);font-size:clamp(33px,3vw,46px);font-weight:400;line-height:1.1;letter-spacing:-.04em}
+    .board-figures{border-color:#bdb7ac;margin:10px 0 22px}
+    .board-figures div{border-color:#bdb7ac}
+    .board-figures strong{font-family:var(--display);font-size:29px}
+    .board-figures span{color:#676d68}
+    .board-bottom a{border-color:#8e634f;color:var(--night)}
+    .signal{background:#242a2c;border-color:#4b5150}
+    .signal-item{border-color:#505755}
+    .signal-value{font-family:var(--display);color:var(--lime)}
+    .signal-item p{color:#d4d6d0}
+    .signal-item a{color:#e4caa0}
+    .section,.module-section{background:var(--paper)}
+    .section-heading h2,.big-title,.thesis-main p,.game-head h2,.game-main h3,.method-row h3,.module h3,.prompt-head h2,.workbench-content h3,.local h2,.offer h2,.closing h2{font-family:var(--display);letter-spacing:-.045em}
+    .thesis-main em,.method-num,.module-body a{color:#90604a}
+    .rail-item span,.module-index{color:#a8745c}
+    .game-section{background:#202629;color:#f6f2eb}
+    .game-section:before{display:none}
+    .game-head p,.game-main>p{color:#d1d3cc}
+    .game-shell{background:#292f31;border-color:#555d5d;box-shadow:none}
+    .game-aside{background:#23292b;border-color:#555d5d}
+    .choice{background:#333a3c;border-color:#66706f}
+    .choice:hover:not(:disabled){background:#444a49;border-color:var(--lime)}
+    .choice span,.game-bottom p{color:#d1d4ce}
+    .progress span,.meter{background:#555d59}
+    .shock{background:#3b3531}
+    .method{background:#ebe7df}
+    .method-list,.method-row{border-color:#cbc5bb}
+    .module[open]{background:#fffdfa}
+    .module-body p{color:#4f5653}
+    .prompt-section{background:#e9e7e1}
+    .prompt-head p,.workbench-content p{color:#59615c}
+    .workbench{background:#fdfbf7;border-color:#cbc7bf}
+    .workbench-nav{background:#e9e6df;border-color:#cbc7bf}
+    .workbench-nav button{color:#373c3a;border-color:#d2cdc4}
+    .workbench-nav button[aria-pressed="true"]{background:var(--night);color:var(--lime)}
+    .workbench-content pre{background:#f0ede7;border-left-color:#a66e54;color:#252a29}
+    .local{background:#e8e5dd}
+    .local-tabs button{border-color:#a9aaa2;color:#373d3b}
+    .local-tabs button[aria-pressed="true"]{background:var(--night);color:var(--white)}
+    .local-card{background:var(--white);border-color:#c7c2b8}
+    .offer{background:#1f2426}
+    .offer-list,.offer-item,.host{border-color:#565b59}
+    .sources{background:#eeeae2}
+    .source{border-top-color:#aaa295}
+    .source span,.expert small{color:#8c604d}
+    .source a{color:#76513e}
+    .expert-grid,.expert{border-color:#c6c0b6}
+    .expert a{font-family:var(--display)}
+    .grill-stage{background:var(--paper);color:var(--night);padding:80px 0 100px}
+    .grill-head{border-color:#bfb8ad;margin-bottom:36px;padding-bottom:36px}
+    .grill-head h2{font-family:var(--display);font-size:clamp(60px,6.5vw,100px);letter-spacing:-.06em}
+    .grill-head p{color:#4f5854;font-size:17px}
+    .grill-grid{grid-template-columns:280px 1fr;gap:18px}
+    .grill-dossier{background:#282d2e;padding:30px}
+    .grill-dossier .eyebrow,.grill-facts strong,.grill-dossier small a{color:var(--lime)}
+    .grill-dossier h3{font-family:var(--display);font-size:29px}
+    .grill-dossier p{color:#dddcd5}
+    .grill-facts,.grill-facts div{border-color:#5c615d}
+    .grill-dossier small{color:#d0d1ca}
+    .grill-panel{background:var(--white);border:1px solid #d0c9bd;box-shadow:none}
+    .grill-progress{color:#8b654e}
+    .grill-panel h3,.grill-result h4,.grill-quote{font-family:var(--display)}
+    .grill-panel p{color:#58605d}
+    .decision-card{background:#faf8f3;border-color:#d0cbc2}
+    .decision-card:hover,.decision-card[aria-pressed="true"]{background:#efe8dc;border-color:#8e634f}
+    .decision-card span{color:#656d68}
+    .grill-text{border-color:#bcb8af}
+    .grill-text:focus{outline-color:var(--orange)}
+    .grill-reveal{background:transparent;color:#9f5747;border:1px solid #b57965}
+    .grill-quote{background:#f1ede6;border-left-color:#b57965}
+    .grill-fieldset{border-color:#d7d1c8}
+    .grill-fieldset label{border-color:#d5d0c8}
+    .grill-fieldset label:has(input:checked){border-color:#8e634f;background:#f4eee3}
+    .grill-fieldset input{accent-color:#815846}
+    .grill-calculator{background:#2a2f30}
+    .grill-calculator .eyebrow,.grill-calculator output{color:var(--lime)}
+    .grill-calculator input{accent-color:var(--lime)}
+    .grill-result pre{background:#f0ede7}
+    .closing{background:#e7dfd3}
+    .closing p{color:#555b55}
+    .footer{background:#171a1b;color:#c6c4bd}
+    @media(max-width:1050px){.hero-grid{grid-template-columns:1fr}.hero-art{max-width:700px;margin:10px 0 0}.grill-grid{grid-template-columns:1fr}.grill-dossier{display:block}}
+    @media(max-width:700px){.hero{padding:55px 0 70px}.hero h1{font-size:clamp(47px,11.6vw,68px)}.hero-lead{font-size:17px}.hero-art{min-height:0;padding:22px}.board-question h2{font-size:36px}.board-figures strong{font-size:24px}.grill-stage{padding:48px 0 72px}.grill-head h2{font-size:72px}.grill-head p{font-size:16px}.grill-panel{min-height:0}.grill-grid{gap:12px}.icon-rail{overflow-x:hidden;justify-content:space-around}.icon-rail button{min-width:0;min-height:56px;gap:3px;font-size:10px}.icon-rail button span{display:block}.icon-rail button svg{width:20px;height:20px}.icon-rail button[aria-current="page"]{border-left-color:transparent;border-top:3px solid var(--lime)}.more-menu{left:0;top:auto;bottom:66px;width:100%;box-shadow:0 -10px 28px rgba(0,0,0,.16)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  </style>
+  <link rel="stylesheet" href="./decision-studio-v2.css">
+  <link rel="stylesheet" href="./decision-studio-unlearnit.css">
+  <link rel="stylesheet" href="./decision-studio-library.css">
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <div class="dark">
+    <header class="container head">
+      <a class="brand" href="#main" aria-label="Skill-Based Lab, zum Anfang"><span class="brandmark" aria-hidden="true">S</span>skill-based lab<span style="color:var(--lime)">.</span></a>
+      <a class="headcta" href="#check">Grill Me starten ↗</a>
+    </header>
+  </div>
+  <aside class="icon-rail" aria-label="Bereiche">
+    <button type="button" data-view-target="start" aria-controls="view-start" aria-current="page" aria-label="Start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-7h6v7"/></svg><span>Start</span></button>
+    <button type="button" data-view-target="grill" aria-controls="view-grill" aria-label="Grill Me, Entscheidungsprüfung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6l-8-4ZM9 12l2 2 4-4"/></svg><span>Grill Me</span></button>
+    <button type="button" data-view-target="sbo" aria-controls="view-sbo" aria-label="Skill-Based Organization"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg><span>Skill-Based<br>Org</span></button>
+    <button type="button" data-view-target="learn" aria-controls="view-learn" aria-label="Lernen und Masterclass"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5 2 9l10 4 10-4-10-4ZM5 11v6c4 3 10 3 14 0v-6M22 9v7"/></svg><span>Lernen</span></button>
+    <button type="button" data-view-target="tools" aria-controls="view-tools" aria-label="Prompts und Skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 4 4-4 4m7 0h9M12 4h8M12 8h5M4 20h16"/></svg><span>Tools</span></button>
+    <button type="button" data-view-target="downloads" aria-controls="view-downloads" aria-label="Formulare und Downloads" title="Formulare und Downloads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4M5 4h4M15 4h4"/></svg><span>Downloads</span></button>
+    <div class="rail-divider" role="separator" aria-label="Weitere Bereiche"><span aria-hidden="true">WEITERE</span></div>
+    <button type="button" class="rail-secondary" data-view-target="profile" aria-controls="view-profile" aria-label="Mein privates Profil" title="Mein privates Profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span>Profil</span></button>
+    <button type="button" class="rail-secondary" data-view-target="game" aria-controls="view-game" aria-label="Planspiel" title="Planspiel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h3"/></svg><span>Planspiel</span></button>
+    <button type="button" class="rail-secondary" data-view-target="local" aria-controls="view-local" aria-label="Europa und Österreich" title="Europa und Österreich"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-3 3-4 6-4 9s1 6 4 9M12 3c3 3 4 6 4 9s-1 6-4 9"/></svg><span>Europa/AT</span></button>
+    <button type="button" class="rail-secondary" data-view-target="workshop" aria-controls="view-workshop" aria-label="Workshop" title="Workshop"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="1"/><path d="M7 3v4M17 3v4M3 10h18M8 15h3"/></svg><span>Workshop</span></button>
+    <button type="button" class="rail-secondary" data-view-target="sources" aria-controls="view-sources" aria-label="Quellen und Experten" title="Quellen und Experten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7c2 0 3 1 3 3v13c-1-1-2-2-4-2H4zM20 4h-3c-2 0-3 1-3 3v13c1-1 2-2 4-2h2z"/></svg><span>Quellen</span></button>
+  </aside>
+  <dialog id="voice-consent-dialog" class="voice-consent-dialog" aria-labelledby="voice-consent-title" aria-describedby="voice-consent-copy">
+    <div class="eyebrow green">Spracheingabe / Datengrenze</div>
+    <h2 id="voice-consent-title">Bevor du sprichst.</h2>
+    <p id="voice-consent-copy">Die Spracherkennung wird von deinem Browser bereitgestellt. Audio kann zur Verarbeitung an dessen Sprachdienst übertragen werden; der Standort der Verarbeitung ist in dieser Demo nicht zugesichert. Bitte diktiere keine vertraulichen Personal-, Gesundheits- oder Unternehmensdaten. Du kannst jedes Feld auch tippen und den erkannten Text korrigieren.</p>
+    <p class="library-small">In Windows kannst du alternativ ein Textfeld wählen und mit <strong>Windows-Taste + H</strong> die System-Diktierfunktion öffnen. Auch sie nutzt einen Online-Sprachdienst. <a href="https://support.microsoft.com/en-us/accessibility/windows/use-voice-typing-to-talk-instead-of-type-on-your-pc" target="_blank" rel="noopener noreferrer">Microsoft erklärt die Funktion ↗</a></p>
+    <div class="voice-consent-actions"><button type="button" class="button paper" id="voice-consent-cancel">Lieber tippen</button><button type="button" class="button ink" id="voice-consent-accept">Für dieses Fenster erlauben</button></div>
+  </dialog>
+  <span id="view-announcement" class="sr-only" role="status" aria-live="polite"></span>
+  <main id="main">
+  <div class="view" data-view="start" id="view-start">
+    <div class="dark">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow acid">Skill-Based Lab / Decision Studio</div>
+            <h1>Arbeit neu organisieren. <span>90-Tage-Pilot mit Belegen.</span></h1>
+            <p class="hero-lead">Für DACH-KMU: Im Präsenz-Lab prüfen Geschäftsführung, HR und Fachbereiche eine reale Arbeitsentscheidung – mit Quellen, Skill-Map, Euro-Bandbreite und menschlichen Folgen. Teste die Methode zuerst an einem fiktiven Fall.</p>
+            <div class="hero-actions"><a href="#check" class="button acid">Decision Mirror testen <span aria-hidden="true">↗</span></a><a href="#pilot-inquiry" class="button outline">Pilot-Workshop anfragen ↗</a></div>
+            <p class="hero-meta">Kostenlose Demo · Drei Entscheidungsfälle · Ein konkreter 90-Tage-Plan im Workshop</p>
+          </div>
+          <div class="hero-art decision-canvas" aria-label="Drei wählbare Entscheidungsfälle">
+            <div class="studio-topline"><span>DEIN ERSTER ENTSCHEIDUNGSTEST</span><span>01 / 03</span></div>
+            <div class="decision-flow" id="decision-flow" aria-label="Vom Arbeitsproblem zur Investitionsfrage">
+              <div class="decision-flow-step"><span id="flow-label-1">Arbeitsaufgabe</span><strong id="flow-value-1">Kundenanfragen zuverlässig beantworten</strong></div>
+              <div class="decision-flow-step"><span id="flow-label-2">Kritischer Skill</span><strong id="flow-value-2">KI-Ausgaben auf Fehler und Qualität prüfen</strong></div>
+              <div class="decision-flow-step"><span id="flow-label-3">Euro-Frage</span><strong id="flow-value-3">Wie viel Zeit bleibt nach Nacharbeit wirklich nutzbar?</strong></div>
+            </div>
+            <div class="case-switcher" role="group" aria-label="Demo-Fall wählen">
+              <button type="button" data-case="ai" aria-pressed="true">01 <span>KI</span></button>
+              <button type="button" data-case="skills" aria-pressed="false">02 <span>Skills</span></button>
+              <button type="button" data-case="hybrid" aria-pressed="false">03 <span>Hybrid</span></button>
+            </div>
+            <div class="case-preview">
+              <div class="case-preview-kicker" id="case-preview-category">KI & Produktivität</div>
+              <h2 id="case-preview-title">Die KI spart Zeit. Wer gewinnt sie?</h2>
+              <p id="case-preview-dilemma">Ein fiktives Serviceteam soll mit generativer KI schneller werden. Der Anbieter verspricht 30 Prozent Zeitgewinn, doch Fehler, Nacharbeit und zusätzliche Arbeitslast sind im eigenen Betrieb noch nicht gemessen.</p>
+              <div class="case-preview-challenge"><span>DIE FRAGE AN DICH</span><p id="case-preview-question">Welche Investition kannst du verantworten, bevor Qualität und tatsächlich nutzbare Zeit bekannt sind?</p></div>
+              <p class="case-preview-evidence" id="case-preview-evidence">Die ILO misst Exposition von Aufgaben gegenüber GenAI. Daraus folgt weder ein lokaler Produktivitätsgewinn noch ein Stellenabbau.</p>
+              <a id="case-preview-source" href="https://www.ilo.org/publications/generative-ai-and-jobs-2025-update" target="_blank" rel="noopener noreferrer">ILO · Generative AI and jobs, 2025 ↗</a>
+            </div>
+            <div class="studio-footline"><span>Wähle einen Fall. Der Decision Mirror stellt die Gegenfrage.</span><a href="#check">Fall starten ↗</a></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  <div class="signal dark" aria-label="Belegte Signale">
+    <div class="container signal-grid">
+      <div class="signal-item"><div class="signal-value">63 %</div><p>der im WEF-Bericht befragten Arbeitgeber nennen Skill-Lücken als Transformationshürde.</p><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025" target="_blank" rel="noopener noreferrer">WEF 2025 · Arbeitgeberbefragung ↗</a></div>
+      <div class="signal-item"><div class="signal-value">59 / 100</div><p>Beschäftigte brauchen nach Einschätzung der befragten Arbeitgeber bis 2030 Weiterbildung.</p><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025" target="_blank" rel="noopener noreferrer">WEF 2025 · Projektion ↗</a></div>
+      <div class="signal-item"><div class="signal-value">1 / 4</div><p>arbeitet laut ILO in einem Beruf mit einem gewissen Grad an GenAI-Exposition.</p><a href="https://www.ilo.org/publications/generative-ai-and-jobs-2025-update" target="_blank" rel="noopener noreferrer">ILO 2025 · Berufsanalyse ↗</a></div>
+    </div>
+  </div>
+
+  <section class="section" id="ansatz">
+    <div class="container">
+      <div class="section-heading"><div><div class="eyebrow green">01 / Die These</div><h2>Mehr Wissen reicht nicht.</h2></div><p>Unternehmen brauchen eine Methode, die Forschung, wirtschaftliche Realität und menschliche Folgen in derselben Entscheidung zusammenführt. Eine Statistik ist ein Signal. Euer Business Case entsteht erst aus euren eigenen Aufgaben, Kosten und Annahmen.</p></div>
+      <div class="thesis"><div class="thesis-main"><p>Von Stellenbeschreibungen zu <em>Fähigkeiten.</em><br>Von Zukunftsangst zu <em>Optionen.</em><br>Von Kursen zu <em>Wirkung.</em></p></div><div class="thesis-side"><div class="eyebrow green">Das Ergebnis</div><p>Nach dem Workshop kann ein gemischtes Team aus Geschäftsführung, HR und Fachbereich einen kritischen Geschäftsbereich beurteilen und einen begründeten 90-Tage-Pilot beschließen.</p><a class="button paper" href="#workshop">Workshop-Ablauf ansehen ↗</a></div></div>
+      <div class="rail">
+        <a class="rail-item" href="#local"><span>01</span><h3>Signale lesen</h3><p>KI, Demografie, Lieferketten, Energie und Regulierung — mit Primärquelle, Region und Grenze.</p><div class="rail-preview">GLOBAL <b>→</b> EU <b>→</b> ÖSTERREICH</div><small class="rail-open" aria-hidden="true">Bereich öffnen ↗</small></a>
+        <a class="rail-item" href="#sbo"><span>02</span><h3>Arbeit zerlegen</h3><p>Aufgaben, Skills, Führung, Arbeitszeit, Ort und Gesundheit als zusammenhängendes System sehen.</p><div class="rail-preview">ROLLE <b>→</b> AUFGABE <b>→</b> SKILL</div><small class="rail-open" aria-hidden="true">Bereich öffnen ↗</small></a>
+        <a class="rail-item" href="#game"><span>03</span><h3>In Euro entscheiden</h3><p>Alternativen, Kosten, Nutzenbandbreiten, Nebenwirkungen und Stop-/Go-Regeln offenlegen.</p><div class="rail-preview">OPTIONEN <b>→</b> €-BAND <b>→</b> STOP / GO</div><small class="rail-open" aria-hidden="true">Planspiel öffnen ↗</small></a>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  <div class="view" data-view="game" id="view-game" hidden>
+  <section class="game-section" id="game">
+    <div class="container">
+      <div class="game-head"><div><div class="eyebrow acid">02 / Der Überraschungseffekt</div><h2>2035: Der Entscheidungstest.</h2></div><p>Ein spielbarer Ausschnitt des Workshops. Alle Unternehmenswerte und Spieleffekte sind fiktiv; die Quellen begründen die Themen, nicht die Punktzahlen.</p></div>
+      <div class="game-shell">
+        <div class="game-main">
+          <div class="progress" aria-label="Spielfortschritt"><span id="pr-0"></span><span id="pr-1"></span><span id="pr-2"></span><span id="pr-3"></span><span id="pr-4"></span></div>
+          <div class="step-label" id="stage-label">Level 1 / 5 · Skills</div>
+          <h3 id="stage-title">Worauf baut ihr euer Unternehmen?</h3>
+          <p id="stage-copy">Auronix Components, ein fiktiver österreichischer Sensorhersteller mit 120 Beschäftigten, muss kritische Aufgaben sichern. Euch steht im Spiel ein fiktives Veränderungsbudget von 160.000 € zur Verfügung.</p>
+          <div class="choices" id="choices"></div>
+          <div class="shock" id="shock" hidden></div>
+          <div class="game-finish" id="game-finish" hidden></div>
+          <div class="game-bottom"><button type="button" class="button outline small" id="reset-game">Neu beginnen</button><p>Die Spielmechanik ist ein Gesprächswerkzeug. Sie misst keine Menschen und prognostiziert keine Unternehmensleistung.</p></div>
+        </div>
+        <aside class="game-aside"><div class="eyebrow">Fiktive Spieltafel</div><div class="budget" id="budget">160.000 €<small>VERFÜGBARES BUDGET</small></div><div id="metrics"></div></aside>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  <div class="view" data-view="sbo" id="view-sbo" hidden>
+    <section class="sbo-hero" id="sbo">
+      <div class="container sbo-hero-grid">
+        <div>
+          <div class="eyebrow green">Eigenständiger Bereich / Skill-Based Organization</div>
+          <h1>Arbeit nach Fähigkeiten organisieren.</h1>
+          <p class="sbo-lead">Eine Skill-Based Organization fragt zuerst, <strong>welche Arbeit Wert schafft</strong>, welche Fähigkeiten dafür gebraucht werden und wie Menschen diese Fähigkeiten zeigen, entwickeln und einsetzen können. Das betrifft Aufgaben, Führung, Mobilität, Lernen, Vergütung und faire Entscheidungen.</p>
+          <p>Die OECD beschreibt Skills-first als Verbindung von <strong>Lernökosystem</strong> und <strong>Anerkennung von Fähigkeiten</strong> – über Recruiting hinaus. Jesuthasan und Boudreau ergänzen den Blick auf Aufgaben statt starrer Job-Pakete.</p>
+          <div class="sbo-hero-links"><a href="https://www.oecd.org/en/publications/a-skills-first-labour-market_2e1b85f0-en.html" target="_blank" rel="noopener noreferrer">OECD · Originalbericht ↗</a><a href="https://www.mercer.com/en-us/insights/people-strategy/future-of-work/work-without-jobs/" target="_blank" rel="noopener noreferrer">Jesuthasan & Boudreau · Originalbeitrag ↗</a></div>
+        </div>
+        <div class="sbo-system" aria-label="Sechs miteinander verbundene Organisationsentscheidungen"><button type="button" data-sbo-stage="work" aria-controls="sbo-stage-work">ARBEIT</button><button type="button" data-sbo-stage="tasks" aria-controls="sbo-stage-tasks">AUFGABEN</button><button type="button" data-sbo-stage="language" aria-controls="sbo-stage-language">SKILLS</button><button type="button" data-sbo-stage="evidence" aria-controls="sbo-stage-evidence">NACHWEISE</button><button type="button" data-sbo-stage="mobility" aria-controls="sbo-stage-mobility">MOBILITÄT</button><button type="button" data-sbo-stage="governance" aria-controls="sbo-stage-governance">STEUERUNG</button><small>Wähle eine Entscheidung · Inhalte öffnen sich darunter</small></div>
+      </div>
+    </section>
+    <section class="library-section" id="sbo-blueprint">
+      <div class="container">
+        <div class="library-heading"><div><div class="eyebrow green">Organization Blueprint</div><h2>Sechs Entscheidungen statt einer Skill-Liste.</h2></div><p>Öffne jeden Schritt: Was ändert sich konkret, was musst du hinterfragen und welches Arbeitsdokument entsteht daraus? Die Reihenfolge ist ein Lab-Vorschlag, keine behauptete universelle Transformationsformel.</p></div>
+        <div class="sbo-stages" id="sbo-stages"></div>
+      </div>
+    </section>
+    <section class="library-section library-alt">
+      <div class="container sbo-example">
+        <div><div class="eyebrow green">Beispiel / Fiktives Industrie-KMU</div><h2>Vom Jobtitel zur Arbeitsfähigkeit.</h2><p><strong>Vorher:</strong> „Wir brauchen eine neue Produktionsplanerin.“ Das sagt wenig darüber, welcher Engpass gelöst werden soll.</p><p><strong>Nachher:</strong> „Wir müssen bei Chipverzögerung Lieferzusagen neu priorisieren, Alternativteile technisch prüfen und Kunden transparent informieren.“ Daraus folgen Aufgaben, Skills, Entscheidungsspielräume und prüfbare Arbeitsproben.</p><p class="library-small">Dieses Beispiel ist didaktisch und fiktiv. Es belegt keinen Nutzen oder eine Einsparung.</p></div>
+        <div class="sbo-example-card"><span class="library-kicker">Mögliche Arbeitsprobe</span><p>Erstelle für zwei Lieferszenarien einen priorisierten Produktionsplan. Dokumentiere Annahmen, Qualitätsgrenzen, Abstimmung mit Einkauf und eine klare Kundeninformation.</p><span class="library-kicker">Die kritische Frage</span><p>Würde ein neuer Titel das Problem lösen – oder braucht der vorhandene Prozess andere Fähigkeiten und Entscheidungsrechte?</p></div>
+      </div>
+    </section>
+    <section class="library-section" id="sbo-diagnostic">
+      <div class="container">
+        <div class="library-heading"><div><div class="eyebrow green">Organization Readiness / Private Übung</div><h2>Wo blockiert euer System?</h2></div><p>Sechs Fragen zum eigenen Betrieb. Wähle je einen Stand. Die Auswertung zeigt vorrangige nächste Schritte, keinen Reifegrad-Score und keine Bewertung von Beschäftigten. Antworten bleiben in diesem Browserfenster.</p></div>
+        <div id="sbo-diagnostic-questions" class="sbo-diagnostic-questions"></div>
+        <div id="sbo-diagnostic-result" class="sbo-diagnostic-result" role="status"></div>
+      </div>
+    </section>
+  </div>
+  <div class="view" data-view="learn" id="view-learn" hidden>
+  <section class="executive-route light-studio" id="executive-route">
+    <div class="container">
+      <div class="route-heading"><div><div class="eyebrow">Dein Einstieg / Eine Entscheidung statt 36 Karten</div><h1>Wähle die Frage, die heute auf deinem Tisch liegt.</h1></div><p>Der geführte Weg zeigt dir zu einer realistischen Führungsfrage genau eine Lektion, einen Fall, drei unterschiedliche Perspektiven und ein Arbeitsdokument. Danach kannst du die gesamte Bibliothek frei erkunden.</p></div>
+      <div class="route-picker" id="route-picker" role="group" aria-label="Executive-Lernweg wählen"></div>
+      <div class="route-stage" id="route-stage"></div>
+    </div>
+  </section>
+  <section class="section method" id="methode">
+    <div class="container">
+      <div class="section-heading"><div><div class="eyebrow green">03 / Die Methode</div><h2>Ein System für bessere Urteile.</h2></div><p>Die Lernreise beginnt mit einer Entscheidung und endet mit einer überprüfbaren Handlung. Die digitale Vorbereitung dauert höchstens 30 Minuten. Danach wählst du kurze Einheiten nach Bedarf.</p></div>
+      <div class="method-list"><div class="method-row"><div class="method-num">01</div><h3>Verstehen</h3><p>Studien, Videos, Podcasts und Quellenkarten erklären die Veränderung. Eigene Medien werden erst nach Produktion als abspielbar angeboten.</p></div><div class="method-row"><div class="method-num">02</div><h3>Hinterfragen</h3><p>Selbsttests, Reflexion und ein kritischer KI-Lernbegleiter prüfen Annahmen. Die Demo bietet hier regelbasierte Fragen; eine echte KI-Anbindung gehört zur Produktentwicklung.</p></div><div class="method-row"><div class="method-num">03</div><h3>Anwenden</h3><p>Planspiel, Skills und Prompts erzeugen Arbeitsproben: Task-Map, Teamvereinbarung, KI-Pilot und Euro-Entscheidungsbrief.</p></div><div class="method-row"><div class="method-num">04</div><h3>Überprüfen</h3><p>Nach 30 und 90 Tagen werden Qualität, Kosten, Fähigkeiten und unbeabsichtigte Folgen geprüft. Der persönliche Lernbericht bleibt privat.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section module-section" id="inhalte">
+    <div class="container">
+      <div class="section-heading"><div><div class="eyebrow green">04 / Executive Masterclass</div><h2>Sechs Schulen. Ein Entscheidungsraum.</h2></div><p>Hier lernst und übst du persönliche und fachliche Fähigkeiten: sechs interaktive 3C-Probelektionen, 36 Recherche-Lektionen, 18 Fälle und Expertensichten. Wie ein Unternehmen Arbeit insgesamt nach Skills organisiert, findest du im eigenen Hauptbereich „Skill Org“. Die betreute Plattform mit privatem Konto bleibt ein geplantes Produkt.</p></div>
+      <div class="module-grid">
+        <details class="module"><summary><span class="module-index">01</span><div><h3>Selbst & Urteilskraft</h3><p>Werte, Unsicherheit, blinde Flecken und Lernfähigkeit.</p></div><span class="plus" aria-hidden="true">+</span></summary><div class="module-body"><p><strong>Executive-Frage:</strong> Welche Annahme über Leistung oder Loyalität würden wir heute nicht mehr unterschreiben, wenn wir sie messen müssten?</p><p><strong>Übung:</strong> Vor einer Entscheidung drei Spalten anlegen: belegte Fakten, Vermutungen und Werte. Eine Gegenposition formulieren, die den eigenen Plan ernsthaft gefährdet.</p><a href="https://www.oecd.org/en/publications/foresight-toolkit-for-resilient-public-policy_bcdd9304-en.html" target="_blank" rel="noopener noreferrer">OECD Foresight Toolkit ↗</a></div></details>
+        <details class="module"><summary><span class="module-index">02</span><div><h3>Human & Healthy Work</h3><p>Mental Health, psychologische Sicherheit und positive Psychologie.</p></div><span class="plus" aria-hidden="true">+</span></summary><div class="module-body"><p><strong>Executive-Frage:</strong> Wo erzeugt unser System Belastung, selbst wenn einzelne Menschen „resilient“ sind?</p><p><strong>Inhalt:</strong> Arbeitsmenge, Kontrolle, Fairness und Erholung als gestaltbare Bedingungen. Stärken, Sinn und Beziehungen sind Ressourcen; sie ersetzen keine Änderung chronischer Überlastung. Bei Krieg oder Krise braucht es klare Kommunikation und Unterstützung, keine Pflicht zum Optimismus.</p><p><strong>Übung:</strong> Einen Prozess oder eine Priorität verändern und nach 30 Tagen Belastung und Qualität prüfen.</p><a href="https://www.who.int/publications/i/item/9789240053052" target="_blank" rel="noopener noreferrer">WHO-Leitlinie Mental Health at Work ↗</a></div></details>
+        <details class="module"><summary><span class="module-index">03</span><div><h3>Leadership Futures</h3><p>Führung in Unsicherheit, hybride und Mensch-KI-Teams.</p></div><span class="plus" aria-hidden="true">+</span></summary><div class="module-body"><p><strong>Executive-Frage:</strong> Welche Entscheidung darf das Team selbst treffen — und wo braucht es eine klare Eskalation?</p><p><strong>Inhalt:</strong> Visionär führen gibt Richtung, coachend führt zu Lernen, empowernd braucht echte Befugnisse, dienend beseitigt Hindernisse und ethische Führung schützt faire Regeln. Der passende Mix hängt von Aufgabe, Risiko und Team ab.</p><p><strong>Übung:</strong> Nach dem stärksten Gegenargument fragen, es sachlich prüfen und innerhalb von sieben Tagen zurückmelden, was geändert wurde.</p><a href="https://pubmed.ncbi.nlm.nih.gov/34444344/" target="_blank" rel="noopener noreferrer">Führungsstile, Meta-Analyse ↗</a> · <a href="https://www.hbs.edu/ris/Publication%20Files/02-062_0b5726a8-443d-4629-9e75-736679b870fc.pdf" target="_blank" rel="noopener noreferrer">Amy Edmondson ↗</a></div></details>
+        <details class="module"><summary><span class="module-index">04</span><div><h3>Learning Futures</h3><p>Skills nachweisen, im Arbeitsfluss lernen, Mobilität ermöglichen.</p></div><span class="plus" aria-hidden="true">+</span></summary><div class="module-body"><p><strong>Executive-Frage:</strong> Was muss jemand können — und welche Arbeitsprobe zeigt es besser als ein Kurstitel?</p><p><strong>Inhalt:</strong> Kurze Erklärungen, Abrufübungen, reale Anwendung, Feedback und erneute Übung ersetzen das reine Abarbeiten langer Kurslisten. KI darf beim Üben helfen; der Nachweis bleibt eine überprüfbare Handlung.</p><p><strong>Übung:</strong> Eine kritische Aufgabe in beobachtbare Fähigkeiten übersetzen und für eine Person mit wenig Lernzeit eine Übung mit Feedback entwerfen.</p><a href="https://pubmed.ncbi.nlm.nih.gov/37615780/" target="_blank" rel="noopener noreferrer">Review zu Abrufübungen ↗</a> · <a href="https://www.oecd.org/en/publications/a-skills-first-labour-market_2e1b85f0-en.html" target="_blank" rel="noopener noreferrer">OECD Skills-First ↗</a></div></details>
+        <details class="module"><summary><span class="module-index">05</span><div><h3>Work Systems</h3><p>Aufgaben, Zeit, Ort, Pay, Performance und Organisation.</p></div><span class="plus" aria-hidden="true">+</span></summary><div class="module-body"><p><strong>Executive-Frage:</strong> Bewerten wir Wirkung und Können — oder Präsenz, Titel und Verfügbarkeit?</p><p><strong>Inhalt:</strong> Arbeitszeit nach Aufgaben, Erholung und Koordination gestalten. Performance Reviews häufiger und konkreter führen; Vergütungskriterien transparent und fair prüfen. Shared Desk oder Hybridarbeit nur mit Aufgabenanalyse und gleichen Entwicklungschancen.</p><p><strong>Übung:</strong> Eine Rolle nach Aufgaben, Qualitätsmaß und Skills beschreiben; hybride und ortsgebundene Beschäftigte auf faire Sichtbarkeit prüfen.</p><a href="https://www.eurofound.europa.eu/en/publications/all/the-shift-to-hybrid-working-management-challenges" target="_blank" rel="noopener noreferrer">Eurofound Hybrid Work 2026 ↗</a></div></details>
+        <details class="module"><summary><span class="module-index">06</span><div><h3>Futures & Local Lens</h3><p>KI, Chips, Energie, Demografie, Geopolitik, EU und Österreich.</p></div><span class="plus" aria-hidden="true">+</span></summary><div class="module-body"><p><strong>Executive-Frage:</strong> Welcher externe Engpass trifft unsere Wertschöpfung — und welche Fähigkeit macht uns anpassungsfähig?</p><p><strong>Inhalt:</strong> Geopolitische Konflikte, Ressourcen und demografische Verschiebungen werden als mehrere plausible Szenarien behandelt. Das Lab übersetzt globale Signale in lokale Aufgaben, statt eine sichere Zukunft zu behaupten.</p><p><strong>Übung:</strong> Einen Chip- oder Energieengpass und einen Nachfragesprung als unterschiedliche Szenarien testen. Robuste Schritte für heute wählen.</p><a href="https://www.iea.org/reports/global-critical-minerals-outlook-2025/executive-summary" target="_blank" rel="noopener noreferrer">IEA Critical Minerals Outlook ↗</a></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="library-section" id="research-atlas">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">Learning Atlas / 36 Lektionen</div><h2>Die Zukunft hat Gegenstimmen.</h2></div><p>Wähle ein Feld. Jede Lektion verbindet drei Kernmuster mit einer kritischen Frage, einer Arbeitsprobe und einer Originalquelle. Die Themen sind als Recherche-Lektionen zugänglich; sie ersetzen keine moderierte Masterclass.</p></div>
+      <div class="library-domain-nav" id="atlas-domains" role="group" aria-label="Themenfeld wählen"></div>
+      <div class="library-intro" id="atlas-intro" role="status"></div>
+      <div class="library-grid" id="atlas-courses"></div>
+    </div>
+  </section>
+  <section class="library-section library-alt" id="decision-cases">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">Decision Cases / 18 Fälle</div><h2>Was würdest du beschließen?</h2></div><p>Die Situationen sind fiktiv. Ihre Quellen stützen den fachlichen Prüfrahmen, nicht das Ergebnis. Erst selbst entscheiden, dann den blinden Fleck öffnen.</p></div>
+      <div class="library-domain-nav" id="case-filters" role="group" aria-label="Fälle nach Themenfeld wählen"></div>
+      <div class="library-grid" id="case-list"></div>
+    </div>
+  </section>
+  <section class="library-section" id="perspective-council">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">The Perspective Council / Executive Decision Lab</div><h2>Wenn Expertisen kollidieren.</h2></div><p>Fünf strategische Fragen, jeweils aus drei belegten Blickwinkeln. Die Gegenüberstellung ist unsere redaktionelle Einordnung; sie behauptet kein Gespräch oder Einverständnis der genannten Personen. Formuliere danach deinen revidierbaren Beschluss.</p></div>
+      <div class="council-picker" id="council-picker" role="group" aria-label="Strategische Frage wählen"></div>
+      <div class="council-stage" id="council-stage"></div>
+    </div>
+  </section>
+  <section class="library-section" id="expert-lenses">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">Perspectives / Forschung, Praxis, Vision</div><h2>Eine Frage. Viele Blickwinkel.</h2></div><p>Die Positionen sind sinngemäß zusammengefasst und direkt mit Originalquellen verknüpft. Jede Karte zeigt auch die Grenze der Aussage. Niemand ist als Partner des Labs dargestellt.</p></div>
+      <div class="library-domain-nav" id="perspective-filters" role="group" aria-label="Expertisen wählen"></div>
+      <div class="perspective-grid" id="perspective-list"></div>
+    </div>
+  </section>
+
+  </div>
+  <div class="view" data-view="tools" id="view-tools" hidden>
+  <section class="prompt-section" id="tools">
+    <div class="container">
+      <div class="prompt-head"><div><div class="eyebrow green">05 / Prompt & Skill Workbench</div><h2>Werkzeuge, die echte Arbeit verändern.</h2></div><p>Jedes Skill-Paket hat einen Zweck, benötigte Eingaben, klare Prüfschritte und einen nutzbaren Output. Du kannst die Prompt-Vorlage direkt kopieren.</p></div>
+      <div class="workbench">
+        <div class="workbench-nav" role="group" aria-label="Skill-Paket wählen"><button type="button" data-tool="0" aria-pressed="true">01 · Rolle → Skills</button><button type="button" data-tool="1" aria-pressed="false">02 · KI-Task-Audit</button><button type="button" data-tool="2" aria-pressed="false">03 · Gesundes Team</button><button type="button" data-tool="3" aria-pressed="false">04 · Hybrid Agreement</button><button type="button" data-tool="4" aria-pressed="false">05 · Business Case</button></div>
+        <div class="workbench-content"><div class="eyebrow green" id="tool-type">SKILL 01 / WORK SYSTEMS</div><h3 id="tool-title">Rolle zu Skills</h3><p id="tool-desc">Eine Stellenbeschreibung in Aufgaben, Fähigkeitsnachweise und Entwicklungspfade übersetzen.</p><pre id="tool-prompt"></pre><div class="workbench-footer"><button type="button" class="button ink small" id="copy-tool">Prompt kopieren ↗</button><small id="tool-output">Output: Task- und Skill-Map</small><span id="copy-status" role="status" class="sr-only"></span></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="library-section" id="skill-library">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">AI Skills / 12 Arbeitsabläufe</div><h2>Prompts mit Qualitätsgrenze.</h2></div><p>Eigene, wiederverwendbare Skill-Entwürfe: Auftrag, benötigter Kontext, Prüfschritte, Ergebnis und Stop-Regel. Inspiriert von Matt Pococks dokumentierten Skills; keine offizielle Zusammenarbeit oder Kopie seiner Inhalte.</p></div>
+      <div class="tool-grid" id="skill-list"></div>
+    </div>
+  </section>
+  </div>
+  <div class="view download-view" data-view="downloads" id="view-downloads" hidden>
+  <section class="download-hero" id="downloads">
+    <div class="container">
+      <div class="eyebrow green">Formulare & Checklisten / Decision Kit</div>
+      <h1>Wissen in Entscheidungen verwandeln.</h1>
+      <p>20 Arbeitsblätter begleiten Skills, Lernen, Führung, Gesundheit, Arbeitszeit, KI, New Pay, Finanzierung und Zukunftsrisiken. Fülle sie am Bildschirm oder per Sprache aus, prüfe die thematischen Checklisten und drucke deinen Stand.</p>
+      <div class="download-entry-grid" aria-label="Empfohlene Einstiege">
+        <button type="button" data-open-template="decision-brief"><span>01 / FINANZEN</span><strong>Welchen Pilot können wir in Euro vertreten?</strong><small>Executive Decision Brief öffnen ↗</small></button>
+        <button type="button" data-open-template="task-map"><span>02 / SKILLS</span><strong>Welche Arbeit steckt hinter dem Jobtitel?</strong><small>Task- und Skill-Map öffnen ↗</small></button>
+        <button type="button" data-open-template="health-plan"><span>03 / MENSCHEN</span><strong>Was im System erzeugt Belastung?</strong><small>Healthy Work Plan öffnen ↗</small></button>
+        <button type="button" data-open-template="supply-stress"><span>04 / ZUKUNFT</span><strong>Wie handeln wir bei Chip- oder Ressourcenengpässen?</strong><small>Stresstest öffnen ↗</small></button>
+      </div>
+      <div class="download-feature-strip"><span><strong>01</strong> Thema wählen</span><span><strong>02</strong> Denken & sprechen</span><span><strong>03</strong> Gegenprüfen</span><span><strong>04</strong> Speichern oder drucken</span></div>
+      <p class="download-privacy">Eingaben bleiben in dieser Demo im geöffneten Browserfenster; sichere eine bearbeitbare JSON-Datei, bevor du die Seite schließt. Die Spracheingabe nutzt den Dienst deines Browsers und kann Audio extern verarbeiten. Sprich keine vertraulichen Personal- oder Gesundheitsdaten ein. <span id="voice-support" role="status"></span></p>
+      <div id="download-topic-filter" class="download-topic-filter" role="group" aria-label="Formulare nach Thema filtern"></div>
+    </div>
+  </section>
+  <section class="library-section library-alt" id="template-library">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">Decision Forms / 12 Arbeitsblätter</div><h2>Prüfe die Entscheidung.</h2></div><p>Jedes Blatt verbindet offene Fragen mit einer thematischen Qualitätscheckliste, einer Gegenperspektive und einer Originalquelle. Du kannst Antworten diktieren, drucken und als bearbeitbare Datei sichern.</p></div>
+      <div class="template-grid" id="template-list"></div>
+    </div>
+  </section>
+  <section class="library-section" id="leadership-pack">
+    <div class="container">
+      <div class="library-heading"><div><div class="eyebrow green">Leadership Pack / 8 Führungsunterlagen</div><h2>Führung wird zur Praxis.</h2></div><p>Entscheidungsrechte, hybride Teams, Coaching, psychologische Sicherheit, Krisenkommunikation, Mensch-KI-Verantwortung und ein 90-Tage-Plan – jeweils mit Fallprüfung und druckbarem Arbeitsblatt.</p></div>
+      <div class="template-grid" id="leadership-list"></div>
+    </div>
+  </section>
+
+  </div>
+  <div class="view" data-view="grill" id="view-grill" hidden>
+  <section class="grill-stage" id="check">
+    <div class="container">
+      <div class="grill-head"><div><div class="eyebrow">Decision Drill / 01</div><h2>Grill Me.</h2></div><p>Keine Wissensabfrage. Du triffst eine Investitionsentscheidung und verteidigst sie vor einer kritischen Runde. Die Gegenfrage ändert sich mit deiner Wahl.</p></div>
+      <div class="grill-grid">
+        <aside class="grill-dossier"><div class="eyebrow" id="grill-case-name">Fall 01 · KI & Produktivität</div><h3 id="grill-dossier-title">Die KI spart Zeit. Wer gewinnt sie?</h3><p id="grill-dossier-text">Ein fiktives Serviceteam soll mit generativer KI schneller werden. Der Anbieter verspricht 30 Prozent Zeitgewinn, doch Fehler, Nacharbeit und zusätzliche Arbeitslast sind im eigenen Betrieb noch nicht gemessen.</p><div class="grill-facts" id="grill-dossier-facts"></div><small>Die Fallwerte sind Modellannahmen. <a id="grill-dossier-source" href="https://www.ilo.org/publications/generative-ai-and-jobs-2025-update" target="_blank" rel="noopener noreferrer">ILO · Generative AI and jobs, 2025 ↗</a> liefert Forschungsgrundlagen, keine Wirkungsschätzung für dieses Unternehmen.</small></aside>
+        <div class="grill-panel">
+          <div id="grill-step-1"><div class="grill-progress">01 / Entscheidung</div><h3>Was tust du zuerst?</h3><p>Lege einen ersten 90-Tage-Schritt fest. Wähle eine Option und begründe sie in eigenen Worten.</p><div class="decision-list" role="group" aria-label="Investitionsoption">
+            <button type="button" class="decision-card" data-decision-index="0" aria-pressed="false"><strong></strong><span></span></button>
+            <button type="button" class="decision-card" data-decision-index="1" aria-pressed="false"><strong></strong><span></span></button>
+            <button type="button" class="decision-card" data-decision-index="2" aria-pressed="false"><strong></strong><span></span></button>
+          </div><label class="grill-label" for="grill-rationale">Warum diese Option? Welche Annahme trägst du?</label><textarea class="grill-text" id="grill-rationale" placeholder="Meine Entscheidung beruht auf …; ich würde sie ändern, wenn …"></textarea><button type="button" class="button ink grill-action" id="grill-commit">Entscheidung verteidigen ↗</button><p class="grill-error" id="grill-error-1" role="alert"></p></div>
+          <div id="grill-step-2" hidden><div class="grill-progress">02 / Gegenfrage</div><div class="grill-reveal">48 Stunden später · neue Lage</div><h3>Der Vorstand widerspricht.</h3><div class="grill-quote" id="grill-challenge"></div><p>Die Lage ist hypothetisch. Verteidige deine Entscheidung oder revidiere sie. Schreib konkret, was du jetzt prüfen und wem du die Folgen erklären würdest.</p><label class="grill-label" for="grill-response">Deine Verteidigung oder Revision</label><textarea class="grill-text" id="grill-response" placeholder="Ich bleibe bei der Entscheidung, wenn … / Ich ändere sie, weil …"></textarea><button type="button" class="button ink grill-action" id="grill-respond">Zur Board-Prüfung ↗</button><p class="grill-error" id="grill-error-2" role="alert"></p></div>
+          <div id="grill-step-3" hidden><div class="grill-progress">03 / Board-Prüfung</div><h3>Vier Fragen trennen Meinung von Beschluss.</h3><p>Wähle je die belastbarste Antwort. Die Auswertung bewertet diese Kriterien, nicht deinen freien Text oder deine Person.</p><div class="grill-calculator" id="grill-calculator"><div class="eyebrow">Der Euro-Check / fiktive Fallrechnung</div><div><label for="grill-realization">Wie viel der gesparten Zeit wird wirklich wertschöpfend genutzt? <span id="grill-realization-value">60 %</span></label><input type="range" id="grill-realization" min="0" max="100" value="60"><p>12.000 Fälle · 4 Min. Ersparnis · 50 % Nutzung · 45 €/Std. · 10.800 € weniger Nacharbeit · 43.000 € Kosten</p></div><output id="grill-net" for="grill-realization">−21.400 €</output><small>Vorläufiger Effekt über zwölf Monate. Lernzeit, zusätzliche Qualitätssicherung und weitere Kosten fehlen noch. Gesparte Minuten sind nicht automatisch Umsatz.</small></div><div class="grill-evidence-note" id="grill-evidence-note" hidden></div><div id="grill-questions"></div><button type="button" class="button ink grill-action" id="grill-evaluate">Entscheidungsbericht erstellen ↗</button><p class="grill-error" id="grill-error-3" role="alert"></p></div>
+          <div id="grill-step-4" hidden><div class="grill-progress">04 / Dein Ergebnis</div><div class="grill-result"><h3>Dein Decision Brief.</h3><p id="grill-score"></p><div id="grill-feedback"></div><h4>Was du jetzt vertreten kannst</h4><pre id="grill-memo"></pre><div class="grill-actions"><button type="button" class="button ink" id="grill-download">Bericht herunterladen ↗</button><button type="button" class="button paper" data-view-target="profile">Im Profil ansehen ↗</button><button type="button" class="button paper" id="grill-restart">Anders entscheiden</button></div><p class="hero-meta">Privat in diesem Browser. Keine Übertragung, kein Persönlichkeitstest und keine behauptete Unternehmensprognose.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  <div class="view" data-view="profile" id="view-profile" hidden>
+    <section class="profile-section" id="profil">
+      <div class="container">
+        <div class="profile-heading"><div><div class="eyebrow green">Mein Profil / private Demo</div><h2>Was kannst du heute belegen?</h2></div><p>Dein Profil sammelt Lernfragen, Entscheidungen und Arbeitsproben. Es beschreibt, was du in einer Aufgabe gezeigt hast. Es bewertet weder deine Persönlichkeit noch deine psychische Gesundheit.</p></div>
+        <div class="profile-layout">
+          <div class="profile-main">
+            <div id="profile-empty"><div class="profile-empty-icon" aria-hidden="true">01</div><h3>Dein erster Nachweis beginnt mit einer Entscheidung.</h3><p>Wähle einen Fall im Decision Mirror. Deine Begründung und die Antwort auf eine Gegenfrage werden anschließend hier als Übung sichtbar.</p><button type="button" class="button acid" data-view-target="grill">Grill Me öffnen ↗</button></div>
+            <div id="profile-evidence" hidden><div class="profile-status">GEÜBT · FALLARBEIT</div><h3>Entscheiden unter Unsicherheit</h3><p id="profile-case"></p><div class="profile-proof"><span>Dein Beleg aus der Übung</span><p id="profile-proof-text"></p></div><div class="profile-next"><span>Nächster Schritt</span><p id="profile-next-step"></p></div><button type="button" class="button paper" data-view-target="grill">Noch einen Fall prüfen ↗</button></div>
+          </div>
+          <aside class="profile-method"><div class="eyebrow green">So entsteht ein Skill-Nachweis</div><ol><li><strong>Kennen</strong><span>Du kannst das Muster erklären.</span></li><li><strong>Üben</strong><span>Du triffst eine Entscheidung im Fall und prüfst sie.</span></li><li><strong>Anwenden</strong><span>Du nutzt die Fähigkeit in einer eigenen Arbeitsaufgabe.</span></li><li><strong>Nachweisen</strong><span>Eine freiwillige Arbeitsprobe zeigt die Qualität.</span></li></ol><p>Keine Speicherung auf einem Server. Diese Demo hält dein Ergebnis nur im offenen Browserfenster. Das spätere Produkt benötigt ein geschütztes persönliches Konto mit Export und Löschung; Unternehmen erhalten keinen Zugriff auf dein Profil.</p></aside>
+        </div>
+        <section class="profile-form-section" aria-labelledby="profile-form-title"><div class="profile-form-heading"><div><div class="eyebrow green">Private Arbeitsnotizen</div><h3 id="profile-form-title">Deine Entscheidungen im Entwurf.</h3></div><p>Hier erscheinen Arbeitsblätter, die du selbst vormerkst. Ein ausgefülltes Formular ist eine Selbstangabe und noch kein geprüfter Skill-Nachweis.</p></div><div id="profile-form-evidence" class="profile-form-evidence"></div></section>
+      </div>
+    </section>
+  </div>
+  <div class="view" data-view="local" id="view-local" hidden>
+  <section class="section local" id="local">
+    <div class="container local-grid"><div><div class="eyebrow green">07 / Local Lens</div><h2>Global sehen. Lokal handeln.</h2><p>Die gleiche Entwicklung hat andere Folgen je nach Arbeitsmarkt, Recht und Tätigkeitsmix. Wähle eine Region und prüfe die strategische Frage für dein Unternehmen.</p></div><div><div class="local-tabs" role="group" aria-label="Region auswählen"><button type="button" data-region="global" aria-pressed="true">Global</button><button type="button" data-region="eu" aria-pressed="false">Europa</button><button type="button" data-region="at" aria-pressed="false">Österreich</button><button type="button" data-region="de" aria-pressed="false">Deutschland</button><button type="button" data-region="ch" aria-pressed="false">Schweiz</button></div><div class="local-card"><h3 id="local-title">Globale Signale</h3><p id="local-text">KI, Demografie, Lieferketten und Energie verändern Aufgaben und Geschäftsmodelle.</p><div class="local-insight"><strong>Beobachtung</strong><p id="local-signal">Internationale Trends beschreiben mögliche Belastungen und Chancen. Sie sind keine Prognose für ein einzelnes KMU.</p></div><div class="local-insight"><strong>Entscheidungsfrage</strong><p id="local-decision">Welche Aufgabe, Ressource oder Fähigkeit wäre bei zwei verschiedenen Zukunftsszenarien kritisch?</p></div><p class="local-scope" id="local-scope">Geltungsbereich: internationale Arbeitgeberbefragung; lokale Folgen gesondert prüfen.</p><a id="local-source" href="https://www.weforum.org/publications/the-future-of-jobs-report-2025" target="_blank" rel="noopener noreferrer">WEF Future of Jobs 2025 · Originalquelle ↗</a></div></div></div>
+  </section>
+
+  </div>
+  <div class="view" data-view="workshop" id="view-workshop" hidden>
+  <section class="offer" id="workshop">
+    <div class="container offer-grid"><div><div class="eyebrow acid">Das Pilotangebot / Für DACH-KMU</div><h2>Ein Beschluss, den du im Budgetmeeting vertreten kannst.</h2><p>Ihr bringt eine reale Frage mit: Wo investieren wir zuerst in Skills, KI und Arbeitsgestaltung? Marlies und Aida führen ein gemischtes Team aus 6–10 Personen durch Belege, Gegenpositionen und einen konkreten 90-Tage-Plan.</p><div class="hosts"><div class="host"><strong>Marlies</strong><small>Langjährige HR-Leitung und HR-Management</small></div><div class="host"><strong>Aida</strong><small>HR Business Partnering und Learning & Development</small></div></div></div><div class="offer-list"><div class="offer-item"><span>01 / Vorbereitung</span><strong>30 Minuten Vorbereitung: eine kritische Geschäftsaufgabe, heutige Leistung und vorhandene Zahlen klären.</strong></div><div class="offer-item"><span>02 / Präsenz-Lab</span><strong>Ein ganzer Arbeitstag mit Pausen: Das Team prüft zwei Optionen gegen Finanz-, Menschen- und Zukunftsfragen.</strong></div><div class="offer-item"><span>03 / Decision Pack</span><strong>Gemeinsamer 90-Tage-Plan mit Skill-Map, Euro-Bandbreiten, Belastungs- und Fairnessprüfung. Das individuelle Lern- und Skill-Profil ist nur für die lernende Person sichtbar.</strong></div><div class="offer-item"><span>04 / Transfer</span><strong>Prompts, Quellen, ausfüllbare Vorlagen und ein strukturierter 30-Tage-Follow-up-Termin. Zwölf Monate persönlicher Plattformzugang gehören zum geplanten Produkt und werden erst mit Bereitstellung verbindlich angeboten.</strong></div><p style="font-size:12px">Festpreis nach Vorgespräch. Angebot und Wirkung werden im bezahlten Pilot geprüft. Die Demo verarbeitet keine Unternehmensdaten und ersetzt keine Fachberatung.</p></div></div>
+  </section>
+  <section class="sample-pack light-studio" id="sample-pack">
+    <div class="container">
+      <div class="sample-heading"><div><div class="eyebrow">Decision Pack / Auszug</div><h2>So sieht ein verteidigbarer Beschluss aus.</h2></div><p>Beispiel aus dem fiktiven Auronix-Fall. Zahlen sind Spielannahmen und zeigen die Struktur der Entscheidung, keine nachgewiesene Wirkung oder Preisangabe für Kunden.</p></div>
+      <div class="sample-grid">
+        <div class="sample-cell"><span>01 · Geschäftsfrage</span><strong>Wie sichern wir die Fehlerdiagnose, bevor kritisches Wissen verloren geht?</strong><p>Die bestehende Stelle beschreibt den Engpass nur unvollständig. Zuerst werden Aufgaben und Qualitätsgrenzen geklärt.</p></div>
+        <div class="sample-cell"><span>02 · Optionen</span><strong>Intern qualifizieren oder extern besetzen?</strong><p>Fiktive Investitionsannahmen im Planspiel: 40.000 € versus 65.000 €. Die Differenz ist noch kein Nutzenbeweis.</p></div>
+        <div class="sample-cell"><span>03 · Gegenprüfung</span><strong>Wer schafft Lernzeit – und wer trägt das Risiko?</strong><p>Fachkräfte müssen anleiten können. Belastung, Diagnosequalität und Lieferfähigkeit werden mit geprüft.</p></div>
+        <div class="sample-cell"><span>04 · 90-Tage-Beschluss</span><strong>Begrenzten Pilot mit Stop-/Go-Regel starten.</strong><p>Tag 30: Arbeitsproben und Belastung prüfen. Tag 90: nachgewiesene Vertretung, Kosten und Qualität vergleichen.</p></div>
+      </div>
+      <div class="sample-footer"><span>Keine garantierte Rendite. Euro-Wirkung braucht eigene Baseline, Kosten und Gegenfaktum.</span><button type="button" class="button ink" id="download-sample-pack">Musterbeschluss herunterladen ↗</button></div>
+    </div>
+  </section>
+  <section class="pilot-inquiry-section" id="pilot-inquiry">
+    <div class="container inquiry-grid"><div><div class="eyebrow green">Pilot-Workshop anfragen</div><h2>Bringt eure schwierigste Arbeitsentscheidung mit.</h2><p>Beschreibt die geschäftliche Frage in wenigen Sätzen. Wir klären im Vorgespräch, ob das Lab dafür geeignet ist, wer teilnehmen sollte und welcher Festpreis zum tatsächlichen Umfang passt.</p><p class="library-small">Das Formular öffnet dein E-Mail-Programm mit einem vorbereiteten Entwurf. Die Seite speichert und versendet selbst keine Angaben. Bitte keine vertraulichen Personal- oder Gesundheitsdaten eintragen.</p><a class="inquiry-direct" href="mailto:aida.dulic@hotmail.com?subject=Anfrage%20Skill-Based%20Lab%20Pilot-Workshop">Direkt an aida.dulic@hotmail.com schreiben ↗</a></div>
+      <form id="pilot-inquiry-form" class="inquiry-form">
+        <label for="inquiry-name">Name</label><input id="inquiry-name" name="name" autocomplete="name" maxlength="100" required>
+        <label for="inquiry-company">Unternehmen</label><input id="inquiry-company" name="company" autocomplete="organization" maxlength="120" required>
+        <label for="inquiry-email">E-Mail für die Antwort</label><input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        <label for="inquiry-question">Welche Arbeitsentscheidung steht an?</label><textarea id="inquiry-question" name="question" rows="4" maxlength="600" placeholder="Zum Beispiel: kritische Skills sichern, KI-Pilot, hybride Zusammenarbeit …" required></textarea>
+        <button type="submit" class="button acid" id="pilot-inquiry-submit">E-Mail-Entwurf öffnen ↗</button><p id="inquiry-status" role="status" class="library-small"></p>
+      </form></div>
+  </section>
+
+  </div>
+  <div class="view" data-view="sources" id="view-sources" hidden>
+  <section class="sources" id="quellen">
+    <div class="container"><div class="section-heading"><div><div class="eyebrow green">09 / Evidenz</div><h2 style="font-size:49px">Vertrauen braucht Herkunft.</h2></div><p>Diese Institutionen und Forschenden liefern Grundlagen für das Lab. Genannte Fachleute sind Wissensreferenzen, keine bestätigten Partner. Zahlen, Szenarien und lokale Rechtslage bleiben unterscheidbar.</p></div><div class="source-grid"><div class="source"><span>OECD · Skills</span><h3>A Skills-First Labour Market</h3><p>Skills-first über Recruiting hinaus in Lernen, Leistung und Karriere.</p><a href="https://www.oecd.org/en/publications/a-skills-first-labour-market_2e1b85f0-en.html" target="_blank" rel="noopener noreferrer">Originalquelle ↗</a></div><div class="source"><span>WHO · Gesundheit</span><h3>Mental Health at Work</h3><p>Organisatorische Eingriffe und Führungskräftetraining.</p><a href="https://www.who.int/publications/i/item/9789240053052" target="_blank" rel="noopener noreferrer">Originalquelle ↗</a></div><div class="source"><span>IEA · Ressourcen</span><h3>Critical Minerals Outlook</h3><p>Risiken konzentrierter Lieferketten und Verarbeitung.</p><a href="https://www.iea.org/reports/global-critical-minerals-outlook-2025/executive-summary" target="_blank" rel="noopener noreferrer">Originalquelle ↗</a></div><div class="source"><span>OECD · Zukunft</span><h3>Strategic Foresight Toolkit</h3><p>Szenarien prüfen, statt eine einzige Zukunft zu behaupten.</p><a href="https://www.oecd.org/en/publications/foresight-toolkit-for-resilient-public-policy_bcdd9304-en.html" target="_blank" rel="noopener noreferrer">Originalquelle ↗</a></div></div></div>
+  </section>
+
+  <section class="sources" id="experten" style="padding-top:0">
+    <div class="container">
+      <div class="eyebrow green">Forschungsstimmen · Keine bestätigten Partner</div>
+      <div class="expert-grid">
+        <div class="expert"><small>UX</small><a href="https://jnd.org/humanity-centered-versus-human-centered-design/" target="_blank" rel="noopener noreferrer">Don Norman ↗</a><p>Menschen- und gesellschaftsbezogenes Design.</p></div>
+        <div class="expert"><small>Learning Experience</small><a href="https://blog.cathy-moore.com/action-mapping-a-visual-approach-to-training-design/" target="_blank" rel="noopener noreferrer">Cathy Moore ↗</a><p>Von Geschäftsproblemen zu beobachtbaren Handlungen.</p></div>
+        <div class="expert"><small>Futures Gaming</small><a href="https://www.iftf.org/insights/more-than-forecasts-lumisphere-op-ed/" target="_blank" rel="noopener noreferrer">Jane McGonigal ↗</a><p>Soziale Simulation und Zukunftsdenken.</p></div>
+        <div class="expert"><small>Strategic Foresight</small><a href="https://ftsg.com/member/amy-webb/" target="_blank" rel="noopener noreferrer">Amy Webb ↗</a><p>Signale, Szenarien und strategische Entscheidungen.</p></div>
+        <div class="expert"><small>Skills & Organisation</small><a href="https://www.mercer.com/en-sa/insights/talent-and-transformation/skill-based-talent-management/interview-leading-the-skills-powered-enterprise/" target="_blank" rel="noopener noreferrer">Ravin Jesuthasan ↗</a><p>Skills-basierte Arbeits- und Talentarchitektur.</p></div>
+        <div class="expert"><small>Teamlernen</small><a href="https://www.hbs.edu/ris/Publication%20Files/02-062_0b5726a8-443d-4629-9e75-736679b870fc.pdf" target="_blank" rel="noopener noreferrer">Amy Edmondson ↗</a><p>Psychologische Sicherheit und Lernen im Team.</p></div>
+        <div class="expert"><small>Multimedia-Lernen</small><a href="https://psych.ucsb.edu/index.php/people/faculty/richard-mayer" target="_blank" rel="noopener noreferrer">Richard Mayer ↗</a><p>Verständliche digitale Lernumgebungen.</p></div>
+        <div class="expert"><small>Burnout & Arbeit</small><a href="https://psychology.berkeley.edu/node/247" target="_blank" rel="noopener noreferrer">Christina Maslach ↗</a><p>Belastung und Bedingungen gesunder Arbeit.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing"><div class="container closing-grid"><div><div class="eyebrow">Die nächste Entscheidung beginnt hier</div><h2>Spielt die Zukunft durch. Entscheidet heute besser.</h2><p>Startet den fiktiven Fall und prüft, welche Annahmen eure Strategie tragen. Der vollständige Workshop übersetzt diese Methode auf einen realen Geschäftsbereich.</p></div><a href="#game" class="button ink">Planspiel starten ↑</a></div></section>
+  <footer class="footer"><div class="container footer-row"><span>Skill-Based Lab · Executive-Konzeptdemo · November 2026</span><span>Fiktiver Unternehmensfall · belegte externe Quellen · keine Kundendatenübertragung</span></div></footer>
+  </div>
+  </main>
+
+  <script src="./decision-studio-model.js"></script>
+  <script src="./decision-studio-lessons.js"></script>
+  <script src="./decision-studio-library.js"></script>
+  <script>
+    "use strict";
+    function renderLessonSamplers(){
+      const lessonBodies=Array.from(document.querySelectorAll("#inhalte .module-body"));
+      DecisionStudioLessons.lessons.forEach(function(lesson,index){
+        const body=lessonBodies[index];
+        if(!body)return;
+        const section=document.createElement("section");
+        section.className="lesson-sampler";
+        section.setAttribute("aria-label","3C-Probelektion: "+lesson.title);
+        const label=document.createElement("div");
+        label.className="lesson-label";
+        label.textContent="3C / PROBELEKTION";
+        const title=document.createElement("h4");
+        title.textContent=lesson.title;
+        const compress=document.createElement("div");
+        compress.className="lesson-part";
+        const compressHeading=document.createElement("h5");
+        compressHeading.textContent="01 · COMPRESS";
+        const patterns=document.createElement("ol");
+        lesson.compress.forEach(function(pattern){
+          const item=document.createElement("li");
+          item.textContent=pattern;
+          patterns.appendChild(item);
+        });
+        compress.append(compressHeading,patterns);
+        const compile=document.createElement("div");
+        compile.className="lesson-part";
+        const compileHeading=document.createElement("h5");
+        compileHeading.textContent="02 · COMPILE";
+        const question=document.createElement("p");
+        question.className="lesson-question";
+        question.textContent=lesson.compile;
+        const choices=document.createElement("div");
+        choices.className="lesson-choices";
+        const feedback=document.createElement("p");
+        feedback.className="lesson-feedback";
+        feedback.setAttribute("role","status");
+        lesson.options.forEach(function(option,choiceIndex){
+          const button=document.createElement("button");
+          button.type="button";
+          button.textContent=option;
+          button.setAttribute("aria-pressed","false");
+          button.addEventListener("click",function(){
+            choices.querySelectorAll("button").forEach(function(other){other.setAttribute("aria-pressed",String(other===button));});
+            feedback.textContent=(choiceIndex===lesson.answer?"Treffende Entscheidung. ":"Noch einmal prüfen. ")+lesson.feedback;
+          });
+          choices.appendChild(button);
+        });
+        compile.append(compileHeading,question,choices,feedback);
+        const consolidate=document.createElement("div");
+        consolidate.className="lesson-part";
+        const consolidateHeading=document.createElement("h5");
+        consolidateHeading.textContent="03 · CONSOLIDATE";
+        const instruction=document.createElement("p");
+        instruction.textContent="Beantworte jede Frage erst selbst. Öffne dann den Prüfgedanken.";
+        const recall=document.createElement("div");
+        recall.className="lesson-recall";
+        lesson.consolidate.forEach(function(prompt,recallIndex){
+          const detail=document.createElement("details");
+          const summary=document.createElement("summary");
+          summary.textContent=prompt;
+          const answer=document.createElement("p");
+          answer.textContent=lesson.recallAnswers[recallIndex];
+          detail.append(summary,answer);
+          recall.appendChild(detail);
+        });
+        const transfer=document.createElement("p");
+        transfer.className="lesson-transfer";
+        transfer.textContent="Arbeitsprobe · "+lesson.transfer;
+        const source=document.createElement("a");
+        source.href=lesson.sourceUrl;
+        source.target="_blank";
+        source.rel="noopener noreferrer";
+        source.textContent="Forschungsanker: "+lesson.sourceLabel+" ↗";
+        consolidate.append(consolidateHeading,instruction,recall,transfer,source);
+        section.append(label,title,compress,compile,consolidate);
+        body.appendChild(section);
+      });
+    }
+    renderLessonSamplers();
+    const options = {
+      skills:[
+        {id:"A",title:"Aufgaben kartieren & intern qualifizieren",cost:40000,desc:"Skill-Abdeckung +15; Belastung zunächst +5."},
+        {id:"B",title:"Eine Spezialistin extern einstellen",cost:65000,desc:"Skill-Abdeckung +12; Lieferfähigkeit +4."},
+        {id:"C",title:"Status quo halten",cost:0,desc:"Budget bleibt frei; Engpass bleibt bestehen."}
+      ],
+      ai:[
+        {id:"A",title:"KI sofort breit ausrollen",cost:80000,desc:"Lieferfähigkeit +8; Belastung +8; Vertrauen −5."},
+        {id:"B",title:"Kontrollierten KI-Pilot starten",cost:35000,desc:"Lieferfähigkeit +3; Skill-Aufbau +5; Qualität +2."},
+        {id:"C",title:"KI vorerst nicht einführen",cost:0,desc:"Keine Einführungskosten; kein direkter Nutzen."}
+      ],
+      work:[
+        {id:"A",title:"Mehrstunden & enge Steuerung",cost:20000,desc:"Lieferfähigkeit +8; Belastung +15; Vertrauen −8."},
+        {id:"B",title:"Abläufe & Lernzeit neu gestalten",cost:30000,desc:"Lieferfähigkeit +3; Skills +6; Belastung −8; Vertrauen +6."},
+        {id:"C",title:"Shared Desk ohne Aufgabenprüfung",cost:10000,desc:"Lieferfähigkeit +1; Belastung +5; Vertrauen −4."}
+      ]
+    };
+    let game={step:0,skills:null,ai:null,work:null};
+    function clamp(n){return Math.max(0,Math.min(100,n));}
+    function state(event){
+      const s={budget:160000,delivery:80,skills:50,quality:80,load:40,trust:60};
+      if(game.skills==="A"){s.budget-=40000;s.skills+=15;s.load+=5;}
+      if(game.skills==="B"){s.budget-=65000;s.skills+=12;s.delivery+=4;}
+      if(game.ai==="A"){s.budget-=80000;s.delivery+=8;s.load+=8;s.trust-=5;}
+      if(game.ai==="B"){s.budget-=35000;s.delivery+=3;s.skills+=5;s.quality+=2;s.load+=2;s.trust+=2;}
+      if(game.step>=2&&event==="chip"){s.delivery-=15;s.quality-=3;if(game.skills==="A")s.delivery+=5;if(game.skills==="C")s.skills-=10;if(game.ai==="A")s.delivery-=6;if(game.ai==="B")s.delivery-=1;}
+      if(game.step>=2&&event==="demand"){s.delivery-=12;if(game.ai==="A"){s.delivery+=7;s.load+=5;}if(game.ai==="B")s.delivery+=2;}
+      if(game.work==="A"){s.budget-=20000;s.delivery+=8;s.load+=15;s.trust-=8;}
+      if(game.work==="B"){s.budget-=30000;s.delivery+=3;s.skills+=6;s.load-=8;s.trust+=6;}
+      if(game.work==="C"){s.budget-=10000;s.delivery+=1;s.load+=5;s.trust-=4;}
+      ["delivery","skills","quality","load","trust"].forEach(function(k){s[k]=clamp(s[k]);});
+      return s;
+    }
+    const euro=function(n){return new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);};
+    function metric(label,value,key){
+      const box=document.createElement("div");box.className="metric";
+      const top=document.createElement("div");top.className="metric-top";
+      const name=document.createElement("span");name.textContent=label;
+      const num=document.createElement("strong");num.textContent=value+" / 100";
+      top.append(name,num);
+      const track=document.createElement("div");track.className="meter"+(key==="load"?" load":"");
+      const bar=document.createElement("i");bar.style.width=value+"%";track.appendChild(bar);
+      box.append(top,track);return box;
+    }
+    function renderGame(){
+      const s=state("chip");
+      document.getElementById("budget").firstChild.textContent=euro(s.budget);
+      const m=document.getElementById("metrics");m.replaceChildren();
+      [["Lieferfähigkeit",s.delivery,"delivery"],["Skill-Abdeckung",s.skills,"skills"],["Qualität",s.quality,"quality"],["Belastung",s.load,"load"],["Vertrauen",s.trust,"trust"]].forEach(function(x){m.appendChild(metric(x[0],x[1],x[2]));});
+      for(let i=0;i<5;i++)document.getElementById("pr-"+i).classList.toggle("on",i<=game.step);
+      const label=document.getElementById("stage-label"),title=document.getElementById("stage-title"),copy=document.getElementById("stage-copy"),choiceBox=document.getElementById("choices"),shock=document.getElementById("shock"),finish=document.getElementById("game-finish");
+      choiceBox.replaceChildren();shock.replaceChildren();shock.hidden=true;finish.replaceChildren();finish.hidden=true;
+      if(game.step===0){label.textContent="Level 1 / 5 · Skills";title.textContent="Worauf bauen Sie Ihr Unternehmen?";copy.textContent="Auronix Components, ein fiktiver österreichischer Sensorhersteller mit 120 Beschäftigten, muss kritische Aufgaben sichern. Sie verfügen über ein fiktives Veränderungsbudget von 160.000 €.";choices("skills",options.skills);}
+      if(game.step===1){label.textContent="Level 2 / 5 · KI";title.textContent="Was soll KI im Service tun?";copy.textContent="Ein Anbieter verspricht schnellere Antworten. Sie müssen Qualität, Daten und menschliche Verantwortung klären.";choices("ai",options.ai);}
+      if(game.step===2){label.textContent="Level 3 / 5 · Schock";title.textContent="Die Lieferkette bricht ein.";copy.textContent="Ein kritischer Chip kommt später, Energie wird teurer. Der Kunde fordert trotzdem Verlässlichkeit. Frühere Entscheidungen zeigen jetzt ihre Nebenwirkungen.";shock.hidden=false;const h=document.createElement("strong");h.textContent="Die verdeckte Regel — jetzt offen";const p=document.createElement("p");p.textContent="Lieferfähigkeit −15, Qualität −3. Interne Qualifizierung mildert den Lieferverlust um 5. Der breite KI-Rollout verliert zusätzlich 6 Lieferpunkte, der Pilot 1. Status quo kostet 10 Skill-Punkte. Alle Werte sind fiktive Spielannahmen.";const source=document.createElement("a");source.href="https://www.iea.org/reports/global-critical-minerals-outlook-2025/executive-summary";source.target="_blank";source.rel="noopener noreferrer";source.textContent="IEA-Quelle zum realen Lieferkettenrisiko ↗";const next=document.createElement("button");next.type="button";next.className="button acid small";next.textContent="Folgen prüfen und weiter →";next.addEventListener("click",function(){game.step=3;renderGame();});shock.append(h,p,source,document.createElement("br"),document.createElement("br"),next);}
+      if(game.step===3){label.textContent="Level 4 / 5 · Arbeitssystem";title.textContent="Wie bleibt das Team leistungsfähig?";copy.textContent="Termindruck, unterschiedliche Arbeitsorte und Erschöpfung verlangen eine Entscheidung über Arbeit, Führung und Lernzeit.";choices("work",options.work);}
+      if(game.step===4){label.textContent="Level 5 / 5 · Boardroom";title.textContent="Welche Strategie bleibt tragfähig?";const alt=state("demand");copy.textContent="Im Chip-Szenario liegt die Lieferfähigkeit bei "+s.delivery+" von 100 Spielpunkten. Bei einem alternativen Nachfragesprung wären es "+alt.delivery+". Keine dieser Zahlen ist eine Unternehmensprognose.";finish.hidden=false;renderFinish(s,alt);}
+    }
+    function choices(kind,items){
+      const box=document.getElementById("choices"),available=state("chip").budget;
+      items.forEach(function(item){const b=document.createElement("button");b.type="button";b.className="choice";b.disabled=item.cost>available;const small=document.createElement("small");small.textContent=item.id+" / "+euro(item.cost);const strong=document.createElement("strong");strong.textContent=item.title;const text=document.createElement("span");text.textContent=item.desc+(b.disabled?" Budget reicht nicht.":"");b.append(small,strong,text);b.addEventListener("click",function(){game[kind]=item.id;game.step++;renderGame();});box.appendChild(b);});
+    }
+    function renderFinish(s,alt){
+      const box=document.getElementById("game-finish");
+      const p=document.createElement("p");p.textContent="Ihr Pfad: Skills "+game.skills+" · KI "+game.ai+" · Arbeit "+game.work+". Übrig: "+euro(s.budget)+". Unter zwei Zukünften entstehen unterschiedliche Folgen. Prüfen Sie jetzt einen Euro-Fall aus eigenen, belegbaren Eingaben.";box.appendChild(p);
+      const fields=document.createElement("div");fields.className="finance-in-game";
+      const inputData=[["Personen",20,"people"],["Stunden/Woche",1,"hours"],["Wert je Stunde (€)",45,"value"],["Gesamtkosten (€)",20000,"cost"],["Wirksame Wochen",40,"weeks"],["Realisierung (%)",50,"rate"]];
+      inputData.forEach(function(item){const label=document.createElement("label");label.textContent=item[0];const input=document.createElement("input");input.type="number";input.min="0";input.value=String(item[1]);input.dataset.fin=item[2];label.appendChild(input);fields.appendChild(label);});box.appendChild(fields);
+      const result=document.createElement("div");result.className="finance-result";box.appendChild(result);
+      const explanation=document.createElement("p");explanation.style.fontSize="11px";box.appendChild(explanation);
+      function calc(){const v={};fields.querySelectorAll("input").forEach(function(i){v[i.dataset.fin]=Math.max(0,Number(i.value)||0);});const base=v.people*v.hours*v.weeks*v.value*Math.min(100,v.rate)/100-v.cost;const low=v.people*v.hours*v.weeks*v.value*Math.max(0,v.rate-20)/100-v.cost;const high=v.people*v.hours*v.weeks*v.value*Math.min(100,v.rate+30)/100-v.cost;result.textContent="Nettoeffekt Basis: "+euro(base);explanation.textContent="Fiktives Rechenbeispiel. Vorsichtig "+euro(low)+" · Günstig "+euro(high)+". Formel: Personen × Stunden/Woche × Wochen × Wert/Stunde × realisierte Quote − Gesamtkosten. Spielpunkte werden nicht in Euro umgerechnet.";return {base:base,low:low,high:high,inputs:v};}
+      fields.addEventListener("input",calc);calc();
+      const download=document.createElement("button");download.type="button";download.className="button acid small";download.textContent="Entscheidungsnotiz herunterladen ↓";download.addEventListener("click",function(){const f=calc();const text="SKILL-BASED LAB — DEMO-ENTSCHEIDUNGSNOTIZ\n\nFiktives Unternehmen: Auronix Components\nPfad: Skills "+game.skills+" / KI "+game.ai+" / Arbeit "+game.work+"\nBudget verbleibend: "+euro(s.budget)+"\nLieferfähigkeit bei Chipengpass: "+s.delivery+" Spielpunkte\nBei Nachfragesprung: "+alt.delivery+" Spielpunkte\n\nEuro-Modell (fiktive/ungeprüfte Eingaben):\nVorsichtig: "+euro(f.low)+"\nBasis: "+euro(f.base)+"\nGünstig: "+euro(f.high)+"\n\nNächste echte Schritte: Baseline erheben, Qualität/Belastung prüfen, Verantwortliche und Stop-/Go-Regel festlegen.\nAlle Spielwerte sind Designannahmen, keine Prognosen.";const url=URL.createObjectURL(new Blob([text],{type:"text/plain;charset=utf-8"}));const a=document.createElement("a");a.href=url;a.download="Skill-Based-Lab-Entscheidungsnotiz.txt";a.click();setTimeout(function(){URL.revokeObjectURL(url);},1000);});box.appendChild(download);
+    }
+    document.getElementById("reset-game").addEventListener("click",function(){game={step:0,skills:null,ai:null,work:null};renderGame();});
+    renderGame();
+
+    const tools=[
+      {type:"SKILL 01 / WORK SYSTEMS",title:"Rolle zu Skills",desc:"Eine Stellenbeschreibung in Aufgaben, beobachtbare Fähigkeiten und faire Nachweise übersetzen.",prompt:"Du bist ein kritischer HR- und Organisationspartner. Frage zuerst nach Geschäftsbereich, kritischer Kundenleistung, Aufgaben und Qualitätsmaß. Zerlege die Rolle in 3–5 Aufgaben. Formuliere je Aufgabe beobachtbare Skills und einen Arbeitsproben-Nachweis. Trenne gesetzlich nötige Qualifikationen von frei gestaltbaren Anforderungen. Nenne zwei Wege: interne Entwicklung und externe Besetzung. Erfinde keine Daten.",output:"Output: Task- und Skill-Map"},
+      {type:"SKILL 02 / AI & WORK",title:"KI-Task-Audit",desc:"Einen Arbeitsprozess auf KI-Nutzen, Qualität, Daten und menschliche Verantwortung prüfen.",prompt:"Zerlege den Prozess in konkrete Schritte. Nenne je Schritt möglichen KI-Beitrag, Datenarten, Qualitätsrisiken, erforderliche menschliche Freigabe und einen vierwöchigen Vergleichstest. Stelle vor jeder Prozentzahl die Frage nach Baseline und Gegenfaktum. Definiere eine Stop-Regel für Qualität, Datenschutz und Belastung.",output:"Output: KI-Pilotplan"},
+      {type:"SKILL 03 / HEALTH",title:"Gesundes Teamdesign",desc:"Belastungsquellen auf Systemebene identifizieren und organisatorische Änderungen planen.",prompt:"Frage nach Arbeitsmenge, Kontrolle, Prioritäten, sozialer Unterstützung, Fairness und Erholung. Suche zuerst organisatorische Ursachen. Formuliere drei Maßnahmen mit Verantwortlichen, beteiligten Beschäftigten und 30-Tage-Rückmeldung. Stelle keine medizinische Diagnose und erstelle keinen persönlichen Score.",output:"Output: Team-Maßnahmenplan"},
+      {type:"SKILL 04 / HYBRID",title:"Hybrid Agreement",desc:"Regeln für hybride und ortsgebundene Arbeit mit gleicher Sichtbarkeit gestalten.",prompt:"Liste die Aufgaben des Teams auf und ordne Ort, Zeit, benötigte Zusammenarbeit und Sicherheitsanforderungen zu. Formuliere Regeln für Erreichbarkeit, Fokuszeit, dokumentierte Entscheidungen, Onboarding und Entwicklungschancen. Prüfe Fairness zwischen mobilen und ortsgebundenen Beschäftigten. Teste die Vereinbarung 30 Tage.",output:"Output: Team Operating Agreement"},
+      {type:"SKILL 05 / FINANCE",title:"90-Tage-Business-Case",desc:"Zwei Alternativen mit Euro-Bandbreiten, Unsicherheit und Nebenwirkungen vergleichen.",prompt:"Frage nach Baseline, Gegenfaktum, Kosten, Zeithorizont, Qualitätsmaß und realisierbarer Kapazität. Berechne Minimum, Basis und Maximum nur aus angegebenen Werten. Zeige Formel und mögliche Doppelzählungen. Nenne Auswirkungen auf Skills, Arbeitsbelastung und Fairness. Formuliere Stop-/Go-Kriterien nach 30 und 90 Tagen.",output:"Output: Executive-Entscheidungsbrief"}
+    ];
+    let toolIndex=0;
+    function renderTool(){const t=tools[toolIndex];document.getElementById("tool-type").textContent=t.type;document.getElementById("tool-title").textContent=t.title;document.getElementById("tool-desc").textContent=t.desc;document.getElementById("tool-prompt").textContent=t.prompt;document.getElementById("tool-output").textContent=t.output;document.querySelectorAll("[data-tool]").forEach(function(b){b.setAttribute("aria-pressed",String(Number(b.dataset.tool)===toolIndex));});}
+    document.querySelectorAll("[data-tool]").forEach(function(b){b.addEventListener("click",function(){toolIndex=Number(b.dataset.tool);renderTool();});});
+    document.getElementById("copy-tool").addEventListener("click",async function(){
+      const text=tools[toolIndex].prompt;
+      let copied=false;
+      try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);copied=true;}}catch(error){}
+      if(!copied){
+        const helper=document.createElement("textarea");
+        helper.value=text;helper.style.position="fixed";helper.style.opacity="0";
+        document.body.appendChild(helper);helper.select();
+        try{copied=document.execCommand("copy");}catch(error){}
+        helper.remove();
+      }
+      const status=document.getElementById("copy-status");
+      if(copied){status.textContent="Prompt kopiert.";this.textContent="Kopiert ✓";const button=this;setTimeout(function(){button.textContent="Prompt kopieren ↗";},1800);}
+      else{const range=document.createRange();range.selectNodeContents(document.getElementById("tool-prompt"));window.getSelection().removeAllRanges();window.getSelection().addRange(range);status.textContent="Der Prompt ist markiert. Bitte mit Strg+C kopieren.";this.textContent="Text markiert — Strg+C";}
+    });
+    renderTool();
+
+    const decisionModel=window.DecisionStudioModel;
+    const grillQuestions=[
+      {title:"CFO / Kapital",question:"Welche Zahl darf in die Freigabe?",options:["Die höchste Produktivitätszahl aus einer bekannten Studie.","Ein lokaler Vergleich mit Vollkosten, Qualität und realisierbarer Kapazität.","Die Zeitersparnis aus der Anbieter-Demo mal alle Beschäftigten."],correct:1,feedback:"Externe Studien und Demos sind Signale. Eine Investition braucht eigene Basisdaten, Kosten und eine überprüfbare Nutzung freiwerdender Kapazität."},
+      {title:"HR / Fähigkeiten",question:"Wie macht ihr benötigtes Können überprüfbar?",options:["Eine Stellenanzeige mit mehr Schlagworten schreiben.","Eine Kursbibliothek für alle freischalten.","Kritische Aufgabe, beobachtbare Skills, Übungszeit und Nachweis festlegen."],correct:2,feedback:"Ein Skill wird erst planbar, wenn Arbeit, Übung und ein beobachtbarer Nachweis beschrieben sind. Recruiting kann danach Teil der Lösung sein."},
+      {title:"Team / gesunde Leistung",question:"Das Team meldet mehr Fehler und Überlastung. Was folgt?",options:["Arbeitsmenge, Prioritäten und Meldeverhalten prüfen; eine organisatorische Änderung testen.","Nur ein Resilienztraining buchen.","Fehlermeldungen als schlechte Performance werten."],correct:0,feedback:"Mehr Meldungen allein beweisen keine schlechtere Qualität. Arbeitsbedingungen, Fehlerursache und Belastung müssen getrennt geprüft werden."},
+      {title:"Board / Unsicherheit",question:"Welcher Beschluss hält auch bei einer unerwarteten Änderung?",options:["Eine feste Zukunftsprognose als Beweis vorlegen.","Zwei plausible Szenarien, reversible Schritte und Stop-/Go-Signale festhalten.","Alle Mittel heute ausgeben, damit keine Option offenbleibt."],correct:1,feedback:"Szenarien ersetzen keine Prognose. Sie zeigen, welche Schritte unter mehreren Zukünften tragfähig und korrigierbar sind."}
+    ];
+    let grillDecision=-1;
+    let activeGrillCaseId="ai";
+    let grillMemoText="";
+    let grillNet=-21400;
+    const grillRealization=document.getElementById("grill-realization");
+    function updateGrillEuro(){
+      const rate=Number(grillRealization.value)/100;
+      grillNet=12000*0.5*4/60*rate*45+10800-43000;
+      document.getElementById("grill-realization-value").textContent=grillRealization.value+" %";
+      document.getElementById("grill-net").textContent=new Intl.NumberFormat("de-AT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(grillNet);
+    }
+    grillRealization.addEventListener("input",updateGrillEuro);
+    updateGrillEuro();
+    const grillQuestionsBox=document.getElementById("grill-questions");
+    grillQuestions.forEach(function(item,index){
+      const field=document.createElement("fieldset");field.className="grill-fieldset";
+      const legend=document.createElement("legend");legend.textContent=(index+1)+". "+item.title;field.appendChild(legend);
+      const prompt=document.createElement("small");prompt.textContent=item.question;field.appendChild(prompt);
+      item.options.forEach(function(option,optionIndex){
+        const label=document.createElement("label");const input=document.createElement("input");
+        input.type="radio";input.name="grill-q-"+index;input.value=String(optionIndex);
+        label.append(input,document.createTextNode(option));field.appendChild(label);
+      });
+      grillQuestionsBox.appendChild(field);
+    });
+    function showGrillStep(number){
+      for(let i=1;i<=4;i++)document.getElementById("grill-step-"+i).hidden=i!==number;
+    }
+    function updateProfileDemo(caseId,optionTitle,rationale,response){
+      document.getElementById("profile-empty").hidden=true;
+      document.getElementById("profile-evidence").hidden=false;
+      document.getElementById("profile-case").textContent="Fall: "+decisionModel.getCase(caseId).title+" · Erste Entscheidung: "+optionTitle;
+      document.getElementById("profile-proof-text").textContent="Du hast deine Annahme formuliert und auf eine Gegenfrage reagiert: "+rationale+" / "+response;
+      const next={
+        ai:"Teste an eigenen Fällen Qualität, Nacharbeit und die tatsächliche Verwendung freiwerdender Zeit.",
+        skills:"Beschreibe eine kritische Aufgabe als beobachtbare Fähigkeiten und vereinbare einen Vertretungsnachweis.",
+        hybrid:"Formuliere eine Teamregel zu Koordination und Lernzugang; prüfe sie mit ortsgebundenen und mobilen Rollen."
+      };
+      document.getElementById("profile-next-step").textContent=next[caseId];
+    }
+    function renderGrillCase(caseId){
+      const selected=decisionModel.getCase(caseId);
+      if(!selected)return;
+      activeGrillCaseId=caseId;
+      grillDecision=-1;
+      grillMemoText="";
+      document.getElementById("grill-case-name").textContent="Fall "+selected.index+" · "+selected.category;
+      document.getElementById("grill-dossier-title").textContent=selected.title;
+      document.getElementById("grill-dossier-text").textContent=selected.dilemma;
+      const facts=document.getElementById("grill-dossier-facts");
+      facts.replaceChildren();
+      selected.facts.forEach(function(pair){
+        const row=document.createElement("div");
+        const label=document.createElement("span");label.textContent=pair[0];
+        const value=document.createElement("strong");value.textContent=pair[1];
+        row.append(label,value);facts.appendChild(row);
+      });
+      const source=document.getElementById("grill-dossier-source");
+      source.href=selected.sourceUrl;
+      source.textContent=selected.sourceLabel+" ↗";
+      const options=decisionModel.getOptions(caseId);
+      document.querySelectorAll("[data-decision-index]").forEach(function(button,index){
+        button.querySelector("strong").textContent=String.fromCharCode(65+index)+" · "+options[index].title;
+        button.querySelector("span").textContent=options[index].description;
+        button.setAttribute("aria-pressed","false");
+      });
+      document.getElementById("grill-calculator").hidden=caseId!=="ai";
+      const evidenceNote=document.getElementById("grill-evidence-note");
+      evidenceNote.hidden=caseId==="ai";
+      evidenceNote.textContent=caseId==="ai"?"":"Evidenzgrenze: "+selected.evidence+" Für eine Euro-Rechnung fehlen lokale Basisdaten und Vollkosten.";
+      document.getElementById("grill-rationale").value="";
+      document.getElementById("grill-response").value="";
+      grillRealization.value="60";updateGrillEuro();
+      grillQuestionsBox.querySelectorAll('input[type="radio"]').forEach(function(input){input.checked=false;});
+      document.querySelectorAll(".grill-error").forEach(function(error){error.textContent="";});
+      showGrillStep(1);
+    }
+    document.querySelectorAll("[data-decision-index]").forEach(function(button){
+      button.addEventListener("click",function(){
+        grillDecision=Number(button.dataset.decisionIndex);
+        document.querySelectorAll("[data-decision-index]").forEach(function(other){other.setAttribute("aria-pressed",String(other===button));});
+        document.getElementById("grill-error-1").textContent="";
+      });
+    });
+    document.getElementById("grill-commit").addEventListener("click",function(){
+      const rationale=document.getElementById("grill-rationale").value.trim();
+      if(grillDecision<0||rationale.length<30){document.getElementById("grill-error-1").textContent="Bitte wähle eine Option und begründe sie mit mindestens einem vollständigen Gedanken.";return;}
+      document.getElementById("grill-challenge").textContent=decisionModel.getChallenge(activeGrillCaseId,grillDecision);
+      showGrillStep(2);
+    });
+    document.getElementById("grill-respond").addEventListener("click",function(){
+      if(document.getElementById("grill-response").value.trim().length<30){document.getElementById("grill-error-2").textContent="Bitte beantworte die Gegenfrage konkret. Was prüfst oder änderst du?";return;}
+      document.getElementById("grill-error-2").textContent="";
+      showGrillStep(3);
+    });
+    document.getElementById("grill-evaluate").addEventListener("click",function(){
+      const answers=grillQuestions.map(function(_,index){return document.querySelector('input[name="grill-q-'+index+'"]:checked');});
+      if(answers.some(function(answer){return !answer;})){document.getElementById("grill-error-3").textContent="Bitte beantworte alle vier Board-Fragen.";return;}
+      document.getElementById("grill-error-3").textContent="";
+      const score=answers.reduce(function(total,answer,index){return total+(Number(answer.value)===grillQuestions[index].correct?1:0);},0);
+      document.getElementById("grill-score").textContent=score+" von 4 Entscheidungskriterien sind in dieser Übung belastbar beantwortet. Das ist keine Bewertung deiner Person.";
+      const feedback=document.getElementById("grill-feedback");feedback.replaceChildren();
+      const list=document.createElement("ul");
+      grillQuestions.forEach(function(item,index){
+        const li=document.createElement("li");
+        li.textContent=(Number(answers[index].value)===item.correct?"✓ ":"Prüfen: ")+item.title+" — "+item.feedback;
+        list.appendChild(li);
+      });
+      feedback.appendChild(list);
+      const lines=[
+        "SKILL-BASED LAB / PERSÖNLICHER DECISION BRIEF",
+        "Fiktiver Fall · erstellt "+new Date().toLocaleDateString("de-AT"),
+        "",
+        "FALL: "+decisionModel.getCase(activeGrillCaseId).title,
+        "ERSTE ENTSCHEIDUNG: "+decisionModel.getOptions(activeGrillCaseId)[grillDecision].title,
+        "MEINE BEGRÜNDUNG: "+document.getElementById("grill-rationale").value.trim(),
+        "",
+        "KRITISCHE GEGENFRAGE: "+decisionModel.getChallenge(activeGrillCaseId,grillDecision),
+        "MEINE VERTEIDIGUNG ODER REVISION: "+document.getElementById("grill-response").value.trim(),
+        "",
+        "BOARD-PRÜFUNG: "+score+" von 4 Kriterien belastbar beantwortet",
+        activeGrillCaseId==="ai"?"EURO-CHECK: "+grillRealization.value+" % realisierte Zeit; vorläufiger Nettoeffekt "+new Intl.NumberFormat("de-AT",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(grillNet):"EURO-CHECK: Für diesen Fall fehlen lokale Basisdaten und Vollkosten. Kein ROI behauptet.",
+        "RECHENGRENZE: Fiktive Annahmen; lokale Daten und weitere Kosten müssen vor einer Freigabe geprüft werden.",
+        "NÄCHSTER SCHRITT: Baseline, Vollkosten, Qualitätsgrenze und betroffene Menschen für einen 90-Tage-Test festlegen.",
+        "",
+        "Hinweis: Alle Unternehmenswerte des Falls sind fiktiv. Dieser Bericht ist eine Reflexion, keine Unternehmensprognose oder Personendiagnose."
+      ];
+      grillMemoText=lines.join("\n");
+      document.getElementById("grill-memo").textContent=grillMemoText;
+      updateProfileDemo(activeGrillCaseId,decisionModel.getOptions(activeGrillCaseId)[grillDecision].title,document.getElementById("grill-rationale").value.trim(),document.getElementById("grill-response").value.trim());
+      showGrillStep(4);
+    });
+    document.getElementById("grill-download").addEventListener("click",function(){
+      const url=URL.createObjectURL(new Blob([grillMemoText],{type:"text/plain;charset=utf-8"}));
+      const link=document.createElement("a");link.href=url;link.download="Skill-Based-Lab_Decision-Brief.txt";link.click();
+      setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    });
+    document.getElementById("grill-restart").addEventListener("click",function(){
+      renderGrillCase(activeGrillCaseId);
+    });
+
+    const regions={
+      global:{title:"Globale Signale",text:"KI, Demografie, Lieferketten und Energie verändern Aufgaben und Geschäftsmodelle.",signal:"Internationale Trends beschreiben mögliche Belastungen und Chancen. Sie sind keine Prognose für ein einzelnes KMU.",decision:"Welche Aufgabe, Ressource oder Fähigkeit wäre bei zwei verschiedenen Zukunftsszenarien kritisch?",scope:"Geltungsbereich: internationale Arbeitgeberbefragung; lokale Folgen gesondert prüfen.",source:"WEF Future of Jobs 2025 · Originalquelle ↗",url:"https://www.weforum.org/publications/the-future-of-jobs-report-2025"},
+      eu:{title:"Europa",text:"Demografische Alterung und neue Arbeitsformen treffen europäische Branchen unterschiedlich.",signal:"Eurostat zeigt eine alternde EU-Bevölkerung. Aus dem EU-Mittelwert folgt keine Personalprognose für dein Unternehmen.",decision:"Welche Tätigkeit wird durch Alterung, Mobilität oder neue Technologie knapper – und welche Lern- oder Arbeitsregel kann helfen?",scope:"Geltungsbereich: EU-Bevölkerungsdaten 2025; Arbeitsrecht und Förderungen je Mitgliedstaat prüfen.",source:"Eurostat · Population structure and ageing ↗",url:"https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Population_structure_and_ageing"},
+      at:{title:"Österreich",text:"Der lokale Arbeitsmarkt, Pendeln, Telearbeit und Altersstruktur bestimmen, welche Maßnahmen tragfähig sind.",signal:"Die Bevölkerungsprognosen von Statistik Austria zeigen Szenarien für Bund und Länder, keine sichere Zahl für einzelne Betriebe.",decision:"Welche kritische Aufgabe braucht in deinem Bundesland eine zweite qualifizierte Person oder einen anderen Arbeitsort?",scope:"Geltungsbereich: Österreich und Bundesländer; konkrete Arbeitszeit- und Telearbeitsregeln vor Umsetzung rechtlich prüfen.",source:"Statistik Austria · Bevölkerungsprognosen ↗",url:"https://www.statistik.at/statistiken/bevoelkerung-und-soziales/bevoelkerung/demographische-prognosen/bevoelkerungsprognosen-fuer-oesterreich-und-die-bundeslaender"},
+      de:{title:"Deutschland",text:"Die starke Verrentung älterer Jahrgänge verändert das verfügbare Erwerbspersonenpotenzial.",signal:"Destatis beschreibt einen Rückgang des Erwerbspersonenpotenzials bis Mitte der 2030er-Jahre in seinen Vorausberechnungen. Die Größe hängt von Annahmen ab.",decision:"Welche Erfahrung geht in den nächsten Jahren verloren, und wie wird sie durch Tandems oder Arbeitsproben übertragbar?",scope:"Geltungsbereich: Deutschland; demografische Vorausberechnung, keine Betriebsprognose.",source:"Destatis · 16. Bevölkerungsvorausberechnung ↗",url:"https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsvorausberechnung/annahmen_ergebnisse_16te_kBv.html"},
+      ch:{title:"Schweiz",text:"Wachstum, Migration und Alterung verlaufen je Kanton unterschiedlich.",signal:"Das Bundesamt für Statistik veröffentlicht Bevölkerungsszenarien 2025–2055. Sie beschreiben plausible Entwicklungen unter Annahmen.",decision:"Welche Standorte und Qualifikationen wären bei verändertem Pendeln, Zuzug oder Altersmix besonders verletzlich?",scope:"Geltungsbereich: Schweiz und Kantone; Szenario, keine Prognose für ein Unternehmen.",source:"BFS · Bevölkerungsszenarien 2025–2055 ↗",url:"https://bevoelkerungsszenarien.bfs.admin.ch/barrierefreie-version"}
+    };
+    document.querySelectorAll("[data-region]").forEach(function(b){b.addEventListener("click",function(){
+      const r=regions[b.dataset.region];
+      document.getElementById("local-title").textContent=r.title;
+      document.getElementById("local-text").textContent=r.text;
+      document.getElementById("local-signal").textContent=r.signal;
+      document.getElementById("local-decision").textContent=r.decision;
+      document.getElementById("local-scope").textContent=r.scope;
+      const link=document.getElementById("local-source");
+      link.href=r.url;
+      link.textContent=r.source;
+      document.querySelectorAll("[data-region]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+    });});
+
+    const caseButtons=Array.from(document.querySelectorAll("[data-case]"));
+    let selectedCaseId="ai";
+    function selectCase(id){
+      const selected=decisionModel.getCase(id);
+      if(!selected)return;
+      selectedCaseId=id;
+      caseButtons.forEach(function(button){button.setAttribute("aria-pressed",String(button.dataset.case===id));});
+      document.querySelector(".studio-topline span:last-child").textContent=selected.index+" / 03";
+      document.getElementById("case-preview-category").textContent=selected.category;
+      document.getElementById("case-preview-title").textContent=selected.title;
+      document.getElementById("case-preview-dilemma").textContent=selected.dilemma;
+      document.getElementById("case-preview-question").textContent=selected.question;
+      document.getElementById("case-preview-evidence").textContent=selected.evidence;
+      selected.flow.forEach(function(step,index){
+        document.getElementById("flow-label-"+(index+1)).textContent=step.label;
+        document.getElementById("flow-value-"+(index+1)).textContent=step.value;
+      });
+      const source=document.getElementById("case-preview-source");
+      source.href=selected.sourceUrl;
+      source.textContent=selected.sourceLabel+" ↗";
+      renderGrillCase(selectedCaseId);
+    }
+    caseButtons.forEach(function(button){button.addEventListener("click",function(){selectCase(button.dataset.case);});});
+    selectCase(selectedCaseId);
+
+    const views=Array.from(document.querySelectorAll(".view"));
+    const viewButtons=Array.from(document.querySelectorAll("[data-view-target]"));
+    const sectionViews={main:"start",ansatz:"start",game:"game",sbo:"sbo",methode:"learn",inhalte:"learn",tools:"tools",downloads:"downloads","template-library":"downloads","leadership-pack":"downloads",check:"grill",profil:"profile",local:"local",workshop:"workshop","pilot-inquiry":"workshop",quellen:"sources",experten:"sources"};
+    const viewNames={start:"Start",grill:"Grill Me",game:"Planspiel",sbo:"Skill-Based Organization",learn:"Lernen",profile:"Mein Profil",tools:"Prompts und Skills",downloads:"Formulare und Downloads",local:"Europa und Österreich",workshop:"Workshop",sources:"Quellen und Experten"};
+    function resolveView(hash){
+      if(sectionViews[hash])return sectionViews[hash];
+      return Object.prototype.hasOwnProperty.call(viewNames,hash)?hash:"start";
+    }
+    function activateView(name,record,focusHeading){
+      const target=views.find(function(view){return view.dataset.view===name;});
+      if(!target)return;
+      const wasHidden=target.hidden;
+      views.forEach(function(view){view.hidden=view.dataset.view!==name;});
+      viewButtons.forEach(function(button){
+        if(button.dataset.viewTarget===name)button.setAttribute("aria-current","page");
+        else button.removeAttribute("aria-current");
+      });
+      document.getElementById("view-announcement").textContent="Bereich "+viewNames[name]+" geöffnet.";
+      if(record&&wasHidden){try{history.pushState({view:name},"","#"+name);}catch(error){/* Local file previews may restrict history state. */}}
+      if(focusHeading){
+        const heading=target.querySelector("h1,h2");
+        if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+      }
+    }
+    function showLearningContent(){
+      const section=document.getElementById("executive-route");
+      section.scrollIntoView({block:"start",behavior:"instant"});
+      const heading=section.querySelector("h1");
+      if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+    }
+    viewButtons.forEach(function(button){button.addEventListener("click",function(){
+      const name=button.dataset.viewTarget;
+      activateView(name,true,name!=="learn");
+      if(name==="learn")showLearningContent();
+    });});
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener("click",function(event){
+        const id=link.getAttribute("href").slice(1);
+        if(!sectionViews[id])return;
+        event.preventDefault();
+        activateView(sectionViews[id],true,true);
+        const targetSection=document.getElementById(id);
+        if(targetSection&&id!=="main")targetSection.scrollIntoView({block:"start",behavior:"instant"});
+      });
+    });
+    window.addEventListener("popstate",function(){
+      const hash=location.hash.slice(1);
+      activateView(resolveView(hash),false,false);
+    });
+    const initialHash=location.hash.slice(1);
+    if(initialHash){
+      activateView(resolveView(initialHash),false,false);
+      const targetSection=document.getElementById(initialHash);
+      if(initialHash==="learn")showLearningContent();
+      else if(targetSection)targetSection.scrollIntoView({block:"start",behavior:"instant"});
+    }
+  </script>
+  <script src="./decision-studio-library-ui.js"></script>
+  <script src="./decision-studio-downloads.js"></script>
+  <script src="./decision-studio-redesign.js"></script>
+</body>
+</html>
