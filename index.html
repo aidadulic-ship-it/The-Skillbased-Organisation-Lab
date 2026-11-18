@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Skill-Based Lab: Das Decision Studio für Skills, KI, Führung und die Zukunft der Arbeit. Drei Fälle, ein Decision Mirror, ein klarer nächster Schritt.">
+  <meta name="description" content="Was ist eine Skill-Based Organization? Skill-Based Lab erklärt den Ansatz und verbindet Skills, KI, Führung und die Zukunft der Arbeit mit interaktiven Entscheidungsfällen.">
   <meta name="theme-color" content="#070e22">
-  <title>Skill-Based Lab — Entscheide, was Arbeit morgen kann</title>
+  <title>Was ist eine Skill-Based Organization? | Skill-Based Lab</title>
   <style>
     :root{--canvas:#f8faff;--cobalt:#3157e8;--night:#111b25;--deep:#192a37;--forest:#284356;--paper:#f3f1eb;--white:#fffdf7;--line:#cbd0d0;--muted:#56636b;--lime:#e6fa76;--orange:#f48b70;--aqua:#9adbd7;--red:#a64c36}
     *{box-sizing:border-box}
@@ -439,11 +439,11 @@
   <div class="dark">
     <header class="container head">
       <a class="brand" href="#main" aria-label="Skill-Based Lab, zum Anfang"><span class="brandmark" aria-hidden="true">S</span>skill-based lab<span style="color:var(--lime)">.</span></a>
-      <a class="headcta" href="#check">Grill Me starten ↗</a>
+      <button type="button" class="rail-toggle" id="rail-toggle" aria-expanded="false" aria-controls="area-navigation" hidden><span class="rail-toggle-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="rail-toggle-label">Menü</span></button>
     </header>
   </div>
-  <aside class="icon-rail" aria-label="Bereiche">
-    <button type="button" data-view-target="start" aria-controls="view-start" aria-current="page" aria-label="Start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-7h6v7"/></svg><span>Start</span></button>
+  <aside class="icon-rail" id="area-navigation" aria-label="Bereiche" hidden>
+    <button type="button" data-view-target="start" aria-controls="view-start" aria-label="Start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-7h6v7"/></svg><span>Start</span></button>
     <button type="button" data-view-target="grill" aria-controls="view-grill" aria-label="Grill Me, Entscheidungsprüfung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6l-8-4ZM9 12l2 2 4-4"/></svg><span>Grill Me</span></button>
     <button type="button" data-view-target="sbo" aria-controls="view-sbo" aria-label="Skill-Based Organization"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg><span>Skill-Based<br>Org</span></button>
     <button type="button" data-view-target="learn" aria-controls="view-learn" aria-label="Lernen und Masterclass"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5 2 9l10 4 10-4-10-4ZM5 11v6c4 3 10 3 14 0v-6M22 9v7"/></svg><span>Lernen</span></button>
@@ -465,17 +465,22 @@
   </dialog>
   <span id="view-announcement" class="sr-only" role="status" aria-live="polite"></span>
   <main id="main">
-  <div class="view" data-view="start" id="view-start">
-    <div class="dark">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <div class="eyebrow acid">Skill-Based Lab / Decision Studio</div>
-            <h1>Arbeit neu organisieren. <span>90-Tage-Pilot mit Belegen.</span></h1>
-            <p class="hero-lead">Für DACH-KMU: Im Präsenz-Lab prüfen Geschäftsführung, HR und Fachbereiche eine reale Arbeitsentscheidung – mit Quellen, Skill-Map, Euro-Bandbreite und menschlichen Folgen. Teste die Methode zuerst an einem fiktiven Fall.</p>
-            <div class="hero-actions"><a href="#check" class="button acid">Decision Mirror testen <span aria-hidden="true">↗</span></a><a href="#pilot-inquiry" class="button outline">Pilot-Workshop anfragen ↗</a></div>
-            <p class="hero-meta">Kostenlose Demo · Drei Entscheidungsfälle · Ein konkreter 90-Tage-Plan im Workshop</p>
-          </div>
+  <div class="view" data-view="welcome" id="view-welcome">
+    <section class="sbo-explainer" id="sbo-explainer" aria-labelledby="sbo-explainer-title">
+      <div class="container">
+        <div class="sbo-explainer-head"><div class="eyebrow green">Skill-Based Lab · Unlock your potential</div><h2 id="sbo-explainer-title">Was ändert sich konkret?</h2><p><strong>Schaffe Wirkung. Werde zukunftsfähig.</strong><br>Aus einem starren Jobpaket wird eine überprüfbare Arbeitsentscheidung. Das ist ein Organisationsansatz, kein Versprechen, dass jede Rolle beliebig austauschbar wird.</p></div>
+        <div class="sbo-explainer-grid">
+          <div class="sbo-definition-card is"><span>01 / WAS ES IST</span><h3>Was es ist</h3><ul><li>Arbeit in Aufgaben und Ergebnisse übersetzen.</li><li>Benötigte Skills sichtbar und entwickelbar machen.</li><li>Können durch reale Arbeit und Arbeitsproben belegen.</li><li>Menschen fairer für Aufgaben und Entwicklungsmöglichkeiten berücksichtigen.</li></ul></div>
+          <div class="sbo-definition-card is-not"><span>02 / WAS ES NICHT IST</span><h3>Was es nicht ist</h3><ul><li>Rollen, Führung oder Verantwortung einfach abschaffen.</li><li>Menschen auf einen einzigen Skill-Score reduzieren.</li><li>Eine Skill-Datenbank kaufen und damit Transformation abhaken.</li><li>Zertifikate automatisch mit tatsächlicher Anwendung gleichsetzen.</li></ul></div>
+        </div>
+        <div class="sbo-explainer-next"><p><strong>Ein Beispiel:</strong> Statt „Projektmanager:in gesucht“ prüft ein Team, welche Planungs-, Abstimmungs- und Risikoaufgaben anstehen, welche Skills dafür nötig sind und woran gutes Handeln erkennbar wäre.</p><button type="button" class="button acid enter-lab" id="enter-lab">Starten <span aria-hidden="true">↗</span></button></div>
+      </div>
+    </section>
+  </div>
+  <div class="view" data-view="start" id="view-start" hidden>
+    <section class="start-decision-preview" id="start-decision" aria-labelledby="start-decision-title">
+      <div class="container start-decision-grid">
+        <div class="start-decision-copy"><div class="eyebrow acid">Aus Wissen wird Entscheidung</div><h2 id="start-decision-title">Jetzt eine echte Frage stellen.</h2><p>Wähle einen fiktiven Fall zu KI, Skills oder hybrider Arbeit. Der Decision Mirror zeigt die Gegenperspektive, die in einem schnellen Beschluss leicht übersehen wird.</p><a class="button acid" href="#check">Grill Me starten ↗</a><small>Interaktive Demo · keine Bewertung deiner Person</small></div>
           <div class="hero-art decision-canvas" aria-label="Drei wählbare Entscheidungsfälle">
             <div class="studio-topline"><span>DEIN ERSTER ENTSCHEIDUNGSTEST</span><span>01 / 03</span></div>
             <div class="decision-flow" id="decision-flow" aria-label="Vom Arbeitsproblem zur Investitionsfrage">
@@ -498,9 +503,8 @@
             </div>
             <div class="studio-footline"><span>Wähle einen Fall. Der Decision Mirror stellt die Gegenfrage.</span><a href="#check">Fall starten ↗</a></div>
           </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
   <div class="signal dark" aria-label="Belegte Signale">
     <div class="container signal-grid">
@@ -1164,17 +1168,29 @@
 
     const views=Array.from(document.querySelectorAll(".view"));
     const viewButtons=Array.from(document.querySelectorAll("[data-view-target]"));
-    const sectionViews={main:"start",ansatz:"start",game:"game",sbo:"sbo",methode:"learn",inhalte:"learn",tools:"tools",downloads:"downloads","template-library":"downloads","leadership-pack":"downloads",check:"grill",profil:"profile",local:"local",workshop:"workshop","pilot-inquiry":"workshop",quellen:"sources",experten:"sources"};
-    const viewNames={start:"Start",grill:"Grill Me",game:"Planspiel",sbo:"Skill-Based Organization",learn:"Lernen",profile:"Mein Profil",tools:"Prompts und Skills",downloads:"Formulare und Downloads",local:"Europa und Österreich",workshop:"Workshop",sources:"Quellen und Experten"};
+    const rail=document.getElementById("area-navigation");
+    const railToggle=document.getElementById("rail-toggle");
+    function setRailOpen(open){
+      rail.hidden=!open;
+      document.body.classList.toggle("rail-open",open);
+      railToggle.setAttribute("aria-expanded",String(open));
+      railToggle.querySelector(".rail-toggle-label").textContent=open?"Schließen":"Menü";
+    }
+    railToggle.addEventListener("click",function(){setRailOpen(rail.hidden);});
+    document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!rail.hidden){setRailOpen(false);railToggle.focus();}});
+    const sectionViews={main:"welcome","sbo-explainer":"welcome","start-decision":"start",ansatz:"start",game:"game",sbo:"sbo",methode:"learn",inhalte:"learn",tools:"tools",downloads:"downloads","template-library":"downloads","leadership-pack":"downloads",check:"grill",profil:"profile",local:"local",workshop:"workshop","pilot-inquiry":"workshop",quellen:"sources",experten:"sources"};
+    const viewNames={welcome:"Einstieg",start:"Start",grill:"Grill Me",game:"Planspiel",sbo:"Skill-Based Organization",learn:"Lernen",profile:"Mein Profil",tools:"Prompts und Skills",downloads:"Formulare und Downloads",local:"Europa und Österreich",workshop:"Workshop",sources:"Quellen und Experten"};
     function resolveView(hash){
       if(sectionViews[hash])return sectionViews[hash];
-      return Object.prototype.hasOwnProperty.call(viewNames,hash)?hash:"start";
+      return Object.prototype.hasOwnProperty.call(viewNames,hash)?hash:"welcome";
     }
     function activateView(name,record,focusHeading){
       const target=views.find(function(view){return view.dataset.view===name;});
       if(!target)return;
       const wasHidden=target.hidden;
       views.forEach(function(view){view.hidden=view.dataset.view!==name;});
+      if(name==="welcome")setRailOpen(false);
+      railToggle.hidden=name==="welcome";
       viewButtons.forEach(function(button){
         if(button.dataset.viewTarget===name)button.setAttribute("aria-current","page");
         else button.removeAttribute("aria-current");
@@ -1186,6 +1202,12 @@
         if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
       }
     }
+    const enterLab=document.getElementById("enter-lab");
+    enterLab.addEventListener("click",function(){
+      document.getElementById("view-start").scrollTop=0;
+      activateView("start",true,true);
+      setRailOpen(true);
+    });
     function showLearningContent(){
       const section=document.getElementById("executive-route");
       section.scrollIntoView({block:"start",behavior:"instant"});
@@ -1214,6 +1236,7 @@
     const initialHash=location.hash.slice(1);
     if(initialHash){
       activateView(resolveView(initialHash),false,false);
+      if(resolveView(initialHash)!=="welcome")setRailOpen(true);
       const targetSection=document.getElementById(initialHash);
       if(initialHash==="learn")showLearningContent();
       else if(targetSection)targetSection.scrollIntoView({block:"start",behavior:"instant"});
