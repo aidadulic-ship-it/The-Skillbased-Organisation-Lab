@@ -16,19 +16,13 @@
       <button type="button" class="rail-toggle" id="rail-toggle" aria-expanded="false" aria-controls="area-navigation" hidden><span class="rail-toggle-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="rail-toggle-label">Menü</span></button>
     </header>
   </div>
-  <aside class="icon-rail" id="area-navigation" aria-label="Bereiche" hidden>
-    <button type="button" data-view-target="start" aria-controls="view-start" aria-label="Start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-7h6v7"/></svg><span>Start</span></button>
-    <button type="button" data-view-target="sbo" aria-controls="view-sbo" aria-label="Skill-Based Organization"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg><span>Skill-Based<br>Org</span></button>
-    <button type="button" data-view-target="profile" aria-controls="view-profile" aria-label="Mein privates Profil" title="Mein privates Profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span>Profil</span></button>
-    <button type="button" data-view-target="learn" aria-controls="view-learn" aria-label="Lernen und Masterclass"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5 2 9l10 4 10-4-10-4ZM5 11v6c4 3 10 3 14 0v-6M22 9v7"/></svg><span>Lernen</span></button>
-    <button type="button" data-view-target="tools" aria-controls="view-tools" aria-label="Prompts und Skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 4 4-4 4m7 0h9M12 4h8M12 8h5M4 20h16"/></svg><span>Tools</span></button>
-    <button type="button" data-view-target="downloads" aria-controls="view-downloads" aria-label="Formulare und Downloads" title="Formulare und Downloads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4M5 4h4M15 4h4"/></svg><span>Downloads</span></button>
-    <div class="rail-divider" role="separator" aria-label="Vertiefende Bereiche"><span aria-hidden="true">VERTIEFEN</span></div>
-    <button type="button" class="rail-secondary" data-view-target="game" aria-controls="view-game" aria-label="Planspiel" title="Planspiel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h3"/></svg><span>Planspiel</span></button>
-    <button type="button" class="rail-secondary" data-view-target="grill" aria-controls="view-grill" aria-label="Grill Me, Entscheidungsprüfung" title="Grill Me, Entscheidungsprüfung"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6l-8-4ZM9 12l2 2 4-4"/></svg><span>Grill Me</span></button>
-    <button type="button" class="rail-secondary" data-view-target="local" aria-controls="view-local" aria-label="Europa und Österreich" title="Europa und Österreich"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-3 3-4 6-4 9s1 6 4 9M12 3c3 3 4 6 4 9s-1 6-4 9"/></svg><span>Europa/AT</span></button>
-    <button type="button" class="rail-secondary" data-view-target="sources" aria-controls="view-sources" aria-label="Quellen und Experten" title="Quellen und Experten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7c2 0 3 1 3 3v13c-1-1-2-2-4-2H4zM20 4h-3c-2 0-3 1-3 3v13c1-1 2-2 4-2h2z"/></svg><span>Quellen</span></button>
-    <button type="button" class="rail-secondary" data-view-target="workshop" aria-controls="view-workshop" aria-label="Workshop" title="Workshop"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="1"/><path d="M7 3v4M17 3v4M3 10h18M8 15h3"/></svg><span>Workshop</span></button>
+  <aside class="icon-rail" id="area-navigation" aria-label="Der Weg in sechs Schritten" hidden>
+    <button type="button" data-view-target="start" aria-controls="view-start" aria-label="Start" title="Start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-7h6v7"/></svg><span>1 Start</span></button>
+    <button type="button" data-view-target="fall" aria-controls="view-fall" aria-label="Schritt 2: Fall wählen" title="Fall wählen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg><span>2 Fall<br>wählen</span></button>
+    <button type="button" data-view-target="grill" aria-controls="view-grill" aria-label="Schritt 3: Entscheiden" title="Entscheiden"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6l-8-4ZM9 12l2 2 4-4"/></svg><span>3 Ent-<br>scheiden</span></button>
+    <button type="button" data-view-target="game" aria-controls="view-game" aria-label="Schritt 4: Widerstand üben" title="Widerstand üben"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h3"/></svg><span>4 Wider-<br>stand</span></button>
+    <button type="button" data-view-target="mitnehmen" aria-controls="view-mitnehmen" aria-label="Schritt 5: Entscheidung mitnehmen" title="Mitnehmen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4M5 4h4M15 4h4"/></svg><span>5 Mit-<br>nehmen</span></button>
+    <button type="button" data-view-target="workshop" aria-controls="view-workshop" aria-label="Schritt 6: Workshop anfragen" title="Workshop anfragen"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="1"/><path d="M7 3v4M17 3v4M3 10h18M8 15h3"/></svg><span>6 An-<br>fragen</span></button>
   </aside>
   <dialog id="voice-consent-dialog" class="voice-consent-dialog" aria-labelledby="voice-consent-title" aria-describedby="voice-consent-copy">
     <div class="eyebrow green">Spracheingabe / Datengrenze</div>
@@ -119,7 +113,7 @@
               <p class="case-preview-evidence" id="case-preview-evidence">Die ILO misst Exposition von Aufgaben gegenüber GenAI. Daraus folgt weder ein lokaler Produktivitätsgewinn noch ein Stellenabbau.</p>
               <a id="case-preview-source" href="https://www.ilo.org/publications/generative-ai-and-jobs-2025-update" target="_blank" rel="noopener noreferrer">ILO · Generative AI and jobs, 2025 ↗</a>
             </div>
-            <div class="studio-footline"><span>Wähle einen Fall. Der Decision Mirror stellt die Gegenfrage.</span><a href="#check">Fall starten ↗</a></div>
+            <div class="studio-footline"><span>Wähle einen Fall. Der Decision Mirror stellt die Gegenfrage.</span><button type="button" class="button acid" data-next="primary" data-view-target="fall">Weiter: Fall wählen ↗</button></div>
           </div>
       </div>
     </section>
@@ -162,7 +156,7 @@
           <div class="choices" id="choices"></div>
           <div class="shock" id="shock" hidden></div>
           <div class="game-finish" id="game-finish" hidden></div>
-          <div class="game-bottom"><button type="button" class="button outline small" id="reset-game">Neu beginnen</button><p>Die Spielmechanik ist ein Gesprächswerkzeug. Sie misst keine Menschen und prognostiziert keine Unternehmensleistung.</p></div>
+          <div class="game-bottom"><button type="button" class="button outline small" id="reset-game">Neu beginnen</button><button type="button" class="button acid small" data-next="primary" data-view-target="mitnehmen">Weiter: Entscheidung mitnehmen ↗</button><p>Die Spielmechanik ist ein Gesprächswerkzeug. Sie misst keine Menschen und prognostiziert keine Unternehmensleistung.</p></div>
         </div>
         <aside class="game-aside"><div class="eyebrow">Fiktive Spieltafel</div><div class="budget" id="budget">160.000 €<small>VERFÜGBARES BUDGET</small></div><div id="metrics"></div></aside>
       </div>
@@ -325,7 +319,7 @@
           </div><label class="grill-label" for="grill-rationale">Warum diese Option? Welche Annahme trägst du?</label><textarea class="grill-text" id="grill-rationale" placeholder="Meine Entscheidung beruht auf …; ich würde sie ändern, wenn …"></textarea><button type="button" class="button ink grill-action" id="grill-commit">Entscheidung verteidigen ↗</button><p class="grill-error" id="grill-error-1" role="alert"></p></div>
           <div id="grill-step-2" hidden><div class="grill-progress">02 / Gegenfrage</div><div class="grill-reveal">48 Stunden später · neue Lage</div><h3>Der Vorstand widerspricht.</h3><div class="grill-quote" id="grill-challenge"></div><p>Die Lage ist hypothetisch. Verteidige deine Entscheidung oder revidiere sie. Schreib konkret, was du jetzt prüfen und wem du die Folgen erklären würdest.</p><label class="grill-label" for="grill-response">Deine Verteidigung oder Revision</label><textarea class="grill-text" id="grill-response" placeholder="Ich bleibe bei der Entscheidung, wenn … / Ich ändere sie, weil …"></textarea><button type="button" class="button ink grill-action" id="grill-respond">Zur Board-Prüfung ↗</button><p class="grill-error" id="grill-error-2" role="alert"></p></div>
           <div id="grill-step-3" hidden><div class="grill-progress">03 / Board-Prüfung</div><h3>Vier Fragen trennen Meinung von Beschluss.</h3><p>Wähle je die belastbarste Antwort. Die Auswertung bewertet diese Kriterien, nicht deinen freien Text oder deine Person.</p><div class="grill-calculator" id="grill-calculator"><div class="eyebrow">Der Euro-Check / fiktive Fallrechnung</div><div><label for="grill-realization">Wie viel der gesparten Zeit wird wirklich wertschöpfend genutzt? <span id="grill-realization-value">60 %</span></label><input type="range" id="grill-realization" min="0" max="100" value="60"><p>12.000 Fälle · 4 Min. Ersparnis · 50 % Nutzung · 45 €/Std. · 10.800 € weniger Nacharbeit · 43.000 € Kosten</p></div><output id="grill-net" for="grill-realization">−21.400 €</output><small>Vorläufiger Effekt über zwölf Monate. Lernzeit, zusätzliche Qualitätssicherung und weitere Kosten fehlen noch. Gesparte Minuten sind nicht automatisch Umsatz.</small></div><div class="grill-evidence-note" id="grill-evidence-note" hidden></div><div id="grill-questions"></div><button type="button" class="button ink grill-action" id="grill-evaluate">Entscheidungsbericht erstellen ↗</button><p class="grill-error" id="grill-error-3" role="alert"></p></div>
-          <div id="grill-step-4" hidden><div class="grill-progress">04 / Dein Ergebnis</div><div class="grill-result"><h3>Dein Decision Brief.</h3><p id="grill-score"></p><div id="grill-feedback"></div><h4>Was du jetzt vertreten kannst</h4><pre id="grill-memo"></pre><div class="grill-actions"><button type="button" class="button ink" id="grill-download">Bericht herunterladen ↗</button><button type="button" class="button paper" data-view-target="profile">Im Profil ansehen ↗</button><button type="button" class="button paper" id="grill-restart">Anders entscheiden</button></div><p class="hero-meta">Privat in diesem Browser. Keine Übertragung, kein Persönlichkeitstest und keine behauptete Unternehmensprognose.</p></div></div>
+          <div id="grill-step-4" hidden><div class="grill-progress">04 / Dein Ergebnis</div><div class="grill-result"><h3>Dein Decision Brief.</h3><p id="grill-score"></p><div id="grill-feedback"></div><h4>Was du jetzt vertreten kannst</h4><pre id="grill-memo"></pre><div class="grill-actions"><button type="button" class="button ink" id="grill-download">Bericht herunterladen ↗</button><button type="button" class="button acid" data-next="primary" data-view-target="game">Weiter: Widerstand üben ↗</button><button type="button" class="button paper" data-view-target="profile">Im Profil ansehen ↗</button><button type="button" class="button paper" id="grill-restart">Anders entscheiden</button></div><p class="hero-meta">Privat in diesem Browser. Keine Übertragung, kein Persönlichkeitstest und keine behauptete Unternehmensprognose.</p></div></div>
         </div>
       </div>
     </div>
@@ -376,10 +370,65 @@
         <label for="inquiry-company">Unternehmen</label><input id="inquiry-company" name="company" autocomplete="organization" maxlength="120" required>
         <label for="inquiry-email">E-Mail für die Antwort</label><input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
         <label for="inquiry-question">Welche Arbeitsentscheidung steht an?</label><textarea id="inquiry-question" name="question" rows="4" maxlength="600" placeholder="Zum Beispiel: kritische Skills sichern, KI-Pilot, hybride Zusammenarbeit …" required></textarea>
-        <button type="submit" class="button acid" id="pilot-inquiry-submit">E-Mail-Entwurf öffnen ↗</button><p id="inquiry-status" role="status" class="library-small"></p>
+        <button type="submit" class="button acid" id="pilot-inquiry-submit" data-next="final">E-Mail-Entwurf öffnen ↗</button><p id="inquiry-status" role="status" class="library-small"></p>
       </form></div>
   </section>
 
+  </div>
+  <div class="view" data-view="fall" id="view-fall" hidden>
+  <section class="weg-stage" id="fall" aria-labelledby="fall-title">
+    <div class="container">
+      <div class="eyebrow acid">Schritt 2 von 6 · Fall wählen</div>
+      <h2 id="fall-title">Welche Entscheidung steht bei euch an?</h2>
+      <p class="weg-lead">Haltet euren echten Fall vor dem Workshop fest. Die vier fiktiven Fälle darunter dienen als Aufwärmübung. Im Workshop entscheidet ihr euren eigenen Fall.</p>
+      <form class="prework-form" id="prework-form" novalidate aria-labelledby="prework-title" aria-describedby="prework-local-note">
+        <div class="prework-heading"><div><span class="prework-kicker">Euer echter Fall · vor dem Workshop</span><h3 id="prework-title">Der Vorab-Fragebogen</h3></div><p>Eine Firma, ein Fall. Beschreibt die Entscheidung so konkret, wie ihr sie heute kennt.</p></div>
+        <div class="prework-grid">
+          <label for="prework-case">Fall *<textarea id="prework-case" name="case" rows="3" required placeholder="Welche Entscheidung steht an?"></textarea></label>
+          <label for="prework-goal">Ziel *<textarea id="prework-goal" name="goal" rows="3" required placeholder="Was soll sich durch den Pilot ändern?"></textarea></label>
+        </div>
+        <fieldset class="prework-metrics"><legend>Messgrößen · zwei nötig, dritte freiwillig</legend><p>Ausgangswert und Prüfschwelle dürfen offenbleiben. Keine Zahlen erfinden.</p>
+          <div class="prework-metric"><strong>01</strong><label for="prework-metric-1-name">Messgröße *<input id="prework-metric-1-name" type="text" required></label><label for="prework-metric-1-baseline">Ausgangswert · optional<input id="prework-metric-1-baseline" type="text" placeholder="Noch offen"></label><label for="prework-metric-1-threshold">Prüfschwelle · optional<input id="prework-metric-1-threshold" type="text" placeholder="Noch offen"></label></div>
+          <div class="prework-metric"><strong>02</strong><label for="prework-metric-2-name">Messgröße *<input id="prework-metric-2-name" type="text" required></label><label for="prework-metric-2-baseline">Ausgangswert · optional<input id="prework-metric-2-baseline" type="text" placeholder="Noch offen"></label><label for="prework-metric-2-threshold">Prüfschwelle · optional<input id="prework-metric-2-threshold" type="text" placeholder="Noch offen"></label></div>
+          <div class="prework-metric"><strong>03</strong><label for="prework-metric-3-name">Messgröße · optional<input id="prework-metric-3-name" type="text"></label><label for="prework-metric-3-baseline">Ausgangswert · optional<input id="prework-metric-3-baseline" type="text" placeholder="Noch offen"></label><label for="prework-metric-3-threshold">Prüfschwelle · optional<input id="prework-metric-3-threshold" type="text" placeholder="Noch offen"></label></div>
+        </fieldset>
+        <div class="prework-grid prework-bottom"><label for="prework-responsible-name">Verantwortliche Person · Name *<input id="prework-responsible-name" type="text" required></label><label for="prework-responsible-role">Funktion *<input id="prework-responsible-role" type="text" required></label><label for="prework-pilot-area">Gewünschter Pilotbereich *<input id="prework-pilot-area" type="text" required></label></div>
+        <p class="prework-local-note" id="prework-local-note">Nur in diesem Browserfenster. Kein automatischer Versand. Vor dem Schließen oder Neuladen bitte eine Datei herunterladen. Keine vertraulichen Personal- oder Gesundheitsdaten eingeben.</p>
+        <div class="prework-actions"><button type="button" id="prework-json">JSON herunterladen</button><button type="button" id="prework-text">Textfassung herunterladen</button><button type="button" id="prework-import-button">JSON importieren</button><input id="prework-import-file" type="file" accept=".json,application/json" hidden></div>
+        <div class="prework-confirm" id="prework-confirm" hidden role="group" aria-label="Import bestätigen"><p>Vorhandene Angaben durch die importierte Datei ersetzen?</p><button type="button" id="prework-replace">Vorhandene Angaben ersetzen</button><button type="button" id="prework-cancel">Abbrechen</button></div>
+        <p id="prework-status" class="prework-status" role="status" aria-live="polite"></p>
+      </form>
+      <h3 class="prework-demo-title">Vier Demo-Fälle zum Aufwärmen</h3>
+      <div class="hero-art decision-canvas" aria-label="Vier wählbare Entscheidungsfälle">
+        <div class="case-switcher" role="group" aria-label="Fall wählen"><button type="button" data-case="ai" aria-pressed="false">01 <span>KI</span></button><button type="button" data-case="skills" aria-pressed="false">02 <span>Skills</span></button><button type="button" data-case="hybrid" aria-pressed="false">03 <span>Hybrid</span></button><button type="button" data-case="pay" aria-pressed="false">04 <span>New Pay</span></button></div>
+        <div class="case-preview">
+          <div class="case-preview-kicker" id="fall-case-category">KI &amp; Produktivität</div>
+          <h3 id="fall-case-title">Die KI spart Zeit. Wer gewinnt sie?</h3>
+          <p id="fall-case-dilemma"></p>
+          <div class="case-preview-challenge"><span>DIE FRAGE AN DICH</span><p id="fall-case-question"></p></div>
+        </div>
+      </div>
+      <div class="grill-actions weg-actions"><button type="button" class="button acid" data-next="primary" data-view-target="grill">Weiter: Fall entscheiden ↗</button></div>
+    </div>
+  </section>
+  </div>
+  <div class="view" data-view="mitnehmen" id="view-mitnehmen" hidden>
+  <section class="weg-stage" id="mitnehmen" aria-labelledby="mitnehmen-title">
+    <div class="container">
+      <div class="eyebrow acid">Schritt 5 von 6 · Mitnehmen</div>
+      <h2 id="mitnehmen-title">Eine Entscheidung, nicht nur Wissen.</h2>
+      <p class="weg-lead">Am Ende steht ein Entscheidungsdokument: Option, Annahmen, Gegenargument, verantwortliche Person und Stop-/Go-Regeln für Tag 30 und 90. Eingaben bleiben in diesem Browserfenster. Sichert eine Datei, wenn ihr sie weitergeben wollt.</p>
+      <div class="grill-actions weg-actions">
+        <button type="button" class="button ink" data-open-template="decision-brief">Entscheidungsvorlage öffnen ↗</button>
+        <button type="button" class="button acid" data-next="primary" data-view-target="workshop">Weiter: Workshop anfragen ↗</button>
+      </div>
+      <div class="weg-library" id="nach-dem-workshop">
+        <h3>Nach dem Workshop</h3>
+        <p class="weg-lead">Zum Vertiefen und Nachschlagen. Diese Bereiche gehören nicht zum Weg, bleiben aber jederzeit erreichbar.</p>
+        <div class="weg-library-grid"><button type="button" class="weg-library-item" data-view-target="sbo"><strong>Skill-Based Organization</strong><span>Was es ist, was es nicht ist, und wie Arbeit in Aufgaben und Skills übersetzt wird.</span></button><button type="button" class="weg-library-item" data-view-target="learn"><strong>Lernen</strong><span>Lernwege zu den vier Fällen und die Kurse dazu.</span></button><button type="button" class="weg-library-item" data-view-target="tools"><strong>Tools</strong><span>Skill-Prompts mit Qualitätsgrenze und Stop-Regel.</span></button><button type="button" class="weg-library-item" data-view-target="downloads"><strong>Downloads</strong><span>Digitale Arbeitsblätter mit Checkliste, Export und Druck.</span></button><button type="button" class="weg-library-item" data-view-target="profile"><strong>Mein Profil</strong><span>Deine geübten Fälle, nur in diesem Browserfenster.</span></button><button type="button" class="weg-library-item" data-view-target="local"><strong>Europa und Österreich</strong><span>Signale und Rahmen für den regionalen Kontext.</span></button><button type="button" class="weg-library-item" data-view-target="sources"><strong>Quellen und Experten</strong><span>Die Quellenbibliothek hinter den Aussagen.</span></button></div>
+      </div>
+    </div>
+  </section>
   </div>
   <div class="view" data-view="sources" id="view-sources" hidden>
   <section class="sources" id="quellen">
@@ -776,6 +825,10 @@
       document.getElementById("case-preview-dilemma").textContent=selected.dilemma;
       document.getElementById("case-preview-question").textContent=selected.question;
       document.getElementById("case-preview-evidence").textContent=selected.evidence;
+      document.getElementById("fall-case-category").textContent=selected.category;
+      document.getElementById("fall-case-title").textContent=selected.title;
+      document.getElementById("fall-case-dilemma").textContent=selected.dilemma;
+      document.getElementById("fall-case-question").textContent=selected.question;
       selected.flow.forEach(function(step,index){
         document.getElementById("flow-label-"+(index+1)).textContent=step.label;
         document.getElementById("flow-value-"+(index+1)).textContent=step.value;
@@ -800,8 +853,8 @@
     }
     railToggle.addEventListener("click",function(){setRailOpen(rail.hidden);});
     document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!rail.hidden){setRailOpen(false);railToggle.focus();}});
-    const sectionViews={main:"welcome","sbo-explainer":"start","start-decision":"start",ansatz:"start",game:"game",sbo:"sbo",methode:"learn",inhalte:"learn",tools:"tools",downloads:"downloads","template-library":"downloads","leadership-pack":"downloads",check:"grill",profil:"profile",local:"local",workshop:"workshop","pilot-inquiry":"workshop",quellen:"sources",experten:"sources"};
-    const viewNames={welcome:"Einstieg",start:"Start",grill:"Grill Me",game:"Planspiel",sbo:"Skill-Based Organization",learn:"Lernen",profile:"Mein Profil",tools:"Prompts und Skills",downloads:"Formulare und Downloads",local:"Europa und Österreich",workshop:"Workshop",sources:"Quellen und Experten"};
+    const sectionViews={main:"welcome","sbo-explainer":"start","start-decision":"start",ansatz:"start",game:"game",sbo:"sbo",methode:"learn",inhalte:"learn",tools:"tools",downloads:"downloads","template-library":"downloads","leadership-pack":"downloads",check:"grill",profil:"profile",local:"local",workshop:"workshop","pilot-inquiry":"workshop",fall:"fall",mitnehmen:"mitnehmen","nach-dem-workshop":"mitnehmen",quellen:"sources",experten:"sources"};
+    const viewNames={welcome:"Einstieg",start:"Start",grill:"Grill Me",game:"Planspiel",sbo:"Skill-Based Organization",learn:"Lernen",profile:"Mein Profil",tools:"Prompts und Skills",downloads:"Formulare und Downloads",local:"Europa und Österreich",workshop:"Workshop",fall:"Fall wählen",mitnehmen:"Mitnehmen",sources:"Quellen und Experten"};
     function resolveView(hash){
       if(sectionViews[hash])return sectionViews[hash];
       return Object.prototype.hasOwnProperty.call(viewNames,hash)?hash:"welcome";
@@ -866,6 +919,7 @@
   </script>
   <script src="./decision-studio-library-ui.js"></script>
   <script src="./decision-studio-downloads.js"></script>
+  <script src="./decision-studio-questionnaire.js"></script>
   <script src="./decision-studio-redesign.js"></script>
   <script src="./decision-studio-executive.js"></script>
 </body>

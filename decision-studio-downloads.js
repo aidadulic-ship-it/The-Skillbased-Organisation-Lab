@@ -150,7 +150,7 @@
   showTopics();
   const privateNotes=new Map();
   function openTemplate(id){
-    if(byId("view-downloads").hidden)document.querySelector('.icon-rail [data-view-target="downloads"]').click();
+    if(byId("view-downloads").hidden)document.querySelector('[data-view-target="downloads"]').click();
     activeTopic="all";showTopics();applyTopic();
     const card=byId("template-"+id);
     if(!card)return;
@@ -165,7 +165,7 @@
       const empty=el("div","profile-note-empty");
       empty.append(el("p","","Noch keine Arbeitsnotiz vorgemerkt. Beginne mit einer echten Frage im Decision Kit."));
       const open=el("button","button paper small","Formular wählen ↗");open.type="button";
-      open.addEventListener("click",()=>document.querySelector('.icon-rail [data-view-target="downloads"]').click());
+      open.addEventListener("click",()=>document.querySelector('[data-view-target="downloads"]').click());
       empty.append(open);target.append(empty);return;
     }
     privateNotes.forEach(note=>{
@@ -267,4 +267,5 @@
   document.querySelectorAll("[data-open-template]").forEach(button=>{
     button.addEventListener("click",()=>openTemplate(button.dataset.openTemplate));
   });
+  window.DecisionStudioDownloads={saveFile};
 })();

@@ -20,8 +20,8 @@ assert.match(html,/<div class="view" data-view="start" id="view-start" hidden>/,
 assert.match(html,/<button[^>]*id="rail-toggle"[^>]*hidden/,'navigation is hidden on the welcome view');
 const rail=html.match(/<aside class="icon-rail"[\s\S]*?<\/aside>/)?.[0]||'';
 const railOrder=[...rail.matchAll(/<button[^>]*data-view-target="([^"]+)"/g)].map(match=>match[1]);
-assert.deepEqual(railOrder,['start','sbo','profile','learn','tools','downloads','game','grill','local','sources','workshop'],'the rail follows the learning journey');
-assert.match(rail,/class="rail-divider"[^>]*>[\s\S]*?VERTIEFEN/,'advanced areas have a clear divider');
+assert.deepEqual(railOrder,['start','fall','grill','game','mitnehmen','workshop'],'the rail follows the six-step path (changed 2026-11-19: path instead of library)');
+assert.doesNotMatch(rail,/rail-divider/,'the path rail has no library divider (library lives under "Nach dem Workshop")');
 assert.match(html,/main:"welcome"/,'the brand link returns to welcome');
 assert.match(html,/"sbo-explainer":"start"/,'the detailed explanation routes to the full experience');
 assert.match(html,/enterLab\.addEventListener\("click"[\s\S]*?activateView\("start"/,'the start button opens the full experience');

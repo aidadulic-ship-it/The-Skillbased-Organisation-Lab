@@ -1,5 +1,13 @@
 # Änderungen · 18. November 2026
 
+## Schritt 2 · 19. November 2026
+
+- In „Fall wählen“ steht ein Vorab-Fragebogen für genau einen echten Firmenfall. Die vier Demo-Fälle bleiben als fiktive Aufwärmübung erhalten.
+- Fall, Ziel, zwei Messgrößen, Name und Funktion der verantwortlichen Person sowie Pilotbereich sind Pflicht. Dritte Messgröße, Ausgangswerte und Prüfschwellen sind freiwillig.
+- JSON und lesbare Textfassung werden getrennt heruntergeladen. Der JSON-Import prüft Art, Version und Pflichtfelder. Vorhandene Eingaben werden nur nach ausdrücklicher Bestätigung ersetzt.
+- Die vorhandene Datei-Download-Funktion wird auch vom Fragebogen genutzt. Es gibt keinen Server, kein Konto, keinen automatischen E-Mail-Versand und keine dauerhafte Speicherung im Browser.
+- Ein neuer Test prüft Daten, Exporte, Importgrenzen und die Einbindung. Ein Browser-Klick-Test hat Pflichtfelder, Downloads, Import, Abbruch und die Ansichten bei 360, 390, 768 und 1280 px geprüft.
+
 - Die vier Euro-Fälle variieren jetzt Menge, Einheitswert, Pilotkosten und Risiko-/Nacharbeitskosten je Szenario. Begründungen und ein Gegenfaktum sind sichtbar. Alle Beträge sind Demo/fiktiv; die Kennzeichnung lautet „Euro-Check, kein ROI“.
 - Kurse, Decision Mirror und Fälle beziehen ihre Quellen aus derselben Bibliothek. Die offenen Nachlesestellen für Nature und den Stanford AI Index sind in `QUELLEN_PRUEFEN.md` bezeichnet.
 - Die Einstiegsfrage zerlegt eine Entscheidung in Fakt/Datenlücke, Annahme, Wert und Gegenargument. Sie stellt drei Prüffragen, auch bei Themen außerhalb der vier Fälle. Ein kurzer Text erhält eine konkrete Rückfrage.

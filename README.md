@@ -5,7 +5,7 @@ Dieses Verzeichnis enthält die **öffentliche, statische Demo**. `index.html` i
 ## Auf GitHub Pages veröffentlichen
 
 1. Ein neues Repository anlegen oder ein bestehendes Repository auswählen.
-2. **Den Inhalt dieses Verzeichnisses** in das Stammverzeichnis des Repositorys hochladen. `index.html`, `decision-studio.css`, die sieben JavaScript-Dateien, `.nojekyll` und der Ordner `fonts` müssen auf derselben Ebene bleiben. Die ZIP-Datei selbst nicht als einzige Datei hochladen.
+2. **Den Inhalt dieses Verzeichnisses** in das Stammverzeichnis des Repositorys hochladen. `index.html`, `decision-studio.css`, die acht JavaScript-Dateien, `.nojekyll` und der Ordner `fonts` müssen auf derselben Ebene bleiben. Die ZIP-Datei selbst nicht als einzige Datei hochladen.
 3. Im Repository **Settings → Pages → Build and deployment → Source: Deploy from a branch** wählen. Den Branch (beispielsweise `main`) und den Ordner **`/(root)`** auswählen und speichern.
 4. Die von GitHub angezeigte Pages-Adresse öffnen. Bei einem Projekt-Repository ist sie gewöhnlich `https://BENUTZERNAME.github.io/REPOSITORY/`.
 
@@ -13,11 +13,12 @@ Die Schritte entsprechen der [GitHub-Pages-Anleitung](https://docs.github.com/en
 
 ## Was die Demo kann
 
-- Elf Bereiche, darunter Decision Mirror, Skill-Based Organization, Lernwege, Tools, Downloads, Profil und Workshop.
+- Ein Weg in sechs Stufen: Start, Fall wählen, Entscheiden, Widerstand üben, Mitnehmen und Workshop anfragen. Die Bibliotheksbereiche bleiben unter „Nach dem Workshop“ erreichbar.
 - Die erste Ansicht macht mit „The Skill-Based Organization“ und drei Fragen zu Arbeit, Führung und Organisation neugierig. Nach „Starten“ folgen die ausführliche Erklärung, Entscheidungsdemo, belegte Signale, weitere Themen und sofort die Seitenleiste. Die Navigation ist nur in der ersten Ansicht verborgen.
 - Zwanzig digitale Arbeitsblätter mit Checklisten, Text-/JSON-Export, JSON-Import und Druck über den Browser.
 - Optionale Spracheingabe, wenn der Browser sie anbietet. Vor dem ersten Diktat erscheint eine Erklärung zur möglichen externen Audioverarbeitung.
 - Vier vertiefte, fiktive Entscheidungsfälle mit Optionen, Annahmen, drei Euro-Szenarien und Stop-/Go-Regeln.
+- In „Fall wählen“ einen Vorab-Fragebogen für den echten Firmenfall. Pflicht sind Fall, Ziel, zwei Messgrößen, Name und Funktion der verantwortlichen Person sowie Pilotbereich. Ausgangswerte und Prüfschwellen dürfen offenbleiben. JSON und lesbare Textfassung werden getrennt heruntergeladen; JSON kann wieder eingelesen werden. Vor dem Ersetzen vorhandener Angaben wird ausdrücklich gefragt.
 - Eine freie Einstiegsfrage mit regelbasiertem Fakten-, Annahmen- und Wertecheck. Drei Beispielchips und ein durchgespielter Fall zeigen den Weg. Die Eingabe wird nur im Browserfenster verarbeitet; es gibt keinen KI-Aufruf.
 - Einen veränderbaren Euro-Check mit drei Szenarien und sichtbarer Formel. Er ist ausdrücklich kein ROI-Nachweis.
 - Eine druckbare A4-Entscheidungsvorlage und ein fiktives Drei-Runden-Planspiel „Der Vorstand widerspricht“.
@@ -34,6 +35,8 @@ Im Block „Warum es das Lab gibt“ bleiben `[TEXT AIDA]` und `[VIDEO-LINK]` bi
 
 Die Demo hat **keine Nutzerkonten, keine Datenbank, keinen offenen KI-Coach und keinen eigenen E-Mail-Versand**. Persönliche Eingaben bleiben bis zum Schließen oder Neuladen im Browserfenster, sofern sie nicht als Datei heruntergeladen werden. Bitte keine vertraulichen Personal-, Gesundheits- oder Unternehmensdaten in die öffentliche Demo eintragen oder diktieren. Die genannten Expertinnen und Experten sind Wissensquellen, keine bestätigten Partner.
 
+Der Vorab-Fragebogen versendet keine Datei selbst. Die Firma hängt die heruntergeladene JSON- oder Textdatei eigenständig an ihre E-Mail an. Für den späteren Import die JSON-Datei in „Fall wählen“ auswählen. Andere oder beschädigte JSON-Dateien werden abgewiesen.
+
 Für die Schriften und ihre Lizenztexte siehe [THIRD_PARTY.md](THIRD_PARTY.md). Die Quellenprüfung und fachlichen Freigabegrenzen stehen in [QUELLEN_PRUEFEN.md](QUELLEN_PRUEFEN.md).
 
-Die lokalen Prüfungen laufen mit `node check-welcome-gate.cjs` und `node check-executive-quality.cjs`. Diese Prüfdateien werden von der Website nicht geladen.
+Die lokalen Prüfungen laufen mit `node check-welcome-gate.cjs`, `node check-executive-quality.cjs`, `node check-weg.cjs` und `node check-vorab-fragebogen.cjs`. Diese Prüfdateien werden von der Website nicht geladen.

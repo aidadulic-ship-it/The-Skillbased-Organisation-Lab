@@ -69,7 +69,7 @@
     const tool=create("button","button paper","Passende Vorlage öffnen ↗");
     tool.type="button";
     tool.addEventListener("click",()=>{
-      document.querySelector('.icon-rail [data-view-target="downloads"]').click();
+      document.querySelector('[data-view-target="downloads"]').click();
       const card=byId("template-"+template.id);
       if(card){card.open=true;card.scrollIntoView({block:"start",behavior:"instant"});}
     });
