@@ -1528,3 +1528,68 @@ body.rail-open #main{margin-left:178px}
 .weg-library-item span{color:#c9d7dd;font-size:14px;line-height:1.4}
 .weg-library-item:hover{border-color:#ffff00}
 .weg-library-item:focus-visible{outline:3px solid #ffff00;outline-offset:3px}
+
+/* Provocative, interactive Ferrari opening. */
+#view-welcome{background:#070e22;color:#f7f9ff}
+.velocity-stage{min-height:calc(100dvh - 76px);padding:clamp(26px,4vw,58px) 0 24px;background:#070e22;color:#f7f9ff;overflow:hidden}
+.velocity-layout{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(26px,4.3vw,68px);min-height:min(650px,calc(100dvh - 130px))}
+.velocity-visual{grid-column:2;grid-row:1;position:relative;display:block;min-width:0;height:min(620px,72dvh);border:2px solid #00adb5;box-shadow:10px 10px 0 #00adb5;background:#142138;overflow:hidden}
+.velocity-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:66% center;animation:velocity-camera 20s ease-in-out infinite alternate}
+.velocity-visual::after{content:'FERRARI  /  TEMPO 30';position:absolute;left:0;bottom:0;padding:10px 15px;background:#ffff00;color:#070e22;font:850 12px/1.2 "Hanken Grotesk",sans-serif;letter-spacing:.1em}
+.velocity-copy{grid-column:1;grid-row:1;min-width:0;padding:10px 0}
+.velocity-eyebrow{color:#00dce3;font:850 11px/1.3 "Hanken Grotesk",sans-serif;letter-spacing:.14em}
+.velocity-eyebrow span{color:#ffff00}
+.velocity-copy h1{max-width:12ch;margin:20px 0 15px;color:#fff;font:850 clamp(48px,4.7vw,76px)/.94 "Bricolage Grotesque",sans-serif;letter-spacing:-.06em;text-transform:uppercase;text-wrap:balance}
+.velocity-copy h1 em{color:#ffff00;font-style:normal}
+.velocity-lead{margin:0 0 19px;color:#e8f1f4;font:750 clamp(17px,1.55vw,21px)/1.3 "Hanken Grotesk",sans-serif}
+.velocity-check{max-width:520px;border-top:2px solid #00adb5;padding-top:13px}
+.velocity-check-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.velocity-check-head strong{color:#ffff00;font:850 15px/1.2 "Bricolage Grotesque",sans-serif;text-transform:uppercase}
+.velocity-check-head span{color:#d0e1e8;font:650 12px/1.3 "Hanken Grotesk",sans-serif}
+.velocity-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.velocity-choices button{display:flex;align-items:center;justify-content:space-between;gap:9px;min-width:0;min-height:48px;padding:9px 12px;border:1.5px solid #78919f;border-radius:4px;background:#10213a;color:#f7f9ff;text-align:left;font:800 14px/1.2 "Hanken Grotesk",sans-serif;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.velocity-choices button span{color:#00dce3}
+.velocity-choices button:hover{border-color:#ffff00;transform:translateY(-2px)}
+.velocity-choices button[aria-pressed=true]{background:#ffff00;border-color:#ffff00;color:#070e22}
+.velocity-choices button[aria-pressed=true] span{color:#070e22}
+.velocity-result-space{min-height:75px;display:flex;align-items:center}
+.velocity-reveal{width:100%;border-left:4px solid #f06cb4;padding:4px 0 4px 13px}
+.velocity-reveal[hidden]{display:none}
+.velocity-reveal strong{display:block;color:#fff;font:800 17px/1.25 "Bricolage Grotesque",sans-serif}
+.velocity-reveal p{color:#e3edf2;font:650 12px/1.35 "Hanken Grotesk",sans-serif;margin:6px 0 0}
+.velocity-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.velocity-actions .welcome-start{min-height:53px;min-width:165px;box-shadow:4px 4px 0 #00adb5;font-size:15px}
+.velocity-euro-link{min-height:50px;padding:9px 10px;border:0;border-bottom:2px solid #00adb5;background:transparent;color:#f7f9ff;font:800 13px/1.2 "Hanken Grotesk",sans-serif;cursor:pointer}
+.velocity-euro-link span{color:#00dce3}
+.velocity-euro-link:hover{color:#ffff00;border-color:#ffff00}
+.velocity-promise{margin:17px 0 0;color:#ffff00;font:800 14px/1.3 "Bricolage Grotesque",sans-serif}
+.velocity-source-bar{display:grid;grid-template-columns:1fr 1fr;gap:22px;border-top:1px solid #526779;margin-top:28px;padding-top:13px}
+.velocity-source-bar a{color:#dbe8ed;text-decoration:none;font:650 12px/1.4 "Hanken Grotesk",sans-serif}
+.velocity-source-bar a:hover,.velocity-source-bar a:focus-visible{color:#ffff00;text-decoration:underline}
+.velocity-source-bar strong{color:#00dce3;font:850 20px/1 "Bricolage Grotesque",sans-serif;white-space:nowrap}
+.velocity-source-bar span{color:#00dce3;font-weight:800}
+.velocity-image-note{color:#b9cbd4;font:600 10px/1.35 "Hanken Grotesk",sans-serif;margin:12px auto 0}
+.capacity-dialog{width:min(640px,calc(100vw - 26px));max-height:calc(100dvh - 30px);overflow-y:auto;margin:auto;padding:24px;border:2px solid #00adb5;border-radius:7px;background:#070e22;color:#f7f9ff;box-shadow:9px 9px 0 #f06cb4}
+.capacity-dialog::backdrop{background:rgba(7,14,34,.82)}
+.capacity-dialog h2{color:#fff;font:850 clamp(32px,4vw,52px)/.98 "Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:-.045em;margin:12px 0}
+.capacity-dialog>p{max-width:50ch;color:#dce9f0;font:600 14px/1.45 "Hanken Grotesk",sans-serif}
+.capacity-dialog .tempo-section-label{color:#00dce3;font:850 11px/1.3 "Hanken Grotesk",sans-serif;letter-spacing:.12em}
+.capacity-close{display:block;margin:0 0 15px auto;min-height:44px;padding:6px 12px;border:1px solid #00adb5;background:#10213a;color:#fff;font:800 13px/1.3 "Hanken Grotesk",sans-serif;cursor:pointer}
+.capacity-dialog .tempo-calculator{padding:0;border:0;box-shadow:none;background:transparent}
+.capacity-dialog .tempo-calculator-head{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-top:1px solid #526779;border-bottom:1px solid #526779}
+.capacity-dialog .tempo-calculator-head span{color:#00dce3;font:800 11px/1.3 "Hanken Grotesk",sans-serif}
+.capacity-dialog .tempo-calculator-head strong{color:#ffff00;font:800 13px/1.3 "Bricolage Grotesque",sans-serif}
+.capacity-dialog .tempo-calculator label{display:flex;justify-content:space-between;gap:12px;color:#fff;font:750 14px/1.4 "Hanken Grotesk",sans-serif;margin:15px 0 2px}
+.capacity-dialog .tempo-calculator output{color:#ffff00;font-weight:850;white-space:nowrap}
+.capacity-dialog input[type=range]{width:100%;height:44px;margin:0;accent-color:#00adb5;cursor:pointer}
+.capacity-dialog .tempo-calculator-result{border-top:2px solid #ffff00;margin-top:16px;padding-top:11px}
+.capacity-dialog .tempo-calculator-result span{display:block;color:#dce9f0;font:700 12px/1.35 "Hanken Grotesk",sans-serif}
+.capacity-dialog .tempo-calculator-result strong{display:block;color:#ffff00;font:850 clamp(42px,5vw,64px)/1 "Bricolage Grotesque",sans-serif;margin:7px 0 10px}
+.capacity-dialog #capacity-formula{color:#fff;font:750 12px/1.4 "Hanken Grotesk",sans-serif}
+.capacity-dialog .tempo-calculator-note{color:#c6d6df;font:600 11px/1.4 "Hanken Grotesk",sans-serif}
+.velocity-stage :focus-visible,.capacity-dialog :focus-visible{outline:3px solid #ffff00;outline-offset:3px}
+@keyframes velocity-camera{from{transform:scale(1)}to{transform:scale(1.035)}}
+@media(max-width:1050px){.velocity-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.velocity-copy h1{font-size:clamp(42px,5vw,60px)}.velocity-visual{height:560px}}
+@media(max-width:700px){.velocity-stage{padding:0 0 20px}.velocity-layout{display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:0}.velocity-visual{order:0;width:100%;height:clamp(205px,30dvh,255px);margin:0;border:0;border-bottom:2px solid #00adb5;box-shadow:none}.velocity-visual img{object-position:center 67%;animation:none}.velocity-visual::after{font-size:10px;padding:6px 10px}.velocity-copy{order:1;padding:20px 0 0}.velocity-eyebrow{font-size:9px}.velocity-copy h1{font-size:clamp(34px,9.5vw,47px);margin:10px 0;max-width:14ch}.velocity-lead{font-size:16px;margin:0 0 12px}.velocity-check{padding-top:9px}.velocity-check-head{margin-bottom:8px}.velocity-check-head strong{font-size:13px}.velocity-check-head span{font-size:11px}.velocity-choices{gap:6px}.velocity-choices button{min-height:44px;font-size:12px;padding:7px 9px}.velocity-result-space{min-height:0}.velocity-reveal{margin:10px 0}.velocity-reveal strong{font-size:15px}.velocity-actions{margin-top:8px}.velocity-actions .welcome-start{min-width:0;flex:1}.velocity-euro-link{flex:1;font-size:11px;text-align:center;padding:7px 4px}.velocity-promise{font-size:12px;margin:10px 0}.velocity-source-bar{grid-template-columns:1fr;gap:10px;margin-top:16px}.capacity-dialog{padding:16px}}
+@media(max-width:390px){.velocity-copy h1{font-size:33px}.velocity-actions .welcome-start{min-width:124px}.velocity-choices button{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.velocity-visual img{animation:none!important}.velocity-choices button{transition:none!important}.velocity-choices button:hover{transform:none}}

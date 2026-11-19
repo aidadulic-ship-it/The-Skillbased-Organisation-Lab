@@ -5,7 +5,7 @@ Dieses Verzeichnis enthält die **öffentliche, statische Demo**. `index.html` i
 ## Auf GitHub Pages veröffentlichen
 
 1. Ein neues Repository anlegen oder ein bestehendes Repository auswählen.
-2. **Den Inhalt dieses Verzeichnisses** in das Stammverzeichnis des Repositorys hochladen. `index.html`, `decision-studio.css`, die acht JavaScript-Dateien, `.nojekyll` und der Ordner `fonts` müssen auf derselben Ebene bleiben. Die ZIP-Datei selbst nicht als einzige Datei hochladen.
+2. **Den Inhalt dieses Verzeichnisses** in das Stammverzeichnis des Repositorys hochladen. `index.html`, `decision-studio.css`, alle JavaScript-Dateien, `.nojekyll` sowie die Ordner `fonts` und `assets` müssen erhalten bleiben. Die ZIP-Datei selbst nicht als einzige Datei hochladen.
 3. Im Repository **Settings → Pages → Build and deployment → Source: Deploy from a branch** wählen. Den Branch (beispielsweise `main`) und den Ordner **`/(root)`** auswählen und speichern.
 4. Die von GitHub angezeigte Pages-Adresse öffnen. Bei einem Projekt-Repository ist sie gewöhnlich `https://BENUTZERNAME.github.io/REPOSITORY/`.
 
@@ -14,7 +14,10 @@ Die Schritte entsprechen der [GitHub-Pages-Anleitung](https://docs.github.com/en
 ## Was die Demo kann
 
 - Ein Weg in sechs Stufen: Start, Fall wählen, Entscheiden, Widerstand üben, Mitnehmen und Workshop anfragen. Die Bibliotheksbereiche bleiben unter „Nach dem Workshop“ erreichbar.
-- Die erste Ansicht macht mit „The Skill-Based Organization“ und drei Fragen zu Arbeit, Führung und Organisation neugierig. Nach „Starten“ folgen die ausführliche Erklärung, Entscheidungsdemo, belegte Signale, weitere Themen und sofort die Seitenleiste. Die Navigation ist nur in der ersten Ansicht verborgen.
+- Der erste Bildschirm zeigt einen klar sichtbaren, KI-generierten Ferrari neben Tempo 30. Eine eigene Bildfassung hält das Auto auch auf Mobilgeräten sichtbar. Der Text ist auf eine provokante Frage und einen 30-Sekunden-Check reduziert.
+- Vier fiktive Bremsklötze reagieren sofort mit einer kurzen Gegenfrage. Beim Wechsel ins Lab wird die Beispielfrage übernommen und der passende Demo-Fall vorausgewählt. Die Person kann die Frage ersetzen. Es erfolgt kein Datenversand.
+- „Was kostet Tempo 30?“ öffnet einen lokalen Euro-Check im Dialog. WEF- und ILO-Zahlen sind kompakt und direkt verlinkt. Sie beschreiben Arbeitgebererwartung beziehungsweise GenAI-Exposition. Alle Euro-Werte sind Demo/fiktiv, kein ROI und keine Verlustprognose.
+- Nach „Starten“ erscheinen die Seitenleiste und der sechsstufige Lernweg. Die freie Entscheidungsfrage steht jetzt dort; ihr regelbasierter Check und die druckbare Vorlage funktionieren weiter.
 - Zwanzig digitale Arbeitsblätter mit Checklisten, Text-/JSON-Export, JSON-Import und Druck über den Browser.
 - Optionale Spracheingabe, wenn der Browser sie anbietet. Vor dem ersten Diktat erscheint eine Erklärung zur möglichen externen Audioverarbeitung.
 - Vier vertiefte, fiktive Entscheidungsfälle mit Optionen, Annahmen, drei Euro-Szenarien und Stop-/Go-Regeln.
@@ -39,4 +42,4 @@ Der Vorab-Fragebogen versendet keine Datei selbst. Die Firma hängt die herunter
 
 Für die Schriften und ihre Lizenztexte siehe [THIRD_PARTY.md](THIRD_PARTY.md). Die Quellenprüfung und fachlichen Freigabegrenzen stehen in [QUELLEN_PRUEFEN.md](QUELLEN_PRUEFEN.md).
 
-Die lokalen Prüfungen laufen mit `node check-welcome-gate.cjs`, `node check-executive-quality.cjs`, `node check-weg.cjs` und `node check-vorab-fragebogen.cjs`. Diese Prüfdateien werden von der Website nicht geladen.
+Die lokalen Prüfungen laufen mit `node check-welcome-gate.cjs`, `node check-executive-quality.cjs`, `node check-weg.cjs`, `node check-vorab-fragebogen.cjs`, `node check-auftakt.cjs`, `node check-storyline.cjs` und `node check-hero-provocation.cjs`. Diese Prüfdateien werden von der Website nicht geladen.

@@ -34,31 +34,52 @@
   <span id="view-announcement" class="sr-only" role="status" aria-live="polite"></span>
   <main id="main">
   <div class="view" data-view="welcome" id="view-welcome">
-    <section class="welcome-stage" aria-labelledby="welcome-title">
-      <div class="container welcome-grid">
-        <div class="welcome-copy">
-          <div class="welcome-overline">Skill-Based Lab · Unlock your potential</div>
-          <p class="welcome-topic">The Skill-Based Organization</p>
-          <h1 id="welcome-title">Die Zukunft der Arbeit beginnt mit einer besseren Frage.</h1>
-          <form class="hero-decision-form" id="hero-decision-form">
+    <section class="velocity-stage" aria-labelledby="welcome-title">
+      <div class="container velocity-layout">
+        <picture class="velocity-visual">
+          <source media="(max-width: 700px)" srcset="./assets/ferrari-tempo30-mobile.png">
+          <img src="./assets/ferrari-tempo30-desktop.png" alt="KI-generierte Visualisierung eines roten Ferrari neben einem Tempo-30-Schild. Keine Markenpartnerschaft." width="1536" height="1024" fetchpriority="high">
+        </picture>
+        <div class="velocity-copy">
+          <div class="velocity-eyebrow">The Skill-Based Organization <span>·</span> Unlock your potential</div>
+          <h1 id="welcome-title">Du hast einen Ferrari.<br><em>Warum fährst du Tempo 30?</em></h1>
+          <p class="velocity-lead">Dein Team kann mehr. Was bremst es?</p>
+          <div class="velocity-check" id="velocity-check">
+            <div class="velocity-check-head"><strong>30-Sekunden-Check</strong><span>Wähle einen Bremsklotz.</span></div>
+            <div class="velocity-choices" role="group" aria-label="Fiktiven Bremsklotz wählen">
+              <button type="button" data-story-case="skills" aria-pressed="false">Starre Stellen <span aria-hidden="true">↗</span></button>
+              <button type="button" data-story-case="ai" aria-pressed="false">KI ohne Plan <span aria-hidden="true">↗</span></button>
+              <button type="button" data-story-case="hybrid" aria-pressed="false">Hybrid-Reibung <span aria-hidden="true">↗</span></button>
+              <button type="button" data-story-case="pay" aria-pressed="false">Falsche Anreize <span aria-hidden="true">↗</span></button>
+            </div>
+            <div class="velocity-result-space"><div class="velocity-reveal" id="velocity-reveal" role="status" aria-live="polite" hidden><strong id="velocity-hook"></strong><p id="velocity-counter"></p></div></div>
+          </div>
+          <div class="velocity-actions"><button type="button" class="welcome-start" id="enter-lab">Starten <span aria-hidden="true">↗</span></button><button type="button" class="velocity-euro-link" id="capacity-open">Was kostet Tempo 30? <span aria-hidden="true">€ ↗</span></button></div>
+          <p class="velocity-promise">Schaffe Wirkung. Werde zukunftsfähig.</p>
+        </div>
+      </div>
+      <div class="container velocity-source-bar"><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/3-skills-outlook" target="_blank" rel="noopener noreferrer"><strong>39 %</strong> der Kernskills verändern sich bis 2030 – Erwartung befragter Arbeitgeber. <span>WEF ↗</span></a><a href="https://www.ilo.org/publications/generative-ai-and-jobs-2025-update" target="_blank" rel="noopener noreferrer"><strong>1 von 4</strong> Beschäftigten arbeitet in einem GenAI-exponierten Beruf – keine Jobverlustquote. <span>ILO ↗</span></a></div>
+      <p class="container velocity-image-note">KI-generierte Visualisierung · keine Verbindung zu Ferrari · alle Beispielentscheidungen Demo/fiktiv</p>
+    </section>
+    <dialog class="capacity-dialog" id="capacity-dialog" aria-labelledby="capacity-title">
+      <form method="dialog"><button type="submit" class="capacity-close" aria-label="Euro-Check schließen">Schließen ×</button></form>
+      <span class="tempo-section-label">DEMO / FIKTIV</span><h2 id="capacity-title">Was kostet Tempo 30?</h2><p>Spiele eine Annahme durch. Das ist gebundene Kapazität, kein gemessener Verlust.</p>
+      <div class="tempo-calculator" id="capacity-calculator"><div class="tempo-calculator-head"><span>DEINE ANNAHMEN</span><strong>Euro-Check, kein ROI</strong></div>
+        <label for="capacity-people">Personen <output id="capacity-people-value" for="capacity-people">10</output></label><input id="capacity-people" type="range" min="1" max="100" step="1" value="10">
+        <label for="capacity-hours">Gebundene Stunden je Woche und Person <output id="capacity-hours-value" for="capacity-hours">1</output></label><input id="capacity-hours" type="range" min="0" max="5" step="0.5" value="1">
+        <label for="capacity-rate">Angenommener Stundenwert <output id="capacity-rate-value" for="capacity-rate">50 €</output></label><input id="capacity-rate" type="range" min="20" max="150" step="5" value="50">
+        <div class="tempo-calculator-result"><span>Rechnerisch gebundene Kapazität pro Jahr</span><strong id="capacity-total" aria-live="polite">23.000 €</strong></div><p id="capacity-formula">10 Personen × 1 Stunde × 50 € × 46 Arbeitswochen = 23.000 €</p><p class="tempo-calculator-note">46 Wochen sind eine fiktive Annahme. Freie Zeit ist keine automatische Einsparung. Keine Prognose. Eingaben bleiben lokal im Browser.</p>
+      </div>
+    </dialog>
+  </div>
+  <div class="view" data-view="start" id="view-start" hidden>
+    <section class="decision-inquiry" aria-labelledby="decision-inquiry-title"><div class="container"><div class="eyebrow green">Dein erster Entscheidungscheck</div><h2 id="decision-inquiry-title">Welche Entscheidung liegt heute auf deinem Tisch?</h2><p>Beschreibe die Frage. Du bekommst Annahmen, ein Gegenargument und einen fiktiven Euro-Check. Alles bleibt in diesem Browserfenster.</p><p class="story-handoff" id="story-handoff" hidden></p><div class="decision-inquiry-grid"><div>          <form class="hero-decision-form" id="hero-decision-form">
             <label for="hero-decision-input">Welche Entscheidung liegt heute auf deinem Tisch?</label>
             <div class="hero-decision-input-row"><input id="hero-decision-input" name="decision" type="text" autocomplete="off" maxlength="220" placeholder="Beschreibe eine konkrete Arbeitsentscheidung"><button type="submit">Frage prüfen ↗</button></div>
             <div class="hero-example-chips" role="group" aria-label="Beispielfragen"><button type="button" data-example-question="Sollen wir KI-Entwürfe im Kundenservice einführen?">KI einführen</button><button type="button" data-example-question="Wie besetzen wir eine offene Stelle mit internen Skills?">Stelle offen</button><button type="button" data-example-question="Welche Hybrid-Regel ist für unser Team fair und wirksam?">Hybrid-Regel</button></div>
             <button type="button" class="hero-sample-link" id="example-case">So sieht das Ergebnis aus ↗</button>
             <p class="hero-decision-help" id="hero-decision-help">Deine Eingabe bleibt in diesem Browserfenster. Kein KI-Aufruf und kein Datenversand.</p>
-          </form>
-          <p class="welcome-promise">Schaffe Wirkung. Werde zukunftsfähig.</p>
-          <p class="welcome-lead">Wie gestalten wir Arbeit, Führung und Organisationen, damit Fähigkeiten dort wirken, wo sie gebraucht werden?</p>
-          <div class="welcome-actions"><button type="button" class="welcome-start" id="enter-lab">Starten <span aria-hidden="true">↗</span></button><span>Entdecke Perspektiven, Fälle und Werkzeuge für bessere Entscheidungen.</span></div>
-        </div>
-        <div class="welcome-board" id="welcome-board" aria-label="Drei Fragen zur Zukunft von Arbeit, Führung und Organisation">
-          <div class="welcome-board-top"><span>WAS WÄRE, WENN …</span><span aria-hidden="true">↗</span></div>
-          <div class="welcome-board-row"><span>01 / ARBEIT</span><strong>… Aufgaben wichtiger werden als starre Stellen?</strong></div>
-          <div class="welcome-board-row"><span>02 / FÜHRUNG</span><strong>… Führung Potenzial und Sicherheit zugleich ermöglicht?</strong></div>
-          <div class="welcome-board-row"><span>03 / ORGANISATION</span><strong>… Skills zu fairen Entscheidungen und messbarer Wirkung führen?</strong></div>
-          <div class="welcome-board-foot">SKILLS <b>·</b> KI <b>·</b> LERNEN <b>·</b> HYBRID <b>·</b> NEW PAY</div>
-        </div>
-        <div class="hero-decision-result" id="hero-decision-result" role="region" aria-label="Dein Entscheidungscheck" hidden>
+          </form></div><div>        <div class="hero-decision-result" id="hero-decision-result" role="region" aria-label="Dein Entscheidungscheck" hidden>
           <div class="hero-result-head"><span>DEIN ENTSCHEIDUNGSCHECK · DEMO/FIKTIV</span><button type="button" id="hero-result-reset">Andere Frage ↗</button></div>
           <h2 id="hero-result-question"></h2>
           <p class="hero-result-local">Deine Eingabe bleibt in diesem Browserfenster. Kein KI-Aufruf und kein Datenversand.</p>
@@ -74,11 +95,7 @@
           </div>
           <div class="hero-result-actions"><button type="button" id="decision-print">Als Entscheidungsvorlage drucken / PDF ↗</button></div>
           <p class="hero-example-path" id="hero-example-path" hidden>Demo-Pfad: Frage geprüft → Gegenargument gesehen → Euro-Annahmen angepasst → Entscheidungsvorlage bereit.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-  <div class="view" data-view="start" id="view-start" hidden>
+        </div></div></div></div></section>
     <section class="sbo-explainer" id="sbo-explainer" aria-labelledby="sbo-explainer-title">
       <div class="container">
         <div class="sbo-explainer-head"><div class="eyebrow green">Skill-Based Lab · Unlock your potential</div><h2 id="sbo-explainer-title">Was ändert sich konkret?</h2><p><strong>Schaffe Wirkung. Werde zukunftsfähig.</strong><br>Aus einem starren Jobpaket wird eine überprüfbare Arbeitsentscheidung. Das ist ein Organisationsansatz, kein Versprechen, dass jede Rolle beliebig austauschbar wird.</p></div>
@@ -882,6 +899,7 @@
       document.getElementById("view-start").scrollTop=0;
       activateView("start",true,true);
       setRailOpen(true);
+      if(enterLab.dataset.chosenCase)selectCase(enterLab.dataset.chosenCase);
     });
     function showLearningContent(){
       const section=document.getElementById("executive-route");
@@ -922,5 +940,6 @@
   <script src="./decision-studio-questionnaire.js"></script>
   <script src="./decision-studio-redesign.js"></script>
   <script src="./decision-studio-executive.js"></script>
+  <script src="./decision-studio-auftakt.js"></script>
 </body>
 </html>

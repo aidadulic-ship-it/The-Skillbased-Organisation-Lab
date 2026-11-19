@@ -59,8 +59,8 @@
   function init(){
     const form=byId("hero-decision-form");
     if(!form)return;
-    const input=byId("hero-decision-input"),help=byId("hero-decision-help"),result=byId("hero-decision-result"),boardArt=byId("welcome-board");
-    const rehomeResult=()=>{const mobile=root.matchMedia("(max-width: 700px)").matches;if(mobile)form.insertAdjacentElement("afterend",result);else boardArt.insertAdjacentElement("afterend",result);form.hidden=mobile&&!result.hidden;};
+    const input=byId("hero-decision-input"),help=byId("hero-decision-help"),result=byId("hero-decision-result"),resultHome=result.parentElement;
+    const rehomeResult=()=>{const mobile=root.matchMedia("(max-width: 700px)").matches;if(mobile)form.insertAdjacentElement("afterend",result);else resultHome.append(result);form.hidden=mobile&&!result.hidden;};
     rehomeResult();root.addEventListener("resize",rehomeResult);
     const sliders=["baseline","effect","cost"].map(name=>byId("hero-"+name));
     let current=null;
@@ -90,13 +90,13 @@
       const four=byId("hero-four");four.replaceChildren();
       [["Fakt / Datenlücke",analysis.fact],["Annahme",analysis.assumption],["Wert",analysis.value],["Stärkstes Gegenargument",analysis.counterargument]].forEach(([label,copy])=>{const card=element("div","hero-four-card");card.append(element("h3","",label),element("p","",copy));four.append(card);});
       const list=byId("hero-check-questions");list.replaceChildren();analysis.questions.forEach(question=>list.append(element("li","",question)));
-      boardArt.hidden=true;result.hidden=false;rehomeResult();help.textContent="Dein Check ist geöffnet. Alle Angaben bleiben in diesem Browserfenster.";
+      result.hidden=false;rehomeResult();help.textContent="Dein Check ist geöffnet. Alle Angaben bleiben in diesem Browserfenster.";
       renderEuro();
     };
     const submit=()=>{const analysis=analyzeQuestion(input.value);if(!analysis.ok){help.textContent=analysis.clarification;input.focus();return;}renderAnalysis(analysis);};
     form.addEventListener("submit",event=>{event.preventDefault();submit();});
     root.document.querySelectorAll("[data-example-question]").forEach(chip=>chip.addEventListener("click",()=>{input.value=chip.dataset.exampleQuestion;submit();}));
-    byId("hero-result-reset").addEventListener("click",()=>{result.hidden=true;boardArt.hidden=false;form.hidden=false;byId("hero-example-path").hidden=true;input.focus();});
+    byId("hero-result-reset").addEventListener("click",()=>{result.hidden=true;form.hidden=false;byId("hero-example-path").hidden=true;input.focus();});
     sliders.forEach(slider=>slider.addEventListener("input",renderEuro));
     byId("example-case").addEventListener("click",()=>{input.value="Sollen wir KI-Entwürfe im Kundenservice einführen?";submit();byId("hero-example-path").hidden=false;});
     byId("decision-print").addEventListener("click",()=>{

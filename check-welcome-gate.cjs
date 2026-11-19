@@ -7,9 +7,9 @@ const welcome=html.match(/<div class="view" data-view="welcome"[\s\S]*?(?=<div c
 const journey=html.match(/<div class="view" data-view="start"[\s\S]*?(?=<div class="view" data-view="game")/)?.[0]||'';
 assert.match(html,/<a class="brand"[^>]*>[\s\S]*?Skill-Based Lab[\s\S]*?<\/a>/,'the header must carry the product name');
 
-assert.match(welcome,/<h1[^>]*>Die Zukunft der Arbeit beginnt mit einer besseren Frage\./,'the welcome view must lead with a compelling question');
+assert.match(welcome,/<h1[^>]*>Du hast einen Ferrari[\s\S]*Tempo 30/i,'the Ferrari is the explicit opening (changed 2026-11-19, line 10: new visual and copy requirement)');
 assert.match(welcome,/The Skill-Based Organization/,'the offer must be named immediately');
-assert.match(welcome,/Arbeit[\s\S]*Führung[\s\S]*Organisation/,'the opening must preview the three strategic dimensions');
+assert.match(welcome,/id="velocity-check"[\s\S]*30-Sekunden-Check/,'the opening now invites an immediate interactive check (changed 2026-11-19, line 12: concise-first requirement)');
 assert.match(welcome,/Schaffe Wirkung\. Werde zukunftsfähig\./,'the brand promise stays visible');
 assert.match(welcome,/<button[^>]*id="enter-lab"[^>]*>Starten/,'the welcome view needs a start button');
 assert.doesNotMatch(welcome,/sbo-definition-card|decision-canvas|class="signal dark"|id="ansatz"/,'the welcome view must remain a focused invitation');

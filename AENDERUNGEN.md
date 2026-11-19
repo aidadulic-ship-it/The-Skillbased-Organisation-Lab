@@ -1,5 +1,22 @@
 # Änderungen · 18. November 2026
 
+## Korrigierter Ferrari-Einstieg · 19. November 2026
+
+- Nach Nutzerfeedback wurde der bisherige lange Auftakt durch einen kurzen, provokanten ersten Bildschirm ersetzt. Ein neu generiertes Ferrari-Motiv ist auf Desktop und Mobil sichtbar; die mobile Fassung ist eigens komponiert.
+- Vier sofort sichtbare Bremsklötze zeigen nach Klick eine prägnante Gegenfrage. Der gewählte fiktive Fall bleibt beim Übergang ins Lab erhalten. Der Euro-Check liegt in einem optionalen Dialog, statt den ersten Bildschirm zu überladen.
+- Die globalen WEF-/ILO-Signale stehen kompakt unter dem Hero mit Quellen und Grenzen. Alle Beispiel- und Euro-Werte bleiben als Demo/fiktiv markiert.
+- Die Anforderungen haben sich geändert: `check-welcome-gate.cjs` Zeilen 10 und 12, `check-auftakt.cjs` Zeilen 7–19 sowie `check-storyline.cjs` Zeilen 7–13 prüfen jetzt den kurzen Hero und die direkte Interaktion. Der neue Test `check-hero-provocation.cjs` lief vor der Umsetzung rot. Kein Test wurde geändert, um einen Produktfehler zu verdecken.
+
+## Neuer Auftakt · 19. November 2026
+
+- Die Storyline ist nun verzweigt: Vier fiktive Engpässe öffnen jeweils einen eigenen Prüfpfad mit Beobachtung, Annahme, Gegenargument und Geschäftsleitungsfrage. Die Wahl setzt den passenden Demo-Fall und übernimmt die editierbare Beispielfrage nach „Starten“.
+- `check-storyline.cjs` lief vor der Umsetzung rot und prüft jetzt alle vier Pfade und die Übergabe. Der Browser-Klicktest hat jede Wahl, den Übergang und mobile Breiten geprüft. Die bestehenden Tests blieben grün.
+- Die erste Ansicht ist jetzt eine eigene, scrollbare Einstiegsseite mit Tempo-30-Metapher, zwei KI-generierten Fotovisualisierungen und ruhiger Bewegung. Bei reduzierter Bewegung bleiben die Bilder still.
+- Zwei direkt verlinkte Primärquellen beschreiben erwartete Skill-Veränderung und GenAI-Exposition. Eine OECD-Quelle führt zur Skill-Based-Organization-Perspektive. Diese Zahlen werden nicht als lokale Wirkung ausgegeben.
+- Ein interaktiver Euro-Check rechnet ausschließlich mit sichtbaren Demo-Annahmen: Personen × gebundene Wochenstunden × Stundenwert × 46 angenommene Arbeitswochen. Er ist ausdrücklich kein ROI und keine Verlustprognose.
+- Die bestehende Entscheidungsfrage und ihr druckbares Ergebnis wurden hinter „Starten“ verschoben. Der anschließende sechs Stufen umfassende Weg und die Seitenleiste bleiben erhalten.
+- Der neue Test `check-auftakt.cjs` wurde zuerst rot und danach grün ausgeführt. Der bestehende H1-Test in `check-welcome-gate.cjs`, Zeile 10, wurde wegen des freigegebenen neuen Auftakts geändert. Die übrigen Prüfungen blieben unverändert.
+
 ## Schritt 2 · 19. November 2026
 
 - In „Fall wählen“ steht ein Vorab-Fragebogen für genau einen echten Firmenfall. Die vier Demo-Fälle bleiben als fiktive Aufwärmübung erhalten.
